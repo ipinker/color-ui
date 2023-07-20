@@ -1,0 +1,22 @@
+
+button.IButton,
+button::after,
+uni-button::after {
+    padding: 0;
+    margin: 0;
+    border: none;
+    background: transparent;
+    line-height: 1.6;
+    padding: 0 20rpx;
+}
+.IButton {
+    &.button-size-mini {
+    }
+    &.button-size-small {}
+    &.button-size-normal {}
+    &.button-size-big {}
+    &.button-size-large {}
+    &.button-shape-round {
+        border-radius: 50%;
+    }
+}
