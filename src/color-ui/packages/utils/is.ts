@@ -27,9 +27,6 @@ type NavigatorType = {
 
 /* -------------------------------------------------------------------------- */
 /* 全平台判断 [ 仅限 Uniapp 内使用 ] */
-// eslint-disable-next-line @typescript-eslint/ban-ts-comment
-// @ts-ignore
-const uni: any = uni || {};
 // 是否为 IOS 设备
 export const isIos = (): boolean => {
 	const SystemInfo = uni.getSystemInfoSync();
