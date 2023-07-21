@@ -3,10 +3,18 @@ import type {MapToken, SeedMap} from "../theme/interface";
 import defaultDerivative from "./themes/default"
 import darkDerivative from "./themes/dark"
 import {seedColors} from "./themes/colorMap";
-import Theme, {ThemeOptions} from "./context"
+import ThemeStore from "./theme"
+import {Platform} from "../../common/constant";
+
+export type ThemeOptions = {
+    themeList: SeedMap[],
+    id: string,
+    useDark: boolean,
+    platform: Platform
+}
 
 export const initThemeConfig = (app: App, options : ThemeOptions) => {
-    // todo ...
-    // 配置到全局
-    app.config.globalProperties.$theme = new Theme(options || {});
+    return {
+        ThemeStore
+    }
 };

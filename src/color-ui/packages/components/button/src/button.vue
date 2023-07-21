@@ -17,7 +17,7 @@ import { ref, computed } from "vue";
 import { buttonProps } from "./button";
 import "../style";
 import {Size, SIZES} from "../../../common/constant";
-import {formatSize} from "../../../utils/style";
+import { getSize } from "../../../utils/style";
 
 
 const props = defineProps(buttonProps);
@@ -37,7 +37,7 @@ const IButtonClass = computed(() => {
 
 const IButtonStyle = computed(() => {
     return [
-        SIZES.includes(props.size as Size) ? "" : formatSize(props.size)
+        SIZES.includes(props.size as Size) ? "" : getSize(props.size)
     ];
 });
 
