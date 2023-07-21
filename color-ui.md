@@ -20,18 +20,17 @@ color-ui
     ├── image
     └── fonts
 ├── common 内部部分依赖 
-    ├── util.js  内部使用到的工具方法
-    └── theme.js 默认主题配置
+├── utils  内部用到的工具方法 
 ├── package ui 组件模块包
     ├── button
 		├── adapter.vue 兼容适配文件
 		├── index.vue   主体文件
-		└── index.js    
-    └── ...
-├── store 主题 store
-    ├── modules
-		└── thtme.js    theme配置store (包含 theme的state, getters)
-    └── index 
+		└── index.ts   
+    ├── ... 
+    └── theme
+		├── themes 自带主题
+		├── context.ts 
+		└── index.ts 
 ├── index.js
 └── package.json
 ```
