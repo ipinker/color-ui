@@ -107,41 +107,6 @@ color-ui
 
 ## 扩展功能
 #### 主题
-```javascript
-// color-ui/themeStore/index.js
-import { defineStore } from "pinia"
-export default defineStore("theme", {
- state: () => {
-   return {
-     themeId: "",
-     themeList: [],
-     theme: {
-       primary: '#892309',
-       white: "#fff",
-       black: "#000"
-     }
-   }
- },
- getters: {
-   primaryBg: (state) => {
-     return { "background": state.primary }
-   },
-   primaryFont: (state) => {
-     return { "color": state.primary }
-   },
- }, 
-  actions: {
-   change(id) {
-     if (!id) return ;
-     const theme = this.themeList.find(t => t.id === id);
-     if(theme){
-      this.themeId = id;
-      this.theme = theme;
-     }
-   }
- }
-})
-```
 
 ## 如何使用
 #### 不涉及到主题
@@ -188,10 +153,10 @@ export default {
 ```vue
 // src/pages/home/index.vue
 <script setup>
-  import {getCurrentInstance} from "vue";
-  const { proxy } = getCurrentInstance();
-  const themeId = "2";
-  proxy.$Theme.change(themeId);
+  
+import { useThemeStore } from "color-ui"
+const useStore = useThemeStore();
+useStore.change("dark")
 </script>
 ```
 ```javascript
@@ -205,24 +170,14 @@ import ThemeList from "./commom/theme.js"
 const app = createApp(App);
 app.use(store);
 app.use(ColorUI, {
-  themeList: ThemeList,
-  defaultTheme: "id"// 主题的id, 单个主题无需传入, 读取theme | themeList[0]
+  themeList: ThemeList, // 不传提供默认的黑白
+  id: "id"// 主题的id, 单个主题无需传入, 读取 themeList[0]
 });
 ```
 ```javascript
 // commom/theme.js
 export default [
-  {
-    id: "1",
-    name: "light",
-    primary: "#889900",
-    white: "#FEFEFE",
-  },{
-    id: "-1",
-    name: "dark",
-    primary: "#889900",
-    white: "#232323",
-  }
+    
 ]
 ```
 #### 使用主题自带颜色值
@@ -233,16 +188,20 @@ export default [
   </div>
 </template>
 <script setup>
-  import {getCurrentInstance} from "vue";
-  const { proxy } = getCurrentInstance();
-  const whiteColor = proxy.$Theme.theme.white; // #FEFEFE
-  // 内部自带的style
-  const primaryBackground = proxy.$Theme.primaryBackground; // { 'background': #889900 }
-  const primaryFont = proxy.$Theme.primaryFont; // { 'color': #889900 }
-  const whiteFont = proxy.$Theme.whiteFont; // { 'color': #FEFEFE }
-
+import { useThemeStore } from "color-ui"
+const useStore = useThemeStore();
+console.log(useStore.theme)
+console.log(useStore.theme.colorPrimary)
+const [ light, dark ] = useStore.themeList;
+console.log({...light})
+console.log({...dark})
+console.log(light.colorWhite)
+console.log(light.colorBgBase)
+console.log(light.colorError)
+console.log(light.colorPrimary)
+console.log(dark.colorWhite)
+console.log(dark.colorBgBase)
+console.log(dark.colorError)
+console.log(dark.colorPrimary)
 </script>
-```
-#### 更改组件内部主题变量名称
-```vue
 ```

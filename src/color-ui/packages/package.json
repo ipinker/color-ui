@@ -2,10 +2,8 @@
   "name": "lk-ui-pro",
   "version": "1.0.0",
   "description": "UI",
-  "main": "lib/index.js",
-  "module": "es/index.js",
-  "unpkg": "dist/index.min.js",
-  "typings": "es/index.d.ts",
+  "main": "index.js",
+  "typings": "index.d.ts",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },

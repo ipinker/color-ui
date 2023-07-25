@@ -20,7 +20,20 @@
 
 <script setup lang="ts">
 import IButton from "../../color-ui/packages/components/button/src/button.vue";
-
+// import { useThemeStore } from "../../store/theme";
+import { useThemeStore } from "../../color-ui/packages"
+const useStore = useThemeStore();
+const [ light, dark ] = useStore.themeList;
+console.log({...light})
+console.log({...dark})
+console.log(light.colorWhite)
+console.log(light.colorBgBase)
+console.log(light.colorError)
+console.log(light.colorPrimary)
+console.log(dark.colorWhite)
+console.log(dark.colorBgBase)
+console.log(dark.colorError)
+console.log(dark.colorPrimary)
 </script>
 
 <style>
