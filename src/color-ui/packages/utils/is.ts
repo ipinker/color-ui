@@ -156,6 +156,8 @@ export const isArray = (arr: unknown): boolean => Object.prototype.toString.call
 export const isObject = (obj: unknown): boolean => Object.prototype.toString.call(obj) === "[object Object]";
 // 是否为 JSON 对象
 export const isJson = (obj: unknown): boolean => isArray(obj) || isObject(obj);
+// 是否为 Module
+export const isModule = (obj: unknown): boolean => Object.prototype.toString.call(obj) === "[object Module]";
 // 是否为函数
 export const isFunc = (func: unknown): boolean => Object.prototype.toString.call(func) === "[object Function]" || typeof func === 'function';
 // 是否为布尔值
@@ -333,13 +335,14 @@ export const isIdCard = (code: string): boolean => {
 		71: "台湾",
 		81: "香港", 82: "澳门",
 		91: "国外"
-	};
+	} as const;
+	type CityType = keyof (typeof city);
 
 	// 身份证号格式错误
 	if (!code || !/^\d{6}(18|19|20)?\d{2}(0[1-9]|1[012])(0[1-9]|[12]\d|3[01])\d{3}(\d|X)$/i.test(code)) return false;
 	// 地址编码错误
-	// @ts-ignore
-	if (!city[code.substr(0, 2)]) return false;
+	const cityCode: CityType = +code.substr(0, 2) as CityType;
+	if (!city[cityCode]) return false;
 	if (code.length == 18) {
 		const sBirthday = code.substr(6, 4) + "-" + Number(code.substr(10, 2)) + "-" + Number(code.substr(12, 2));
 		const d = new Date(sBirthday.replace(/-/g, "/"));

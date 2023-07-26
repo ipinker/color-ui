@@ -1,6 +1,7 @@
 import {TinyColor} from '@ctrl/tinycolor';
-import type {ColorMap, SeedColorMap} from '../../interface';
+import type {ColorMap, SeedMap} from '../../interface';
 import type {GenerateColorMap, GenerateNeutralColorMap} from '../colorMap';
+import getAlphaColor from "../../util/getAlphaColor";
 
 interface PaletteGenerators {
     generateColorPalettes: GenerateColorMap;
@@ -8,7 +9,7 @@ interface PaletteGenerators {
 }
 
 export default function genColorMapToken(
-    seed: SeedColorMap,
+    seed: SeedMap,
     {generateColorPalettes, generateNeutralColorPalettes}: PaletteGenerators,
 ): ColorMap {
     const {
@@ -19,6 +20,7 @@ export default function genColorMapToken(
         colorPrimary: colorPrimaryBase,
         colorBgBase,
         colorTextBase,
+        colorShadowBase
     } = seed;
 
     const primaryColors = generateColorPalettes(colorPrimaryBase);
@@ -26,7 +28,7 @@ export default function genColorMapToken(
     const warningColors = generateColorPalettes(colorWarningBase);
     const errorColors = generateColorPalettes(colorErrorBase);
     const infoColors = generateColorPalettes(colorInfoBase);
-    const neutralColors = generateNeutralColorPalettes(colorBgBase, colorTextBase);
+    const neutralColors = generateNeutralColorPalettes(colorBgBase, colorTextBase, colorShadowBase);
 
     // Color Link
     const colorLink = seed.colorLink || seed.colorInfo;
@@ -45,6 +47,7 @@ export default function genColorMapToken(
         colorPrimaryTextHover: primaryColors[8],
         colorPrimaryText: primaryColors[9],
         colorPrimaryTextActive: primaryColors[10],
+        colorPrimaryShadow: getAlphaColor(primaryColors[1], neutralColors.colorBgContainer),
 
         colorSuccessBg: successColors[1],
         colorSuccessBgHover: successColors[2],
@@ -56,6 +59,7 @@ export default function genColorMapToken(
         colorSuccessTextHover: successColors[8],
         colorSuccessText: successColors[9],
         colorSuccessTextActive: successColors[10],
+        colorSuccessShadow: getAlphaColor(successColors[1], neutralColors.colorBgContainer),
 
         colorErrorBg: errorColors[1],
         colorErrorBgHover: errorColors[2],
@@ -67,6 +71,7 @@ export default function genColorMapToken(
         colorErrorTextHover: errorColors[8],
         colorErrorText: errorColors[9],
         colorErrorTextActive: errorColors[10],
+        colorErrorShadow: getAlphaColor(errorColors[1], neutralColors.colorBgContainer),
 
         colorWarningBg: warningColors[1],
         colorWarningBgHover: warningColors[2],
@@ -78,6 +83,7 @@ export default function genColorMapToken(
         colorWarningTextHover: warningColors[8],
         colorWarningText: warningColors[9],
         colorWarningTextActive: warningColors[10],
+        colorWarningShadow: getAlphaColor(warningColors[1], neutralColors.colorBgContainer),
 
         colorInfoBg: infoColors[1],
         colorInfoBgHover: infoColors[2],
@@ -89,6 +95,7 @@ export default function genColorMapToken(
         colorInfoTextHover: infoColors[8],
         colorInfoText: infoColors[9],
         colorInfoTextActive: infoColors[10],
+        colorInfoShadow: getAlphaColor(infoColors[1], neutralColors.colorBgContainer),
 
         colorLinkHover: linkColors[4],
         colorLink: linkColors[6],

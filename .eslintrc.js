@@ -29,6 +29,7 @@ module.exports = {
         'no-plusplus': 0,
         'no-script-url': 0,
         // 禁止不必要的转义字符
-        "no-useless-escape": 0
+        "no-useless-escape": 0,
+        "no-control-regex": 0
     }
 }

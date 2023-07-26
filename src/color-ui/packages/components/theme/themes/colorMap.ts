@@ -17,6 +17,7 @@ export type GenerateColorMap = (baseColor: string) => ColorMap;
 export type GenerateNeutralColorMap = (
   bgBaseColor: string,
   textBaseColor: string,
+  shadowBaseColor: string
 ) => ColorNeutralMap;
 
 export const defaultPresetColors: PresetColorType = {
@@ -48,6 +49,7 @@ export const seedColors: SeedMap = {
   colorLink: '',
   colorTextBase: '',
   colorBgBase: '',
+  colorShadowBase: '',
 
 
   // Font

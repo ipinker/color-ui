@@ -62,6 +62,12 @@ export interface SeedMap extends PresetColorType {
   colorBgBase: string;
 
   /**
+   * @nameZH 基础阴影色
+   * @desc 用于派生背景色梯度的基础变量，v5 中我们添加了一层背景色的派生算法可以产出梯度明确的背景色的梯度变量。但请不要在代码中直接使用该 Seed Token ！
+   */
+  colorShadowBase: string;
+
+  /**
    * @nameZH 超链接颜色
    * @nameEN Hyperlink color
    * @desc 控制超链接的颜色。

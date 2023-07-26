@@ -2,7 +2,7 @@
 /**
  * @description  Button的种类
  */
-export const buttonTypes: string[] = [
+export const buttonTypes = [
     "default",
     "primary",
     "success",
@@ -10,8 +10,10 @@ export const buttonTypes: string[] = [
     "info",
     "danger",
     "text",
+    "dashed",
     ""
-];
+] as const;
+export type ButtonType = (typeof buttonTypes) [number];
 
 /**
  * @description 按钮的功能类型, 可以是普通的按钮, 也可以是赋予特殊功能的按钮(uniapp)
@@ -63,6 +65,11 @@ export const buttonProps = {
         type: String,
         default: "default"
     },
+    primary: Boolean,
+    success: Boolean,
+    warning: Boolean,
+    info: Boolean,
+    danger: Boolean,
     /**
      * @description 跳转能力
      */
@@ -130,4 +137,6 @@ export const buttonProps = {
      */
     activeClass: String,
 
-};
+} as const;
+
+export type ButtonPropsType = typeof buttonProps;

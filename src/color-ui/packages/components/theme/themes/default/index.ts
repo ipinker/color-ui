@@ -12,6 +12,9 @@ import {generateColorPalettes, generateNeutralColorPalettes} from './color';
 import genSizeMap from "../shared/genSizeMap";
 import genRadiusMap from "../shared/genRadiusMap";
 import genFontMap from "../shared/genFontMap";
+import genOuterMap from "../shared/genOuterMap";
+import genSpacingMap from "../shared/genSpacingMap";
+
 
 export default function derivative(token: SeedMap): MapToken {
 
@@ -44,6 +47,8 @@ export default function derivative(token: SeedMap): MapToken {
         // Font
         ...genFontMap(token.fontSize),
         // Radius
-        ...genRadiusMap(token.borderRadius)
+        ...genRadiusMap(token.borderRadius),
+        ...genOuterMap(token),
+        ...genSpacingMap(token)
     } as MapToken;
 }

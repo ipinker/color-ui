@@ -1,0 +1,11 @@
+// Button 对 button 的一些处理
+button.IButton,
+button::after,
+uni-button::after {
+    padding: 0;
+    margin: 0;
+    border: none;
+    background: transparent;
+    line-height: 1.6;
+    padding: 0 20rpx;
+}

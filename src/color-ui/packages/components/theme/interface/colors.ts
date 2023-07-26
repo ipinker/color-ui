@@ -42,6 +42,11 @@ export interface ColorNeutralMap {
    */
   colorBgBase: string;
 
+  /**
+   * @internal
+   */
+  colorShadowBase: string;
+
   // ----------   Text   ---------- //
 
   /**
@@ -237,6 +242,8 @@ interface ColorPrimaryMap {
    * @descEN Active state of text color under the main color gradient.
    */
   colorPrimaryTextActive: string; // 10
+
+  colorPrimaryShadow?: string;
 }
 
 interface ColorSuccessMap {
@@ -319,6 +326,7 @@ interface ColorSuccessMap {
    * @descEN Active state color of success color text
    */
   colorSuccessTextActive: string; // 10
+  colorSuccessShadow?: string;
 }
 
 interface ColorWarningMap {
@@ -401,6 +409,8 @@ interface ColorWarningMap {
    * @descEN The active state of the text in the warning color.
    */
   colorWarningTextActive: string; // 10
+
+  colorWarningShadow?: string;
 }
 
 interface ColorInfoMap {
@@ -483,6 +493,8 @@ interface ColorInfoMap {
    * @descEN Active state of text color of information color.
    */
   colorInfoTextActive: string; // 10
+
+  colorInfoShadow?: string;
 }
 
 interface ColorErrorMap {
@@ -565,6 +577,8 @@ interface ColorErrorMap {
    * @descEN The active state of the text in the error color.
    */
   colorErrorTextActive: string; // 10
+
+  colorErrorShadow?: string;
 }
 
 export interface ColorLinkMap {
