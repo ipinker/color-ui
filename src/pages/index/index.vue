@@ -21,8 +21,8 @@
 </template>
 
 <script setup lang="ts">
-import IButton from "../../color-ui/packages/components/button/src/button.vue";
-import {useThemeStore} from "../../color-ui/packages"
+import IButton from "../../../color-ui/src/components/button/src/button.vue";
+import {useThemeStore} from "../../../color-ui/src"
 import {computed} from "vue";
 
 const useStore = useThemeStore();

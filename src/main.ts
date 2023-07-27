@@ -1,7 +1,9 @@
 import { createSSRApp } from "vue";
 import App from "./App.vue";
 import store, { Pinia } from "./store";
-import ColorUI from "./color-ui/packages/index";
+import ColorUI from "../color-ui/src/index";
+import ColorUIV2 from "test-publish";
+console.log("ColorUIV2: ", ColorUIV2)
 export function createApp() {
     const app = createSSRApp(App);
     app.use(store);

@@ -4256,6 +4256,11 @@ min-document@^2.19.0:
   dependencies:
     dom-walk "^0.1.0"
 
+mini-types@^0.1.7:
+  version "0.1.7"
+  resolved "http://cloud43.linkingcloudaliyun.cn:4873/mini-types/-/mini-types-0.1.7.tgz#36d5ea2cf18653b16f5d1a02c8d9b329c727d20a"
+  integrity sha512-aSoVvrIr/O9tbzFjSCeKr/T53Hu+un+FXkfWPfGcb/q8eAHXX1CDgSHv8l0GtFTlfHzznmn4hbRGB3UTWmZ3fA==
+
 minimatch@^3.0.5, minimatch@^3.1.1, minimatch@^3.1.2:
   version "3.1.2"
   resolved "http://cloud43.linkingcloudaliyun.cn:4873/minimatch/-/minimatch-3.1.2.tgz"
@@ -4274,6 +4279,11 @@ minimist@^1.2.6:
   version "1.2.8"
   resolved "http://cloud43.linkingcloudaliyun.cn:4873/minimist/-/minimist-1.2.8.tgz"
   integrity sha512-2yyAR8qBkN3YuheJanUpWC5U3bb5osDywNB8RzDVlDwDHbocAJveqqj1u8+SVD7jkWT4yvsHCpWqqWqAxb0zCA==
+
+miniprogram-api-typings@^3.10.0:
+  version "3.10.0"
+  resolved "http://cloud43.linkingcloudaliyun.cn:4873/miniprogram-api-typings/-/miniprogram-api-typings-3.10.0.tgz#98627ed12e3d3d2e5d22539eef6cdd911ecf6852"
+  integrity sha512-pvGZmj9uamahlqfPj1bwn5Cd/bjImc5ehyAha/QfA9limG6HO9Plj/yROfSChK6J6+VUoVB9cnNthx4XuI0T2Q==
 
 mkdirp@^0.5.1:
   version "0.5.6"
@@ -4528,13 +4538,21 @@ pify@^2.3.0:
   resolved "http://cloud43.linkingcloudaliyun.cn:4873/pify/-/pify-2.3.0.tgz"
   integrity sha1-7RQaasBDqEnqWISY59yosVMw6Qw=
 
-pinia@2.0.36:
-  version "2.0.36"
-  resolved "https://registry.yarnpkg.com/pinia/-/pinia-2.0.36.tgz#65130f3b94cc7fe25156308634010fab893dff24"
-  integrity sha512-4UKApwjlmJH+VuHKgA+zQMddcCb3ezYnyewQ9NVrsDqZ/j9dMv5+rh+1r48whKNdpFkZAWVxhBp5ewYaYX9JcQ==
+pinia@2.0.35:
+  version "2.0.35"
+  resolved "http://cloud43.linkingcloudaliyun.cn:4873/pinia/-/pinia-2.0.35.tgz#aa2597038bb55ea14ad689f83065d2814ebb8c10"
+  integrity sha512-P1IKKQWhxGXiiZ3atOaNI75bYlFUbRxtJdhPLX059Z7+b9Z04rnTZdSY8Aph1LA+/4QEMAYHsTQ638Wfe+6K5g==
   dependencies:
     "@vue/devtools-api" "^6.5.0"
     vue-demi "*"
+
+pinia@2.1.6:
+  version "2.1.6"
+  resolved "http://cloud43.linkingcloudaliyun.cn:4873/pinia/-/pinia-2.1.6.tgz#e88959f14b61c4debd9c42d0c9944e2875cbe0fa"
+  integrity sha512-bIU6QuE5qZviMmct5XwCesXelb5VavdOWKWaB17ggk++NUwQWWbP5YnsONTk3b752QkW9sACiR81rorpeOMSvQ==
+  dependencies:
+    "@vue/devtools-api" "^6.5.0"
+    vue-demi ">=0.14.5"
 
 pixelmatch@^4.0.2:
   version "4.0.2"
@@ -5024,6 +5042,14 @@ terser@^5.4.0:
     commander "^2.20.0"
     source-map-support "~0.5.20"
 
+test-publish@^1.0.5:
+  version "1.0.5"
+  resolved "http://cloud43.linkingcloudaliyun.cn:4873/test-publish/-/test-publish-1.0.5.tgz#ee32b0c1c9125dc5ced0f1bdd388f9b8f8770242"
+  integrity sha512-iD1S0Ks+YoRK/Xn+6ODi2OyjOGWnCqkYajL4Buwycl8oEbG+exIHaSyHqXZtcIG5YSj5J7+YxJD9nlZOCtvcnQ==
+  dependencies:
+    pinia "2.1.6"
+    vue "^3.3.4"
+
 text-table@^0.2.0:
   version "0.2.0"
   resolved "https://registry.npmjs.org/text-table/-/text-table-0.2.0.tgz"
@@ -5220,9 +5246,9 @@ vitest@0.12.6:
     tinyspy "^0.3.2"
     vite "^2.9.8"
 
-vue-demi@*:
+vue-demi@*, vue-demi@>=0.14.5:
   version "0.14.5"
-  resolved "https://registry.yarnpkg.com/vue-demi/-/vue-demi-0.14.5.tgz#676d0463d1a1266d5ab5cba932e043d8f5f2fbd9"
+  resolved "http://cloud43.linkingcloudaliyun.cn:4873/vue-demi/-/vue-demi-0.14.5.tgz#676d0463d1a1266d5ab5cba932e043d8f5f2fbd9"
   integrity sha512-o9NUVpl/YlsGJ7t+xuqJKx8EBGf1quRhCiT6D/J0pfwmk9zUwYkC7yrF4SZCe6fETvSM3UNL2edcbYrSyc4QHA==
 
 vue-eslint-parser@^9.3.0:

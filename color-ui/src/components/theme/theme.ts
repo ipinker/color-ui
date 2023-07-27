@@ -1,6 +1,6 @@
 import {App} from "vue";
 import { defineStore } from "pinia";
-import type {MapToken, SeedMap} from "../theme/interface";
+import type {MapToken, SeedMap} from "./interface";
 import {Platform} from "../../common/constant";
 import defaultDerivative from "./themes/default"
 import darkDerivative from "./themes/dark"

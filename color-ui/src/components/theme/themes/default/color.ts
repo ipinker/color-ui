@@ -1,6 +1,6 @@
 import {TinyColor} from '@ctrl/tinycolor';
 import {generate} from '@ant-design/colors';
-import type {GenerateColorMap, GenerateNeutralColorMap} from '../ColorMap';
+import type {GenerateColorMap, GenerateNeutralColorMap} from '../colorMap';
 
 export const getAlphaColor = (baseColor: string, alpha: number) =>
     new TinyColor(baseColor).setAlpha(alpha).toRgbString();
