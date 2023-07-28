@@ -6,12 +6,6 @@
     </button>
 </template>
 
-<script lang="ts">
-export default {
-    name: "IButton"
-}
-</script>
-
 <script lang="ts" setup>
 import { ref, computed } from "vue";
 import { buttonProps } from "./button";
@@ -19,6 +13,10 @@ import "../style";
 import { useThemeStore } from "../../../index"
 import {Size, SIZES} from "../../../common/constant";
 import { getSize } from "../../../utils/style";
+
+defineOptions({
+    name: "IButton"
+})
 
 const store = useThemeStore();
 const props = defineProps(buttonProps);
