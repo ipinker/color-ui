@@ -12,10 +12,11 @@ module.exports = {
         "jest": true,
         "es2021": true
     },
-    "parser": "@typescript-eslint/parser",
+    "parser": "vue-eslint-parser",
     "parserOptions": {
         "ecmaVersion": "latest",
-        "sourceType": "module"
+        "sourceType": "module",
+        "parser": "@typescript-eslint/parser"
     },
     "plugins": [
         "vue",
