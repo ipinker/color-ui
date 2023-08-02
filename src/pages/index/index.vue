@@ -1,16 +1,16 @@
 <!--
  * @Author: error: git config user.name & please set dead value or install git
  * @Date: 2023-03-20 15:48:19
- * @LastEditors: 牛洪法 1242849166@qq.com
- * @LastEditTime: 2023-05-12 14:53:30
+* @LastEditors: white_queen
+* @LastEditTime: 2023-08-02 16:09:53
  * @FilePath: /Lib/src/pages/index/index.vue
  * @Description: 描述
 -->
 <template>
     <view class="content">
-        <i-button type="danger" size="mini" open-type="share">222</i-button>
-        <i-button size="small">222</i-button>
-        <i-button type="dashed" size="small">222</i-button>
+        <IButton type="danger" size="mini" open-type="share">222</IButton>
+        <IButton size="small">222</IButton>
+        <IButton type="dashed" size="small">222</IButton>
         <i-button type="primary" size="normal">222</i-button>
         <i-button type="warning" size="big">222</i-button>
         <i-button type="info" size="large">222</i-button>
@@ -21,23 +21,23 @@
 </template>
 
 <script setup lang="ts">
-import IButton from "../../../color-ui/src/components/button/src/button.vue";
-import {useThemeStore} from "../../../color-ui/src"
+import {useThemeStore} from "test-publish/index"
+import { IButton } from "test-publish/index";
 import {computed} from "vue";
-
 const useStore = useThemeStore();
-let pageColor = computed(() => useStore.theme?.colorBgLayout);
-// const [ light, dark ] = useStore.themeList;
-// console.log({...light})
-// console.log({...dark})
-// console.log(light.colorWhite)
-// console.log(light.colorBgBase)
-// console.log(light.colorError)
-// console.log(light.colorPrimary)
-// console.log(dark.colorWhite)
-// console.log(dark.colorBgBase)
-// console.log(dark.colorError)
-// console.log(dark.colorPrimary)
+let pageColor;
+pageColor = computed(() => useStore.theme?.colorBgLayout);
+// // // const [ light, dark ] = useStore.themeList;
+// // // console.log({...light})
+// // // console.log({...dark})
+// // // console.log(light.colorWhite)
+// // // console.log(light.colorBgBase)
+// // // console.log(light.colorError)
+// // // console.log(light.colorPrimary)
+// // // console.log(dark.colorWhite)
+// // // console.log(dark.colorBgBase)
+// // // console.log(dark.colorError)
+// // // console.log(dark.colorPrimary)
 const changeTheme = () => {
     const id = useStore.id;
     useStore.change(id === "dark" ? "light" : "dark");
@@ -47,6 +47,7 @@ const changeTheme = () => {
 </script>
 
 <style lang="scss" scoped>
+@import "test-publish/dist/style.css";
 .content {
     display: flex;
     flex-direction: column;

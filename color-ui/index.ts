@@ -1,5 +1,5 @@
 import installer from './defaults';
-export * from './components';
+export * from './components/index';
 export * from './common/make-installer';
 import { createThemeStore } from './components/theme';
 export const useThemeStore = createThemeStore();

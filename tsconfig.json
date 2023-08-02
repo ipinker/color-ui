@@ -14,6 +14,7 @@
         "useDefineForClassFields": true,
         "resolveJsonModule": true,
         "isolatedModules": true,
+		"isCustomElement": true,
         "lib": [
             "esnext",
             "dom"

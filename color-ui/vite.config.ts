@@ -1,21 +1,10 @@
-import {fileURLToPath, URL} from 'url'
 import vue from '@vitejs/plugin-vue'
 import dts from "vite-plugin-dts";
 import DefineOptions from "unplugin-vue-define-options/vite";
-import AutoImport from 'unplugin-auto-import/vite'
-import Components from 'unplugin-vue-components/vite'
 import {defineConfig} from "vite";
-import {copyFile} from "./config/plugins/file";
-
-const pathResolve = (dir: string) => fileURLToPath(new URL(dir, import.meta.url));
 
 export default defineConfig({
-    resolve: {
-        alias: {
-            '@': pathResolve('./src') // fileURLToPath(new URL('./src', import.meta.url)),
-        }
-    },
-    base: "./src",
+    base: "./",
     root: "./",
     build: {
         sourcemap: true,
@@ -27,8 +16,8 @@ export default defineConfig({
         // minify: false,
         rollupOptions: {
             //忽略打包vue文件
-            external: ["vue"],
-            input: ["./src/index.ts"],
+            external: ["vue", "@ant-design/colors", "@ctrl/tinycolor", "pinia"],
+            input: ["./index.ts"],
             output: [
                 {
                     //打包格式
@@ -54,52 +43,22 @@ export default defineConfig({
                     //配置打包根目录
                     dir: "./dist",
                 },
-                {
-                    //打包格式
-                    format: "es",
-                    //打包后文件名
-                    entryFileNames: "[name].mjs",
-                    //让打包目录和我们目录对应
-                    preserveModules: true,
-                    preserveModulesRoot: "./src",
-                    exports: "named",
-                    //配置打包根目录
-                    dir: "./es",
-                },
-                {
-                    //打包格式
-                    format: "cjs",
-                    //打包后文件名
-                    entryFileNames: "[name].js",
-                    //让打包目录和我们目录对应
-                    preserveModules: true,
-                    preserveModulesRoot: "./src",
-                    exports: "named",
-                    //配置打包根目录
-                    dir: "./lib",
-                },
             ],
         },
 
         lib: {
-            entry: "./src/index.ts"
+            entry: "./index.ts"
         },
     },
     plugins: [
-        AutoImport(),
-        Components(),
         vue({
             reactivityTransform: true
         }),
         dts({
-            entryRoot: "./src",
-            outputDir: ["./types"],
+            entryRoot: "./",
             //指定使用的tsconfig.json为我们整个项目根目录下,如果不配置,你也可以在components下新建tsconfig.json
-            tsConfigFilePath: "./tsconfig.json",
+            tsconfigPath: "./tsconfig.json",
         }),
         DefineOptions()
-    ],
-    optimizeDeps: {
-        disabled: true,
-    }
+    ]
 })

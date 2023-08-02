@@ -1,0 +1,18 @@
+body,
+main, header, footer,
+div, view, p, table,
+ul, ol, li,
+span, text, button, input
+{
+	margin: 0;
+	padding: 0;
+	border: none;
+	outline: none;
+	box-sizing: border-box;
+}
+
+
+
+
+@import "./active.scss";
+@import "./element.scss";

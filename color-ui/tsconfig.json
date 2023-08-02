@@ -27,11 +27,12 @@
         ]
     },
     "include": [
-        "env.d.ts",
-        "src/**/*.ts",
-        "src/**/*.d.ts",
-        "src/**/*.tsx",
-        "src/**/*.vue",
+        "**.d.ts",
+        "./**.ts",
+        "./**/*.ts",
+        "./**/*.d.ts",
+        "./**/*.tsx",
+        "./**/*.vue",
         "node_modules/@vue/runtime-core/dist/runtime-core.d.ts"
     ],
     "exclude": [

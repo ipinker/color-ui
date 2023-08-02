@@ -5,7 +5,11 @@
         <slot></slot>
     </button>
 </template>
-
+<script lang="ts">
+export default {
+    name: "IButton"
+}
+</script>
 <script lang="ts" setup>
 import { ref, computed } from "vue";
 import { buttonProps } from "./button";
@@ -13,10 +17,6 @@ import "../style";
 import { useThemeStore } from "../../../index"
 import {Size, SIZES} from "../../../common/constant";
 import { getSize } from "../../../utils/style";
-
-defineOptions({
-    name: "IButton"
-})
 
 const store = useThemeStore();
 const props = defineProps(buttonProps);
@@ -66,6 +66,7 @@ const boxShadowWidth = computed(() => store.theme?.boxShadowWidth + "px");
 </script>
 
 <style lang="scss" scoped>
+    @import "../../../styles/index";
     .IButton {
         color: v-bind(whiteColor);
         box-shadow: 0 v-bind(boxShadowWidth) 0 v-bind(shadowColor);
