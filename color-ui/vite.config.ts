@@ -1,11 +1,25 @@
 import vue from '@vitejs/plugin-vue'
 import dts from "vite-plugin-dts";
 import DefineOptions from "unplugin-vue-define-options/vite";
-import {defineConfig} from "vite";
+import {defineConfig, normalizePath} from "vite";
+import autoprefixer from "autoprefixer";
 
 export default defineConfig({
     base: "./",
     root: "./",
+    css: {
+        modules: {
+            generateScopedName: "[name]__[local]___[hash:base64:5]"
+        },
+        postcss: {
+            plugins: [
+                autoprefixer({
+                    // 指定目标浏览器
+                    overrideBrowserslist: ['Chrome > 40', 'ff > 31', 'ie 11']
+                })
+            ]
+        }
+    },
     build: {
         sourcemap: true,
         //打包后文件目录

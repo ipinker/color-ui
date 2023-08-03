@@ -3,6 +3,8 @@ build-debugger.js
 
 dist/
 *.log
+*.lock
+*.yaml
 
 
 .DS_Store

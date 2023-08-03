@@ -2,7 +2,7 @@
  * @Author: error: git config user.name & please set dead value or install git
  * @Date: 2023-03-20 15:48:19
 * @LastEditors: white_queen
-* @LastEditTime: 2023-08-02 16:09:53
+* @LastEditTime: 2023-08-03 11:22:15
  * @FilePath: /Lib/src/pages/index/index.vue
  * @Description: 描述
 -->
@@ -21,8 +21,8 @@
 </template>
 
 <script setup lang="ts">
-import {useThemeStore} from "test-publish/index"
-import { IButton } from "test-publish/index";
+import {useThemeStore} from "test-publish"
+import { IButton } from "test-publish";
 import {computed} from "vue";
 const useStore = useThemeStore();
 let pageColor;
@@ -47,7 +47,6 @@ const changeTheme = () => {
 </script>
 
 <style lang="scss" scoped>
-@import "test-publish/dist/style.css";
 .content {
     display: flex;
     flex-direction: column;
