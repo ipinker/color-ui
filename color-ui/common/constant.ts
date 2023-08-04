@@ -10,3 +10,6 @@ export type Status = (typeof STATUS)[number];
  */
 export const PLATFORMS = [ "pc", "uniapp" ] as const;
 export type Platform = (typeof PLATFORMS)[number];
+
+export const RADIUS = [ "", "default", "XS", "SM", "LG" ] as const;
+export type Radius = (typeof RADIUS)[number];

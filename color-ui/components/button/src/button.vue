@@ -17,9 +17,17 @@ import "../style";
 import { useThemeStore } from "../../../index"
 import {Size, SIZES} from "../../../common/constant";
 import { getSize } from "../../../utils/style";
+import {
+    genButtonAnimationClass,
+    genButtonLoadingClass,
+    genButtonRadiusClass,
+    genButtonSizeClass,
+    genButtonTypeClass
+} from"../style/genStyle"
 
 const store = useThemeStore();
 const props = defineProps(buttonProps);
+type PropsType = typeof props;
 
 const emits = defineEmits(["click"]);
 const _ref = ref(null);
@@ -31,8 +39,13 @@ const IButtonClass = computed(() => {
         {
             "button-shape-round": props.round,
             "button-type-dashed": props.type === "dashed",
-            "button-style-plain": props.plain
-        }
+            "button-type--plain": props.plain
+        },
+        genButtonAnimationClass(props),
+        genButtonLoadingClass(props),
+        genButtonRadiusClass(props),
+        genButtonSizeClass(props),
+        genButtonTypeClass(props)
     ];
 });
 
@@ -52,80 +65,111 @@ defineExpose({
     handlerClick,
 });
 
-const primaryColor = computed(() => store.theme?.colorPrimary);
-const successColor = computed(() => store.theme?.colorSuccess);
-const successTextColor = computed(() => store.theme?.colorSuccessText);
 const whiteColor = computed(() => store.theme?.colorWhite);
-const dangerColor = computed(() => store.theme?.colorError);
-const warningColor = computed(() => store.theme?.colorWarning);
 const fontColor = computed(() => store.theme?.colorText);
-const infoColor = computed(() => store.theme?.colorInfo);
 const borderColor = computed(() => store.theme?.colorBorder);
 const shadowColor = computed(() => store.theme?.colorShadowBase);
 const boxShadowWidth = computed(() => store.theme?.boxShadowWidth + "px");
+
+const primaryColor = computed(() => store.theme?.colorPrimary);
+const primaryTextColor = computed(() => store.theme?.colorPrimaryText);
+const successColor = computed(() => store.theme?.colorSuccess);
+const successTextColor = computed(() => store.theme?.colorSuccessText);
+const dangerColor = computed(() => store.theme?.colorError);
+const dangerTextColor = computed(() => store.theme?.colorErrorText);
+const warningColor = computed(() => store.theme?.colorWarning);
+const warningTextColor = computed(() => store.theme?.colorWarningText);
+const infoColor = computed(() => store.theme?.colorInfo);
+const infoTextColor = computed(() => store.theme?.colorInfoText);
+
+const disabledColor = computed(() => store.theme?.colorFillQuaternary);
+const disabledTextColor = computed(() => store.theme?.colorTextQuaternary);
 </script>
 
 <style lang="scss" scoped>
-    @import "../../../styles/index";
+    // Button 对 button 的一些处理
     .IButton {
+        border: none;
         color: v-bind(whiteColor);
         box-shadow: 0 v-bind(boxShadowWidth) 0 v-bind(shadowColor);
-
+        // 默认样式
         &.button-type-,
         &.button-type-default,
         &.button-type-dashed {
             color: v-bind(fontColor);
             border: 1px solid v-bind(borderColor);
         }
+        // 默认情况下的 plain
+        &.button-type--plain {
+            border: 1px solid v-bind(borderColor);
+        }
+
         &.button-type-primary {
             background-color: v-bind(primaryColor);
-            &.button-style-plain {
+            &.button-type--plain {
                 color: v-bind(primaryColor);
                 border: 1px solid v-bind(primaryColor);
             }
         }
         &.button-type-success {
             background-color: v-bind(successColor);
-            &.button-style-plain {
+            &.button-type--plain {
                 color: v-bind(successTextColor);
                 border: 1px solid v-bind(successColor);
             }
         }
         &.button-type-warning {
             background-color: v-bind(warningColor);
-            &.button-style-plain {
-                color: v-bind(warningColor);
+            &.button-type--plain {
+                color: v-bind(warningTextColor);
                 border: 1px solid v-bind(warningColor);
             }
         }
         &.button-type-danger {
             background-color: v-bind(dangerColor);
-            &.button-style-plain {
-                color: v-bind(dangerColor);
+            &.button-type--plain {
+                color: v-bind(dangerTextColor);
                 border: 1px solid v-bind(dangerColor);
             }
         }
         &.button-type-info {
             background-color: v-bind(infoColor);
-            &.button-style-plain {
-                color: v-bind(infoColor);
+            &.button-type--plain {
+                color: v-bind(infoTextColor);
                 border: 1px solid v-bind(infoColor);
             }
         }
-        &.button-style-plain {
+        &.button-type--plain {
             background-color: transparent;
-        }
-        &.button-type-text {
-            background-color: transparent;
-            color: v-bind(fontColor);
         }
         &.button-type-dashed {
             border-style: dashed;
         }
+        &.button-type-round {
+            border-radius: 50%;
+        }
 
-        &.button-func-disabled {}
+        &.button-type-link,
+        // 文字按钮, 禁止各种花里胡哨
+        &.button-type-text {
+            background-color: transparent !important;
+            border: none !important;
+            padding: 0 !important;
+            color: v-bind(fontColor);
+        }
+        &.button-type-link {
+            color: v-bind(primaryTextColor);
+        }
+
+        // 权重最高
+        &.button-type-disabled {
+            color: v-bind(disabledTextColor);
+            background-color: v-bind(disabledColor);
+            border: 1px solid v-bind(borderColor);
+        }
+
+
         &.button-func-loading {}
-        &.button-func-link {}
 
     }
 </style>

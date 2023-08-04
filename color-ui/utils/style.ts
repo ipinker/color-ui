@@ -7,7 +7,11 @@ import { DefaultStyle } from "../common/default";
  */
 export type SizeStyle = { width?: string, height?: string };
 export const getSize = (size: string): SizeStyle  => {
-    const [width, height= width] = (size || "").split(",");
+    let sizes = [];
+    if (size && size.indexOf(",") > -1) sizes = size.split(",");
+    else sizes = isNaN(+size) ? [] : [+size, +size];
+    if (!sizes.length) return {};
+    const [width, height= width] = sizes;
     if (!width && !height) return {};
     return {
         width: width + unit,

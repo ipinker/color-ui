@@ -52,11 +52,11 @@ export const buttonProps = {
         default: "normal"
     },
     /**
-     * @description 尺寸: "width,height" | "small"
+     * @description 圆角
      */
     radius: {
         type: String,
-        default: "4px"
+        default: "4"
     },
     /**
      * @description 按钮的类型 ButtonTypes
@@ -100,6 +100,10 @@ export const buttonProps = {
         type: String,
         default: ""
     },
+    /**
+     * @description it`s a dashed border button
+     */
+    dashed: Boolean,
     /**
      * @description it`s a plain button
      */

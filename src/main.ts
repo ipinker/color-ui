@@ -1,8 +1,9 @@
+// import "test-publish/dist/style.css";
+// import ColorUI from "test-publish";
 import { createSSRApp } from "vue";
 import App from "./App.vue";
-// import ColorUI from "../color-ui/index";
-import ColorUI from "test-publish";
-import "test-publish/dist/style.css";
+import ColorUI from "../color-ui/dist";
+import "../color-ui/dist/style.css";
 import store, { Pinia } from "./store";
 export function createApp() {
 	

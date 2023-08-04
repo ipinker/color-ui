@@ -17,12 +17,16 @@
         <i-button type="success" size="big">222</i-button>
         <i-button type="success" size="60" round>2</i-button>
         <i-button type="primary" plain @click="changeTheme"> 切换主题</i-button>
+        <i-button type="primary" disabled @click="changeTheme"> 切换主题</i-button>
+        <input placeholder="22"/>
     </view>
 </template>
 
-<script setup lang="ts">
-import {useThemeStore} from "test-publish"
-import { IButton } from "test-publish";
+<script setup lang="ts" scoped>
+import {useThemeStore} from "../../../color-ui/dist"
+import { IButton } from "../../../color-ui/dist";
+// import {useThemeStore} from "test-publish"
+// import { IButton } from "test-publish";
 import {computed} from "vue";
 const useStore = useThemeStore();
 let pageColor;
@@ -42,11 +46,14 @@ const changeTheme = () => {
     const id = useStore.id;
     useStore.change(id === "dark" ? "light" : "dark");
 
-    console.log(useStore.theme?.colorPrimaryShadow);
+    console.log({...useStore.theme});
 }
 </script>
 
 <style lang="scss" scoped>
+button {
+    padding: 0 5px;
+}
 .content {
     display: flex;
     flex-direction: column;

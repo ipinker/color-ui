@@ -5032,10 +5032,10 @@ terser@^5.4.0:
     commander "^2.20.0"
     source-map-support "~0.5.20"
 
-test-publish@^1.0.28:
-  version "1.0.28"
-  resolved "http://cloud43.linkingcloudaliyun.cn:4873/test-publish/-/test-publish-1.0.28.tgz#cbf4a8dedf4a59aaf6d78154e7671a7fa588d5f9"
-  integrity sha512-lswWRECXQJq0C8+946T0tK9H4CZu4aWLSLTUzVKy95DAGiGa75qY/Cwy8qtaMtSn1ZUFXTMlAVSXLlAEFr/d1A==
+test-publish@^1.0.35:
+  version "1.0.35"
+  resolved "http://cloud43.linkingcloudaliyun.cn:4873/test-publish/-/test-publish-1.0.35.tgz#4ac93483ee4254e6c0c5af263333a6f27557e679"
+  integrity sha512-1Yxcf9oZCFjhPFwRb46YsJ9Mxx5MYYHKGVFJH6L6xGKWgv+I7eDjipKbmENAYiuK3xnUj5QdirBkOjsn/zywdw==
   dependencies:
     "@ant-design/colors" "^7.0.0"
     "@ctrl/tinycolor" "^3.6.0"
