@@ -10,7 +10,7 @@
 /*
  * 以下针对颜色生成器的函数
  */
-import {BorderDirType} from "../../types/type";
+import {BorderDir} from "../constant";
 export interface Style {
     string : string
 }
@@ -35,7 +35,7 @@ export const color = (font: string): ColorStyleType => {
     const style: ColorStyleType = { "color": font } ;
     return style;
 }
-export const border = (color: string, width?: number, direction?: BorderDirType) => {
+export const border = (color: string, width?: number, direction?: BorderDir) => {
     const key = direction ? `border-${direction}` : "border";
     return { "border" : `${width || 1}px solid ${color}`};
 }

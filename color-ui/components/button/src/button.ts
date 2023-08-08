@@ -11,6 +11,8 @@ export const buttonTypes = [
     "danger",
     "text",
     "dashed",
+    "text",
+    "link",
     ""
 ] as const;
 export type ButtonType = (typeof buttonTypes) [number];
@@ -56,7 +58,7 @@ export const buttonProps = {
      */
     radius: {
         type: String,
-        default: "4"
+        default: ""
     },
     /**
      * @description 按钮的类型 ButtonTypes
@@ -70,6 +72,7 @@ export const buttonProps = {
     warning: Boolean,
     info: Boolean,
     danger: Boolean,
+    block: Boolean,
     /**
      * @description 跳转能力
      */

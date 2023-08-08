@@ -1,1 +1,10 @@
 // 通用的工具函数
+@mixin flex ($isBlock: true, $dir: row) {
+    display: if($isBlock, flex, inline-flex);
+    flex-direction: $dir;
+}
+@mixin flexCenter ($isBlock: true, $dir: row) {
+    @include flex($isBlock, $dir);
+    justify-content: center;
+    align-content: center;
+}

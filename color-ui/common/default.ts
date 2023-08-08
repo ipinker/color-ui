@@ -1,3 +1,3 @@
 export const DefaultStyle = {
-    radius: 8
+    radius: 6
 };

@@ -8,17 +8,70 @@
 -->
 <template>
     <view class="content">
-        <IButton type="danger" size="mini" open-type="share">222</IButton>
-        <IButton size="small">222</IButton>
-        <IButton type="dashed" size="small">222</IButton>
-        <i-button type="primary" size="normal">222</i-button>
-        <i-button type="warning" size="big">222</i-button>
-        <i-button type="info" size="large">222</i-button>
-        <i-button type="success" size="big">222</i-button>
-        <i-button type="success" size="60" round>2</i-button>
-        <i-button type="primary" plain @click="changeTheme"> 切换主题</i-button>
-        <i-button type="primary" disabled @click="changeTheme"> 切换主题</i-button>
-        <input placeholder="22"/>
+        <view class="type flex" data-label="Button`s type">
+            <IButton type="default" >default</IButton>
+            <IButton type="primary" >primary</IButton>
+            <IButton type="success" >success</IButton>
+            <IButton type="danger" >danger</IButton>
+            <IButton type="warning" >warning</IButton>
+        </view>
+        <view class="type plain flex" data-label="Button`s plain">
+            <IButton type="default" plain>default</IButton>
+            <IButton type="primary" plain>primary</IButton>
+            <IButton type="success" plain>success</IButton>
+            <IButton type="danger" plain>danger</IButton>
+            <IButton type="warning" plain>warning</IButton>
+        </view>
+        <view class="disabled flex" data-label="Button`s disabled">
+            <IButton type="disabled">disabled</IButton>
+            <IButton type="text" disabled >disabled</IButton>
+        </view>
+        <view class="size flex" data-label="Button`s size">
+            <IButton size="small">small</IButton>
+            <IButton size="normal">normal</IButton>
+            <IButton size="big">big</IButton>
+            <IButton size="120,50">120,50</IButton>
+            <IButton size="500,80">500,80-自定义size会自动化隐藏</IButton>
+        </view>
+        <view class="round flex" data-label="Button`s round">
+            <IButton icon="icon-sousuo" round></IButton>
+            <IButton type="primary" icon="icon-sousuo" round></IButton>
+            <IButton type="primary" plain icon="icon-sousuo" round></IButton>
+            <i-button type="success" size="60" round>2</i-button>
+        </view>
+        <view class="icon flex" data-label="Button`s icon">
+            <IButton type="primary" icon="icon-sousuo">搜索</IButton>
+            <IButton type="primary" plain icon="icon-sousuo">搜索</IButton>
+            <IButton type="primary" icon="icon-shenghuojiaofei">缴费</IButton>
+            <IButton type="primary" plain icon="icon-shenghuojiaofei">缴费</IButton>
+        </view>
+        <view class="func flex" data-label="Button`s text">
+            <IButton type="text">普通文本</IButton>
+            <IButton type="link">链接文本</IButton>
+            <IButton type="text" icon="icon-sousuo">普通文本</IButton>
+            <IButton type="link" plain icon="icon-sousuo">链接文本</IButton>
+        </view>
+
+        <view class="color flex" data-label="Button`s color">
+            <IButton color="red">Red Text</IButton>
+            <IButton bg="red">Red Bg</IButton>
+            <IButton bg="red" color="white">Red Bg White Text</IButton>
+            <IButton bg="red" plain>Red Bg And Plain</IButton>
+        </view>
+
+        <view class="radius flex" data-label="Button`s radius">
+            <IButton color="red" radius="default">Radius</IButton>
+            <IButton color="red" radius="xs">Radius-XS</IButton>
+            <IButton color="red" radius="sm">Radius-SM</IButton>
+            <IButton color="red" radius="lg">Radius-LG</IButton>
+            <IButton color="red" radius="20">Radius-20</IButton>
+        </view>
+        <view class="block flex" data-label="Button`s block">
+            <IButton block>Block - 宽度撑满父元素</IButton>
+        </view>
+        <view class="theme flex" data-label="Button`s theme">
+            <i-button type="primary" size="big" plain @click="changeTheme"> 切换主题</i-button>
+        </view>
     </view>
 </template>
 
@@ -29,8 +82,9 @@ import { IButton } from "../../../color-ui/dist";
 // import { IButton } from "test-publish";
 import {computed} from "vue";
 const useStore = useThemeStore();
-let pageColor;
+let pageColor, themeColor;
 pageColor = computed(() => useStore.theme?.colorBgLayout);
+themeColor = computed(() => useStore.theme?.colorPrimary);
 // // // const [ light, dark ] = useStore.themeList;
 // // // console.log({...light})
 // // // console.log({...dark})
@@ -51,33 +105,29 @@ const changeTheme = () => {
 </script>
 
 <style lang="scss" scoped>
-button {
-    padding: 0 5px;
-}
 .content {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    background-color: v-bind(pageColor);
+    width: 100vw;
     min-height: 100vh;
-}
+    background-color: v-bind(pageColor);
 
-.logo {
-    height: 200rpx;
-    width: 200rpx;
-    margin-top: 200rpx;
-    margin-left: auto;
-    margin-right: auto;
-    margin-bottom: 50rpx;
+    view.flex::before {
+        width: 100%;
+        content: attr(data-label);
+        color: v-bind(themeColor);
+        line-height: 80rpx;
+        margin-top: 20rpx;
+        border-top: 1px solid #eee;
+    }
 }
-
-.text-area {
+.flex {
+    padding: 0 20rpx;
     display: flex;
-    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    & :nth-child(n) {
+        margin: 10rpx 20rpx;
+    }
+
 }
 
-.title {
-    font-size: 36rpx;
-    color: #8f8f94;
-}
 </style>

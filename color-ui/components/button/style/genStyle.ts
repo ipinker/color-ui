@@ -4,11 +4,11 @@ import {
 } from "../../../common/constant";
 import type { ExtractPropTypes } from 'vue';
 import type {ButtonPropsType} from "../src/button";
+import {getRadius, getSize, RadiusStyle, SizeStyle} from "../../../utils/style";
 /**
  * @description 根据按钮的类型 <type> 生成指定的 class 集合
  */
 export const genButtonTypeClass = (props: ExtractPropTypes<ButtonPropsType>): string[] => {
-
     return [
         `button-type-${ props.type }`,
         props.primary ? `button-type-primary` : "",
@@ -21,6 +21,7 @@ export const genButtonTypeClass = (props: ExtractPropTypes<ButtonPropsType>): st
         props.plain ? "button-type--plain" : "",
         props.round ? `button-type-round`: "",
         props.text ? `button-type-text`: "",
+        props.block ? `button-ele-block`: "",
         props.disabled ? `button-type-disabled`: ""
     ];
 };
@@ -33,23 +34,31 @@ export const genButtonSizeClass = (props: ExtractPropTypes<ButtonPropsType>): st
         SIZES.includes(props.size as Size) ? `button-size-${ props.size }` : "",
     ];
 };
-export const genButtonSizeStyle = (props: ExtractPropTypes<ButtonPropsType>): string[] => {
-    return [
-    ];
+
+export type ButtonSizeStyle = SizeStyle & { padding?: string | number, overflow?: 'hidden' | 'visible' };
+export const genButtonSizeStyle = (props: ExtractPropTypes<ButtonPropsType>): (string | ButtonSizeStyle)[] => {
+    const sizes: (string | ButtonSizeStyle)[] = [];
+    const isFixedSize = SIZES.includes(props.size as Size);
+    if(isFixedSize) return sizes;
+    sizes.push({padding: 0, overflow: 'hidden'})
+    sizes.push(getSize(props.size, props.round, true));
+    return sizes;
 };
 
 /**
  * @description 根据按钮的圆角 <radius> 生成指定的 class 集合
  */
-export const genButtonRadiusClass = (props: ExtractPropTypes<ButtonPropsType>): string[] => {
+export const genButtonRadiusClass = (radius: string): string[] => {
+    const _radius = (radius || "").toLowerCase();
     return [
-        RADIUS.includes(props.radius as Radius) ? `button-radius-${ props.radius }` : "",
+        RADIUS.includes(_radius as Radius) ? `button-radius-${ _radius }` : "",
     ];
 };
 
-export const genButtonRadiusStyle = (props: ExtractPropTypes<ButtonPropsType>): string[] => {
+export const genButtonRadiusStyle = (radius: string | number): RadiusStyle[] => {
+    const _radius = ("" + radius).toLowerCase();
     return [
-
+        RADIUS.includes(_radius as Radius) || !_radius ? {} : getRadius(radius)
     ];
 };
 
@@ -70,3 +79,27 @@ export const genButtonLoadingClass = (props: ExtractPropTypes<ButtonPropsType>):
     return [
     ];
 };
+
+export type ColorStyle = {
+    "background-color"?: string,
+    "color"?: string,
+    "border-color"?: string,
+    "border"?: string
+}
+export const genColorStyle = (props: ExtractPropTypes<ButtonPropsType>): ColorStyle[] => {
+    const style: ColorStyle = {};
+    const { color, bg, plain } = props;
+    if (bg) {
+        style["background-color"] = bg;
+        if (plain) {
+            style["background-color"] = "transparent";
+            style["border-color"] = bg;
+            style["color"] = bg;
+        }
+        else style["border"] = "none";
+    }
+    if (color) style["color"] = color;
+    return [
+        style
+    ];
+}

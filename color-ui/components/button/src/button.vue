@@ -1,7 +1,7 @@
 <template>
     <button class="IButton" ref="_ref" @click="handlerClick" :class="IButtonClass" :style="IButtonStyle">
-        <span></span>
-        <slot name="icon"></slot>
+        <span class="iconfont" :class="[props.icon, defaultSlot ? 'IButtonIconMR8' : '']" v-if="props.icon"></span>
+        <slot name="icon" :class="[iconSlot&&defaultSlot ? 'IButtonIconMR8' : '']" v-else></slot>
         <slot></slot>
     </button>
 </template>
@@ -11,59 +11,47 @@ export default {
 }
 </script>
 <script lang="ts" setup>
-import { ref, computed } from "vue";
+import { ref, computed, useSlots } from "vue";
 import { buttonProps } from "./button";
 import "../style";
-import { useThemeStore } from "../../../index"
-import {Size, SIZES} from "../../../common/constant";
-import { getSize } from "../../../utils/style";
+import {genAlphaColor, useThemeStore} from "../../../index";
 import {
     genButtonAnimationClass,
     genButtonLoadingClass,
     genButtonRadiusClass,
     genButtonSizeClass,
-    genButtonTypeClass
+    genButtonTypeClass,
+
+    genButtonSizeStyle,
+    genButtonRadiusStyle,
+    genColorStyle
 } from"../style/genStyle"
+import {TinyColor} from "@ctrl/tinycolor";
 
 const store = useThemeStore();
 const props = defineProps(buttonProps);
-type PropsType = typeof props;
 
 const emits = defineEmits(["click"]);
 const _ref = ref(null);
 
+// 获取插槽集合
+const slots = useSlots();
+// 这里获取到的是默认插槽的vnode
+const defaultSlot = slots.default && slots.default()[0];
+// 这里获取到的是图标插槽的vnode
+const iconSlot = slots.icon && slots.icon()[0];
+
+// 生成button的class部分
 const IButtonClass = computed(() => {
     return [
-        SIZES.includes(props.size as Size) ? `button-size-${props.size}` : "",
-        `button-type-${props.type}`,
-        {
-            "button-shape-round": props.round,
-            "button-type-dashed": props.type === "dashed",
-            "button-type--plain": props.plain
-        },
-        genButtonAnimationClass(props),
-        genButtonLoadingClass(props),
-        genButtonRadiusClass(props),
-        genButtonSizeClass(props),
-        genButtonTypeClass(props)
+        ...genButtonAnimationClass(props),
+        ...genButtonLoadingClass(props),
+        ...genButtonRadiusClass(props.radius),
+        ...genButtonSizeClass(props),
+        ...genButtonTypeClass(props)
     ];
 });
 
-const IButtonStyle = computed(() => {
-    return [
-        SIZES.includes(props.size as Size) ? "" : getSize(props.size)
-    ];
-});
-
-const handlerClick = (e: Event) => emits("click", e);
-
-defineExpose({
-    _ref: _ref,
-    // _size: ,
-    // _type: ,
-    // _disabled:
-    handlerClick,
-});
 
 const whiteColor = computed(() => store.theme?.colorWhite);
 const fontColor = computed(() => store.theme?.colorText);
@@ -73,25 +61,68 @@ const boxShadowWidth = computed(() => store.theme?.boxShadowWidth + "px");
 
 const primaryColor = computed(() => store.theme?.colorPrimary);
 const primaryTextColor = computed(() => store.theme?.colorPrimaryText);
+const primaryShadowColor = computed(() => store.theme?.colorPrimaryShadow);
+
 const successColor = computed(() => store.theme?.colorSuccess);
 const successTextColor = computed(() => store.theme?.colorSuccessText);
+const successShadowColor = computed(() => store.theme?.colorSuccessShadow);
+
 const dangerColor = computed(() => store.theme?.colorError);
 const dangerTextColor = computed(() => store.theme?.colorErrorText);
+const dangerShadowColor = computed(() => store.theme?.colorErrorShadow);
 const warningColor = computed(() => store.theme?.colorWarning);
 const warningTextColor = computed(() => store.theme?.colorWarningText);
+const warningShadowColor = computed(() => store.theme?.colorWarningShadow);
 const infoColor = computed(() => store.theme?.colorInfo);
 const infoTextColor = computed(() => store.theme?.colorInfoText);
+const infoShadowColor = computed(() => store.theme?.colorInfoShadow);
 
 const disabledColor = computed(() => store.theme?.colorFillQuaternary);
 const disabledTextColor = computed(() => store.theme?.colorTextQuaternary);
+const disabledShadowColor = computed(() => store.theme?.colorFillQuaternary);
+
+const radiusDefault = computed(() => store.theme?.borderRadius + 'px');
+const radiusLS = computed(() => store.theme?.borderRadiusXS + 'px');
+const radiusSM = computed(() => store.theme?.borderRadiusSM + 'px');
+const radiusLG = computed(() => store.theme?.borderRadiusLG + 'px');
+
+// 生成button的style部分
+const IButtonStyle = computed(() => {
+    return [
+        ...genButtonSizeStyle(props),
+        ...genButtonRadiusStyle(props.radius),
+        ...genColorStyle(props),
+        props.bg ? {
+           "box-shadow" : `0 ${boxShadowWidth.value} 0 ${new TinyColor(props.bg).setAlpha(0.1).toRgbString()}`
+        } : {}
+    ];
+});
+console.log(IButtonStyle)
+const handlerClick = (e: Event) => !props.disabled && emits("click", e);
+
+defineExpose({
+    _ref: _ref,
+    handlerClick,
+});
+
 </script>
 
 <style lang="scss" scoped>
+    @import "../../../styles/common.scss";
+    @mixin ButtonShadow ($color: v-bind(shadowColor)) {
+        box-shadow: 0 v-bind(boxShadowWidth) 0 if($color, $color, v-bind(shadowColor));
+    }
     // Button 对 button 的一些处理
     .IButton {
         border: none;
         color: v-bind(whiteColor);
-        box-shadow: 0 v-bind(boxShadowWidth) 0 v-bind(shadowColor);
+        @include ButtonShadow;
+        text-align: center;
+        font-size: 14px;
+        .iconfont {
+            font-size: 14px;
+            margin: 0 !important;
+        }
         // 默认样式
         &.button-type-,
         &.button-type-default,
@@ -106,6 +137,7 @@ const disabledTextColor = computed(() => store.theme?.colorTextQuaternary);
 
         &.button-type-primary {
             background-color: v-bind(primaryColor);
+            @include ButtonShadow(v-bind(primaryShadowColor));
             &.button-type--plain {
                 color: v-bind(primaryColor);
                 border: 1px solid v-bind(primaryColor);
@@ -113,6 +145,7 @@ const disabledTextColor = computed(() => store.theme?.colorTextQuaternary);
         }
         &.button-type-success {
             background-color: v-bind(successColor);
+            @include ButtonShadow(v-bind(successShadowColor));
             &.button-type--plain {
                 color: v-bind(successTextColor);
                 border: 1px solid v-bind(successColor);
@@ -120,6 +153,7 @@ const disabledTextColor = computed(() => store.theme?.colorTextQuaternary);
         }
         &.button-type-warning {
             background-color: v-bind(warningColor);
+            @include ButtonShadow(v-bind(warningShadowColor));
             &.button-type--plain {
                 color: v-bind(warningTextColor);
                 border: 1px solid v-bind(warningColor);
@@ -127,6 +161,7 @@ const disabledTextColor = computed(() => store.theme?.colorTextQuaternary);
         }
         &.button-type-danger {
             background-color: v-bind(dangerColor);
+            @include ButtonShadow(v-bind(dangerShadowColor));
             &.button-type--plain {
                 color: v-bind(dangerTextColor);
                 border: 1px solid v-bind(dangerColor);
@@ -134,6 +169,7 @@ const disabledTextColor = computed(() => store.theme?.colorTextQuaternary);
         }
         &.button-type-info {
             background-color: v-bind(infoColor);
+            @include ButtonShadow(v-bind(infoShadowColor));
             &.button-type--plain {
                 color: v-bind(infoTextColor);
                 border: 1px solid v-bind(infoColor);
@@ -145,8 +181,46 @@ const disabledTextColor = computed(() => store.theme?.colorTextQuaternary);
         &.button-type-dashed {
             border-style: dashed;
         }
+        &.button-size-small {
+            height: 24px;
+            padding: 0 7px;
+            line-height: 24px;
+            .iconfont {
+                font-size: 12px;
+            }
+        }
+        &,
+        &.button-size-,
+        &.button-size-normal {
+            height: 32px;
+            padding: 0 15px;
+            line-height: 32px;
+        }
+        &.button-size-big {
+            height: 40px;
+            padding: 0 15px;
+            line-height: 40px;
+            &,
+            .iconfont {
+                font-size: 16px;
+            }
+        }
         &.button-type-round {
-            border-radius: 50%;
+            border-radius: 50% !important;
+            overflow: hidden;
+            padding: 0;
+            &.button-size-small {
+                width: 24px;
+                height: 24px;
+            }
+            &.button-size-normal {
+                width: 32px;
+                height: 32px;
+            }
+            &.button-size-big {
+                width: 40px;
+                height: 40px;
+            }
         }
 
         &.button-type-link,
@@ -156,6 +230,7 @@ const disabledTextColor = computed(() => store.theme?.colorTextQuaternary);
             border: none !important;
             padding: 0 !important;
             color: v-bind(fontColor);
+            box-shadow: none !important;
         }
         &.button-type-link {
             color: v-bind(primaryTextColor);
@@ -166,8 +241,46 @@ const disabledTextColor = computed(() => store.theme?.colorTextQuaternary);
             color: v-bind(disabledTextColor);
             background-color: v-bind(disabledColor);
             border: 1px solid v-bind(borderColor);
+            @include ButtonShadow(v-bind(disabledShadowColor));
+        }
+        // 边框特殊line-height
+        &.button-type-,
+        &.button-type-default,
+        &.button-type-dashed,
+        &.button-type--plain,
+        &.button-type-disabled {
+            &.button-size-small {
+                line-height: 22px;
+            }
+            &.button-size-normal {
+                line-height: 30px;
+            }
+            &.button-size-big {
+                line-height: 38px;
+            }
         }
 
+        & > .IButtonIconMR8 {
+            margin-right: 6px !important;
+        }
+        &,
+        &.button-radius-,
+        &.button-radius-default {
+            border-radius: v-bind(radiusDefault);
+        }
+        &.button-radius-xs {
+            border-radius: v-bind(radiusLS);
+        }
+        &.button-radius-sm {
+            border-radius: v-bind(radiusSM);
+        }
+        &.button-radius-lg {
+            border-radius: v-bind(radiusLG);
+        }
+        &.button-ele-block {
+            display: block;
+            width: 100%;
+        }
 
         &.button-func-loading {}
 

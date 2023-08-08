@@ -3,6 +3,7 @@
 import { createSSRApp } from "vue";
 import App from "./App.vue";
 import ColorUI from "../color-ui/dist";
+import "./static/icon/iconfont.css";
 import "../color-ui/dist/style.css";
 import store, { Pinia } from "./store";
 export function createApp() {

@@ -1,6 +1,6 @@
 {
-    "name": "test-publish",
-    "version": "1.0.35",
+    "name": "test-publish-colorui",
+    "version": "0.0.1",
     "description": "UI",
     "main": "dist/index.js",
     "module": "dist/index.mjs",
