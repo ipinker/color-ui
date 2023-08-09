@@ -12,6 +12,8 @@ export const Colors = [
   'geekblue',
   'lime',
   'gold',
+  'primary',
+  'black',
 ] as const;
 
 export type PresetColorKey = typeof Colors[number];

@@ -20,7 +20,8 @@ module.exports = {
     },
     "plugins": [
         "vue",
-        "@typescript-eslint"
+        "@typescript-eslint",
+        "@dcloudio/type"
     ],
     "rules": {
         'default-case': 0,

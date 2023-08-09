@@ -1,7 +1,13 @@
 <template>
     <button class="IButton" ref="_ref" @click="handlerClick" :class="IButtonClass" :style="IButtonStyle">
-        <span class="iconfont" :class="[props.icon, defaultSlot ? 'IButtonIconMR8' : '']" v-if="props.icon"></span>
-        <slot name="icon" :class="[iconSlot&&defaultSlot ? 'IButtonIconMR8' : '']" v-else></slot>
+        <template v-if="isLoading">
+            <ILoading :class="defaultSlot ? 'IButtonIconMR8' : ''"/>
+            <span class="IButtonLoadingMask"></span>
+        </template>
+        <template v-else>
+            <span class="iconfont" :class="[props.icon, defaultSlot ? 'IButtonIconMR8' : '']" v-if="props.icon"></span>
+            <slot name="icon" :class="[iconSlot&&defaultSlot ? 'IButtonIconMR8' : '']" v-else></slot>
+        </template>
         <slot></slot>
     </button>
 </template>
@@ -14,7 +20,7 @@ export default {
 import { ref, computed, useSlots } from "vue";
 import { buttonProps } from "./button";
 import "../style";
-import {genAlphaColor, useThemeStore} from "../../../index";
+import {genAlphaColor, useThemeStore, ILoading} from "../../../index";
 import {
     genButtonAnimationClass,
     genButtonLoadingClass,
@@ -97,8 +103,13 @@ const IButtonStyle = computed(() => {
         } : {}
     ];
 });
-console.log(IButtonStyle)
-const handlerClick = (e: Event) => !props.disabled && emits("click", e);
+
+const isLoading = computed(() => props.loading);
+
+const handlerClick = (e: Event) => {
+    if ( props.disabled || props.loading) return false;
+    emits("click", e);
+};
 
 defineExpose({
     _ref: _ref,
@@ -114,11 +125,13 @@ defineExpose({
     }
     // Button 对 button 的一些处理
     .IButton {
+        position: relative;
         border: none;
         color: v-bind(whiteColor);
         @include ButtonShadow;
         text-align: center;
         font-size: 14px;
+
         .iconfont {
             font-size: 14px;
             margin: 0 !important;
@@ -282,7 +295,9 @@ defineExpose({
             width: 100%;
         }
 
-        &.button-func-loading {}
+        &.button-func-loading {
+            opacity: 0.65;
+        }
 
     }
 </style>

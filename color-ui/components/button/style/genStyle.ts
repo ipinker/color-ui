@@ -22,7 +22,8 @@ export const genButtonTypeClass = (props: ExtractPropTypes<ButtonPropsType>): st
         props.round ? `button-type-round`: "",
         props.text ? `button-type-text`: "",
         props.block ? `button-ele-block`: "",
-        props.disabled ? `button-type-disabled`: ""
+        props.disabled ? `button-type-disabled`: "",
+        props.loading ? `button-func-loading`: ""
     ];
 };
 

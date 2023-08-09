@@ -34,6 +34,8 @@ export const defaultPresetColors: PresetColorType = {
   geekblue: '#2F54EB',
   gold: '#FAAD14',
   lime: '#A0D911',
+  primary: '#1677ff',
+  black: '#000000',
 } as const;
 
 export const seedColors: SeedMap = {
