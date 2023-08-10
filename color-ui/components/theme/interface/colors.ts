@@ -3,7 +3,6 @@ export const Colors = [
   'purple',
   'cyan',
   'green',
-  'magenta',
   'pink',
   'red',
   'orange',
@@ -12,8 +11,8 @@ export const Colors = [
   'geekblue',
   'lime',
   'gold',
-  'primary',
-  'black',
+  'gray',
+    "gossamer"
 ] as const;
 
 export type PresetColorKey = typeof Colors[number];

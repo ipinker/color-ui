@@ -14,6 +14,7 @@
             <IButton type="success">success</IButton>
             <IButton type="danger">danger</IButton>
             <IButton type="warning">warning</IButton>
+            <IButton type="info">info</IButton>
         </view>
         <view class="type plain flex" data-label="Button`s plain">
             <IButton type="default" plain>default</IButton>
@@ -21,6 +22,7 @@
             <IButton type="success" plain>success</IButton>
             <IButton type="danger" plain>danger</IButton>
             <IButton type="warning" plain>warning</IButton>
+            <IButton type="info" plain>info</IButton>
         </view>
         <view class="disabled flex" data-label="Button`s disabled">
             <IButton type="disabled">disabled</IButton>

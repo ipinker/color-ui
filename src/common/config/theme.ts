@@ -1,14 +1,8 @@
 
-export const primary = {
-    label: "Primary Color / 主题蓝",
-    colors: new Array(11).fill("").map((color, index) => `primary${index?index : ""}`)
-}
-
-
-export const funcColors = [,
+export const funcColors = [
     {
         label: "Primary / 主题",
-        color: "colorError"
+        color: "colorPrimary"
     },
     {
         label: "Success / 成功",
@@ -28,74 +22,87 @@ export const funcColors = [,
     }
 ]
 
-export const black = {
-    label: "Primary Color / 黑墨色",
-    colors: new Array(11).fill("").map((color, index) => `black${index?index : ""}`)
+export const gray = {
+    label: "Gray Color / 石墨灰",
+    default: "gray",
+    colors: new Array(10).fill("").map((color, index) => `gray${index+1}`)
 }
 
 export const red = {
     label: "Dust Red / 薄暮红",
-    colors: new Array(11).fill("").map((color, index) => `red${index?index : ""}`)
+    default: "red",
+    colors: new Array(11).fill("").map((color, index) => `red${index+1}`)
 }
 export const volcano = {
     label: "Volcano / 火山棕",
-    colors: new Array(11).fill("").map((color, index) => `goldvolcano{index?index : ""}`)
+    default: "volcano",
+    colors: new Array(11).fill("").map((color, index) => `volcano${index+1}`)
 }
 export const orange = {
     label: "Sunset Orange / 日暮橙",
-    colors: new Array(11).fill("").map((color, index) => `orange${index?index : ""}`)
+    default: "orange",
+    colors: new Array(11).fill("").map((color, index) => `orange${index+1}`)
 }
 
 export const gold = {
     label: "Gold / 复古金",
-    colors: new Array(11).fill("").map((color, index) => `gold${index?index : ""}`)
+    default: "gold",
+    colors: new Array(11).fill("").map((color, index) => `gold${index+1}`)
 }
 export const yellow = {
     label: "Sunrise Yellow / 日出黄",
-    colors: new Array(11).fill("").map((color, index) => `yellow${index?index : ""}`)
+    default: "yellow",
+    colors: new Array(11).fill("").map((color, index) => `yellow${index+1}`)
 }
 export const lime = {
     label: "Lime / 青柠色",
-    colors: new Array(11).fill("").map((color, index) => `lime${index?index : ""}`)
+    default: "lime",
+    colors: new Array(11).fill("").map((color, index) => `lime${index+1}`)
 }
 
 export const green = {
     label: "Polar Green / 极光绿",
-    colors: new Array(11).fill("").map((color, index) => `green${index?index : ""}`)
+    default: "green",
+    colors: new Array(11).fill("").map((color, index) => `green${index+1}`)
 }
 export const cyan = {
     label: "Cyan / 明亮青",
-    colors: new Array(11).fill("").map((color, index) => `cyan${index?index : ""}`)
+    default: "cyan",
+    colors: new Array(11).fill("").map((color, index) => `cyan${index+1}`)
 }
 export const blue = {
     label: "Daybreak Blue / 拂晓蓝",
-    colors: new Array(11).fill("").map((color, index) => `blue${index?index : ""}`)
+    default: "blue",
+    colors: new Array(11).fill("").map((color, index) => `blue${index+1}`)
 }
 
 export const geekblue = {
     label: "Geek Blue / 极客蓝",
-    colors: new Array(11).fill("").map((color, index) => `geekblue${index?index : ""}`)
+    default: "geekblue",
+    colors: new Array(11).fill("").map((color, index) => `geekblue${index+1}`)
 }
 
 export const purple = {
     label: "Golden Purple / 浪漫紫",
-    colors: new Array(11).fill("").map((color, index) => `purple${index?index : ""}`)
+    default: "purple",
+    colors: new Array(11).fill("").map((color, index) => `purple${index+1}`)
 }
 
-export const magenta = {
-    label: "Magenta / 感性红",
-    colors: new Array(11).fill("").map((color, index) => `magenta${index?index : ""}`)
-}
 
 export const pink = {
-    label: "Pink / 暖性粉",
-    colors: new Array(11).fill("").map((color, index) => `pink${index?index : ""}`)
+    label: "Pink / 感性粉",
+    default: "pink",
+    colors: new Array(11).fill("").map((color, index) => `pink${index+1}`)
+}
+
+export const gossamer = {
+    label: "Gossamer / 游丝蓝",
+    default: "gossamer",
+    colors: new Array(11).fill("").map((color, index) => `gossamer${index+1}`)
 }
 
 
-export const colorsList = [
-    primary,
-    black,
+export const presetColors = [
     red,
     volcano,
     orange,
@@ -103,10 +110,11 @@ export const colorsList = [
     yellow,
     lime,
     green,
+    gossamer,
     cyan,
     blue,
     geekblue,
     purple,
-    magenta,
-    pink
+    pink,
+    gray
 ]
