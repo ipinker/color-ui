@@ -77,6 +77,9 @@
             <IButton type="primary" :loading="loading" @click="getLoadingClick" icon="icon-sousuo">Loading</IButton>
             <IButton type="primary" @click="loading=!loading">{{loading ? "停止" : "开始"}}</IButton>
         </view>
+        <view class="animation flex" data-label="Button`s Animation">
+            <IButton primary size="300,100" animation="ripple">Ripple - 水波纹</IButton>
+        </view>
         <view class="theme flex" data-label="Button`s theme">
             <i-button type="primary" size="big" plain @click="changeTheme"> 切换主题</i-button>
         </view>

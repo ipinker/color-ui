@@ -16,3 +16,6 @@ export type Radius = (typeof RADIUS)[number];
 
 export const BORDER_DIR = ["", "top", "bottom", "left", "right"] as const ;
 export type BorderDir = (typeof BORDER_DIR)[number];
+
+export const ANIMATIONS = [ "", "opacity", "default", "ripple" ] as const;
+export type Animation = (typeof ANIMATIONS)[number]; 

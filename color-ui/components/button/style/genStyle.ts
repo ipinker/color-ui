@@ -1,6 +1,6 @@
 import {
     Size, SIZES,
-    Radius, RADIUS
+    Radius, RADIUS, Animation, ANIMATIONS
 } from "../../../common/constant";
 import type { ExtractPropTypes } from 'vue';
 import type {ButtonPropsType} from "../src/button";
@@ -67,8 +67,9 @@ export const genButtonRadiusStyle = (radius: string | number): RadiusStyle[] => 
  * @description 根据按钮的各种动画 <Animation> 生成指定的 class 集合
  */
 export const genButtonAnimationClass = (props: ExtractPropTypes<ButtonPropsType>): string[] => {
-
+	if (props.disabled || props.loading) return [];
     return [
+		ANIMATIONS.includes(props.animation as Animation) ? `button-animation-${ props.animation }` : "",
     ];
 };
 

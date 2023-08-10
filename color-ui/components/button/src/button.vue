@@ -1,5 +1,9 @@
 <template>
-    <button class="IButton" ref="_ref" @click="handlerClick" :class="IButtonClass" :style="IButtonStyle">
+    <button class="IButton" :class="IButtonClass" :style="IButtonStyle" ref="_ref" 
+		@mousedown="onMouseEvent" @mouseup="onMouseEvent"
+		@touchstart="onMouseEvent" @touchend="onMouseEvent"
+		@click="handlerClick"
+	>
         <template v-if="isLoading">
             <ILoading :class="defaultSlot ? 'IButtonIconMR8' : ''"/>
             <span class="IButtonLoadingMask"></span>
@@ -33,6 +37,10 @@ import {
     genColorStyle
 } from"../style/genStyle"
 import {TinyColor} from "@ctrl/tinycolor";
+import {
+    useButtonTouch,
+    useButtonMouse
+} from "./useButton"
 
 const store = useThemeStore();
 const props = defineProps(buttonProps);
@@ -106,10 +114,52 @@ const IButtonStyle = computed(() => {
 
 const isLoading = computed(() => props.loading);
 
+/* Mouse Event Block */ 
+
 const handlerClick = (e: Event) => {
     if ( props.disabled || props.loading) return false;
     emits("click", e);
 };
+
+/* Animation Block */
+let xPos = ref("0");
+let yPos = ref("0");
+let offsetLeft: number, offsetTop: number, pageX: number, pageY: number;
+const onMouseEvent = (event : MouseEvent | TouchEvent) => {
+    const { type } = event;
+    switch (type) {
+        case "touchstart":
+		    pageX = pageY = 0;
+            useButtonTouch(event, 1);
+            break;
+        case "touchend":
+            useButtonTouch(event, 0);
+            break;
+        case "mousedown":
+		    pageX = pageY = 0;
+            useButtonMouse(event, 1);
+            break;
+        case "mouseup":
+            useButtonMouse(event, 0);
+            break;
+        default:
+            break;
+    }
+
+
+    // console.log(event)
+	// if(event){
+	// 	const offset = event?.target || event?.currentTarget;
+	// 	const page = (event?.pageX && event?.pageY) ? event : event?.changedTouches[0];
+	// 	offsetLeft = offset.offsetLeft; offsetTop = offset.offsetTop;
+	// 	pageX = page.pageX || pageX; pageY = page.pageY || pageY;
+	// 	xPos.value = (Math.abs(pageX - offsetLeft) || 0) + "px";
+	// 	yPos.value = (Math.abs(pageY - offsetTop) || 0) + "px";
+    //     console.log(offsetLeft, offsetTop)
+    //     console.log(pageX, pageY)
+    //     console.log(xPos, yPos)
+	// }
+}
 
 defineExpose({
     _ref: _ref,
@@ -127,10 +177,10 @@ defineExpose({
     .IButton {
         position: relative;
         border: none;
-        color: v-bind(whiteColor);
         @include ButtonShadow;
         text-align: center;
         font-size: 14px;
+        color: v-bind(whiteColor);
 
         .iconfont {
             font-size: 14px;
@@ -150,6 +200,7 @@ defineExpose({
 
         &.button-type-primary {
             background-color: v-bind(primaryColor);
+            color: v-bind(whiteColor);
             @include ButtonShadow(v-bind(primaryShadowColor));
             &.button-type--plain {
                 color: v-bind(primaryColor);
@@ -158,6 +209,7 @@ defineExpose({
         }
         &.button-type-success {
             background-color: v-bind(successColor);
+            color: v-bind(whiteColor);
             @include ButtonShadow(v-bind(successShadowColor));
             &.button-type--plain {
                 color: v-bind(successTextColor);
@@ -166,6 +218,7 @@ defineExpose({
         }
         &.button-type-warning {
             background-color: v-bind(warningColor);
+            color: v-bind(whiteColor);
             @include ButtonShadow(v-bind(warningShadowColor));
             &.button-type--plain {
                 color: v-bind(warningTextColor);
@@ -174,6 +227,7 @@ defineExpose({
         }
         &.button-type-danger {
             background-color: v-bind(dangerColor);
+            color: v-bind(whiteColor);
             @include ButtonShadow(v-bind(dangerShadowColor));
             &.button-type--plain {
                 color: v-bind(dangerTextColor);
@@ -182,6 +236,7 @@ defineExpose({
         }
         &.button-type-info {
             background-color: v-bind(infoColor);
+            color: v-bind(whiteColor);
             @include ButtonShadow(v-bind(infoShadowColor));
             &.button-type--plain {
                 color: v-bind(infoTextColor);
@@ -298,6 +353,40 @@ defineExpose({
         &.button-func-loading {
             opacity: 0.65;
         }
+		
+		&.button-animation-ripple {
+			overflow: hidden;
+			&::before {
+				content: "";
+				pointer-events: none;
+				position: absolute;
+				left: v-bind(xPos);
+				top: v-bind(yPos);
+				transform: translate(-50%, -50%);
+				width: 0;
+				height: 0;
+				background-color: rgba(10, 10, 10);
+				border-radius: 50%;
+				transition: width 0.45s ease-in-out, height 0.45s ease-in-out;
+				transform-origin: center;
+				opacity: 0;
+				z-index: 2;
+			}
+			&:active {
+				&::before {
+					width: 100vh;
+					height: 100vh;
+					opacity: 0.35;
+				}
+			}
+		}
+		&.button-animation-,
+		&.button-animation-opacity,
+		&.button-animation-default {
+			&:active {
+				opacity: 0.65;
+			}
+		}
 
     }
 </style>
