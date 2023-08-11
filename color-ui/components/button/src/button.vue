@@ -21,7 +21,7 @@ export default {
 }
 </script>
 <script lang="ts" setup>
-import { ref, computed, useSlots } from "vue";
+import {ref, computed, useSlots, Ref} from "vue";
 import { buttonProps } from "./button";
 import "../style";
 import {genAlphaColor, useThemeStore, ILoading} from "../../../index";
@@ -39,14 +39,15 @@ import {
 import {TinyColor} from "@ctrl/tinycolor";
 import {
     useButtonTouch,
-    useButtonMouse
+    useButtonMouse, TouchPoint
 } from "./useButton"
+import {isMobile, isPhone} from "../../../utils/is";
 
 const store = useThemeStore();
 const props = defineProps(buttonProps);
 
 const emits = defineEmits(["click"]);
-const _ref = ref(null);
+const _ref: Ref<HTMLElement | null> = ref(null);
 
 // 获取插槽集合
 const slots = useSlots();
@@ -124,41 +125,24 @@ const handlerClick = (e: Event) => {
 /* Animation Block */
 let xPos = ref("0");
 let yPos = ref("0");
-let offsetLeft: number, offsetTop: number, pageX: number, pageY: number;
 const onMouseEvent = (event : MouseEvent | TouchEvent) => {
+    const isPcWeb = window && window.navigator && !isMobile();
     const { type } = event;
-    switch (type) {
-        case "touchstart":
-		    pageX = pageY = 0;
-            useButtonTouch(event, 1);
-            break;
-        case "touchend":
-            useButtonTouch(event, 0);
-            break;
-        case "mousedown":
-		    pageX = pageY = 0;
-            useButtonMouse(event, 1);
-            break;
-        case "mouseup":
-            useButtonMouse(event, 0);
-            break;
-        default:
-            break;
+    let point: TouchPoint = { left: 0, top: 0};
+    // 仅在pc上触发鼠标事件
+    if(["mouseup", "mousedown"].includes(type) && isPcWeb){
+        console.log(isMobile())
+        point = useButtonMouse(event as MouseEvent, _ref, 1);
+        xPos.value = point.left + "px";
+        yPos.value = point.top + "px";
     }
-
-
-    // console.log(event)
-	// if(event){
-	// 	const offset = event?.target || event?.currentTarget;
-	// 	const page = (event?.pageX && event?.pageY) ? event : event?.changedTouches[0];
-	// 	offsetLeft = offset.offsetLeft; offsetTop = offset.offsetTop;
-	// 	pageX = page.pageX || pageX; pageY = page.pageY || pageY;
-	// 	xPos.value = (Math.abs(pageX - offsetLeft) || 0) + "px";
-	// 	yPos.value = (Math.abs(pageY - offsetTop) || 0) + "px";
-    //     console.log(offsetLeft, offsetTop)
-    //     console.log(pageX, pageY)
-    //     console.log(xPos, yPos)
-	// }
+    // 其他端仅触发touch事件
+    if(["touchstart", "touchend"].includes(type) && !isPcWeb){
+        console.log(isMobile())
+        point = useButtonTouch(event as TouchEvent, _ref, 1);
+        xPos.value = point.left + "px";
+        yPos.value = point.top + "px";
+    }
 }
 
 defineExpose({
