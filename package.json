@@ -59,7 +59,7 @@
         "@dcloudio/uni-mp-weixin": "3.0.0-3080720230703001",
         "@dcloudio/uni-quickapp-webview": "3.0.0-3080720230703001",
         "pinia": "2.0.32",
-        "test-publish": "^1.0.35",
+        "test-publish-colorui": "^0.0.1",
         "vue-i18n": "9.2.2"
     },
     "devDependencies": {
