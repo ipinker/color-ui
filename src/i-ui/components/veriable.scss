@@ -1,0 +1,267 @@
+/** 使用尺寸概览
+ * @desc 0/min  min
+ * @desc xxxs  -4
+ * @desc xxs   -3
+ * @desc xs    -2
+ * @desc s     -1
+ * @desc m     0
+ * @desc s     1
+ * @desc l     2
+ * @desc xl    3
+ * @desc xxl   4
+ * @desc xxxl  5
+ * @desc xxxxl 6
+ * @desc full/max max
+ */
+
+/** 使用颜色概览
+ * @desc Layout    页面布局（整个页面的背景）
+ * @desc Container 容器
+ * @desc Primary   主题色
+ * @desc Success   成功色
+ * @desc Warn      警告色
+ * @desc Error     错误色
+ * @desc Info      信息色
+ */
+
+
+/** @desc 22px **/
+$i-font-xxxs: 22rpx;
+/** @desc 24px **/
+$i-font-xxs: 24rpx;
+/** @desc 28px **/
+$i-font-xs: 28rpx;
+/** @desc 30px **/
+$i-font-s: 30rpx;
+/** @desc 36px **/
+$i-font-m: 32rpx;
+/** @desc 36px **/
+$i-font-l: 36rpx;
+/** @desc 40px **/
+$i-font-xl: 40rpx;
+/** @desc 42px **/
+$i-font-xxl: 42rpx;
+/** @desc 48px **/
+$i-font-xxxl: 48rpx;
+/** @desc 58px **/
+$i-font-large: 58rpx;
+
+/** @desc Latin **/
+$i-family-default: Latin;
+
+/** @desc 200 **/
+$i-weight-s: 200;
+/** @desc 400 **/
+$i-weight-m: 400;
+/** @desc 600 **/
+$i-weight-l: 600;
+
+/** @desc 30px **/
+$i-line-xs: 30rpx;
+/** @desc 34px **/
+$i-line-s: 34rpx;
+/** @desc 36px **/
+$i-line-m: 36rpx;
+/** @desc 40px **/
+$i-line-l: 40rpx;
+/** @desc 44px **/
+$i-line-xl: 44rpx;
+
+/** @desc 2px **/
+$i-space-s: 2rpx;
+/** @desc 4px **/
+$i-space-m: 4rpx;
+/** @desc 6px **/
+$i-space-l: 6rpx;
+
+/** @desc 4px **/
+$i-radius-xs: 4rpx;
+/** @desc 6px **/
+$i-radius-s: 6rpx;
+/** @desc 8px **/
+$i-radius-m: 8rpx;
+/** @desc 12px **/
+$i-radius-l: 12rpx;
+/** @desc 16px **/
+$i-radius-xl: 16rpx;
+/** @desc 20px **/
+$i-radius-xxl: 20rpx;
+
+/** Color **/
+$i-color-border: #eeeeee;
+$i-color-txt: #333333;
+$i-color-placeholder: #BCC1C2;
+$i-color-primary: #1666ff;
+$i-color-primary-shadow: rgba(5, 135, 255, 0.1);
+$i-color-white: #ffffff;
+$i-color-whitegray: #efefef;
+$i-color-gray: #909399;
+$i-bg-layout: #f5f5f9;
+$i-bg-container: #fff;
+$i-shadow: 0px -2px 4px 0px $i-color-border;
+
+$i-opacity-xs: 0.1;
+$i-opacity-s: 0.3;
+$i-opacity-m: 0.5;
+$i-opacity-l: 0.65;
+$i-opacity-xl: 0.85;
+/** @desc 10 **/
+$i-padding-s: 10rpx;
+/** @desc 20 **/
+$i-padding-m: 20rpx;
+/** @desc 30 **/
+$i-padding-l: 30rpx;
+
+/** @desc 10 **/
+$i-margin-s: 10rpx;
+/** @desc 20 **/
+$i-margin-m: 20rpx;
+/** @desc 30 **/
+$i-margin-l: 30rpx;
+
+/** @desc 1 **/
+$i-border-s: 1rpx;
+/** @desc 2 **/
+$i-border-m: 2rpx;
+/** @desc 4 **/
+$i-border-l: 4rpx;
+
+
+/** @desc 30 **/
+$i-height-xxs: 30rpx;
+/** @desc 50 **/
+$i-height-xs: 50rpx;
+/** @desc 60 **/
+$i-height-s: 60rpx;
+/** @desc 80 **/
+$i-height-m: 80rpx;
+/** @desc 100 **/
+$i-height-l: 100rpx;
+/** @desc 120 **/
+$i-height-xl: 120rpx;
+/** @desc 140 **/
+$i-height-xxl: 140rpx;
+/** @desc 100vh **/
+$i-height-full: 100vh;
+
+/** @desc 50 **/
+$i-width-xxs: 50rpx;
+/** @desc 70 **/
+$i-width-xs: 70rpx;
+/** @desc 80 **/
+$i-width-s: 80rpx;
+/** @desc 100 **/
+$i-width-m: 100rpx;
+/** @desc 120 **/
+$i-width-l: 120rpx;
+/** @desc 240 **/
+$i-width-xl: 240rpx;
+/** @desc 375 **/
+$i-width-xxl: 375rpx;
+/** @desc 480 **/
+$i-width-xxxl: 480rpx;
+/** @desc 690 **/
+$i-width-xxxxl: 690rpx;
+/** @desc 710 **/
+$i-width-xxxxxl: 710rpx;
+/** @desc 750 **/
+$i-width-full: 100vw;
+
+$i-index-xxs: 2;
+$i-index-xs: 5;
+$i-index-s: 10;
+$i-index-m: 100;
+$i-index-l: 1000;
+$i-index-xl: 3000;
+$i-index-xxl: 10000;
+
+/* Font style */
+@mixin font($size: $i-font-m,  $color: $i-color-txt, $weight: $i-weight-m, $space: 0) {
+	font-size: $size;
+	font-weight: $weight;
+	color: $color;
+	font-family: $i-family-default;
+	letter-spacing: $space;
+}
+
+/** @desc Position style **/
+@mixin position($top, $right, $bottom, $left, $position: fixed, $index) {
+	position: $position;
+	z-index: $index;
+	@if $right {
+		right: $right;
+	}
+	@if $left {
+		left: $left;
+	}
+	@if $bottom {
+		bottom: $bottom;
+	}
+	@if $top {
+		top: $top;
+	}
+	@if $index {
+		z-index: $index;
+	}
+}
+
+
+/** @desc Flex **/
+@mixin flex($direction: row, $justify: flex-start, $align: flex-start) {
+	display: flex;
+	flex-direction: $direction;
+	justify-content: $justify;
+	align-items: $align;
+}
+
+/** @desc Flex center **/
+@mixin center($direction: row) {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-direction: $direction;
+}
+
+/** @desc Flex row center **/
+@mixin verCenter($direction: row) {
+	display: flex;
+	align-items: center;
+	flex-direction: $direction;
+	justify-content: flex-start;
+}
+
+/** @desc Flex column center **/
+@mixin horCenter($direction: row) {
+	display: flex;
+	justify-content: center;
+	align-items: flex-start;
+	flex-direction: $direction;
+}
+
+
+/** @desc Flex center **/
+@mixin abscenter($index: 1) {
+	position: absolute;
+	left: 50%;
+	top: 50%;
+	transform: translate(-50%, -50%);
+	z-index: $index;
+}
+
+
+/** @desc 单行省略 **/
+@mixin ellipsis1 () {
+	overflow: hidden;
+	text-overflow:ellipsis;
+	white-space: nowrap;
+}
+
+/** @desc 多行省略 **/
+@mixin ellipsis($line: 3) {
+	display: -webkit-box;
+	-webkit-box-orient: vertical;
+	-webkit-line-clamp: $line;
+	overflow: hidden;
+}
+
+

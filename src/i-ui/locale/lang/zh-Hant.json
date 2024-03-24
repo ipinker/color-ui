@@ -1,0 +1,25 @@
+{
+    "common": {
+        "ok": "確定",
+        "cancel": "取消",
+        "select": "選擇",
+        "selectPlaceholder": "請選擇",
+        "know": "知道了"
+    },
+    "calender" : {
+        "today": "今日",
+        "SUN": "日",
+        "MON": "一",
+        "TUE": "二",
+        "WED": "三",
+        "THU": "四",
+        "FRI": "五",
+        "SAT": "六",
+        "year": "年",
+        "month": "月",
+        "day": "日",
+        "hour": "时",
+        "minute": "分",
+        "second": "秒"
+    }
+}

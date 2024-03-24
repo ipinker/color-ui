@@ -1,39 +1,105 @@
 {
-	"easycom": {
+    "easycom": {
 		"autoscan": true,
-		  "custom": {
-		   "^c-(.*)": "@/components/c-$1/index.vue" // 匹配components目录内的vue文件
-		  }
+		"custom": {
+            "^I(.*)": "@/i-ui/components/$1/index.vue"
+		}
 	},
-    "pages": [
-        //pages数组中第一项表示应用启动页，参考：https://uniapp.dcloud.io/collocation/pages
+	"pages": [
+		{ "path": "pages/start", "style": { "navigationBarTitleText": "启动页" } }
+	],
+	"subPackages": [
+		{
+			"root": "login",
+			"pages": [
+				{ "path" : "index", "style" : { "navigationBarTitleText": "登陆"  }  },
+				{ "path" : "register", "style" : { "navigationBarTitleText": "注册"  }  }
+			]
+		},
         {
-            "path": "pages/index/index",
-            "style": {
-                "navigationBarTitleText": "uni-app"
-            }
-        },
-        {
-            "path": "pages/components/button/button",
-            "style": {
-                "navigationBarTitleText": "按钮",
-                "enablePullDownRefresh": true
-            }
-        },
-        {
-            "path": "pages/components/theme/theme",
-            "style": {
-                "navigationBarTitleText": "主题",
-                "enablePullDownRefresh": true
-            }
-        }
-    ],
-    "globalStyle": {
-        "navigationBarTextStyle": "black",
-        "navigationBarTitleText": "uni-app",
-        "navigationBarBackgroundColor": "#F8F8F8",
-        "backgroundColor": "#F8F8F8"
-//		,"titleNView": false,
-//		"navigationStyle": "custom"
+			"root": "doc",
+			"pages": [
+				{ "path" : "button", "style" : { "navigationBarTitleText": "按钮"  }  },
+				{ "path" : "col", "style" : { "navigationBarTitleText": "Col"  }  },
+				{ "path" : "input", "style" : { "navigationBarTitleText": "输入框"  }  },
+				{ "path" : "loading", "style" : { "navigationBarTitleText": "Loading"  }  },
+				{ "path" : "popup", "style" : { "navigationBarTitleText": "Popup"  }  },
+				{ "path" : "row", "style" : { "navigationBarTitleText": "Row"  }  },
+				{ "path" : "transition", "style" : { "navigationBarTitleText": "过度"  }  },
+				{ "path" : "card", "style" : { "navigationBarTitleText": "卡片"  }  },
+				{ "path" : "empty", "style" : { "navigationBarTitleText": "Empty"  }  },
+				{ "path" : "result", "style" : { "navigationBarTitleText": "Result"  }  },
+                { "path" : "cell", "style" : { "navigationBarTitleText": "列表纵铺跳转"  } },
+                { "path" : "dialog", "style" : { "navigationBarTitleText": "Dialog（弹框）"  } },
+                { "path" : "space", "style" : { "navigationBarTitleText": "Space（占位元素）"  } },
+                { "path" : "check", "style" : { "navigationBarTitleText": "Check（复选框）"  } },
+                { "path" : "radio", "style" : { "navigationBarTitleText": "Radio（单选框）"  } },
+                { "path" : "switch", "style" : { "navigationBarTitleText": "Switch"  } },
+                { "path" : "navigationBar", "style" : { "navigationBarTitleText": "NavigationBar（导航栏）"  } },
+                { "path" : "bg", "style" : { "navigationBarTitleText": "Bg（合成颜色容器）"  } },
+                { "path" : "color", "style" : { "navigationBarTitleText": "Color（颜色选择器）"  } },
+                { "path" : "page", "style" : { "navigationBarTitleText": "Page（页面）"  } },
+                { "path" : "icon", "style" : { "navigationBarTitleText": "Icon（图标）"  } },
+                { "path" : "grid", "style" : { "navigationBarTitleText": "Grid (网格)"  } },
+                { "path" : "title", "style" : { "navigationBarTitleText": "Title（标题"  } },
+                { "path" : "cascader", "style" : { "navigationBarTitleText": "Cascader（级联选择器"  } },
+                { "path" : "picker", "style" : { "navigationBarTitleText": "Picker（滚动选择器）"  } },
+                { "path" : "date", "style" : { "navigationBarTitleText": "Date（日期选择器）"  } },
+                { "path" : "calendar", "style" : { "navigationBarTitleText": "Calendar（日历）"  } },
+                { "path" : "select", "style" : { "navigationBarTitleText": "Select（选择器）"  } }
+
+			]
+		}
+	],
+	"tabBar": {
+		"color": "@tabFontColor",
+		"selectedColor": "@tabSelectedColor",
+		"borderStyle": "@tabBorderStyle",
+		"spacing": "5px",
+		"fontSize": "14px",
+		"iconfontSrc": "static/font/iconfont.ttf",
+		"blurEffect": "extralight",
+	    "list": [
+			{
+				"pagePath": "pages/home/index",
+				"text": "%index.home%",
+				"iconfont": {
+					"text": "\ue6a9",
+					"selectedText": "\ue6fe",
+					"fontSize": "17px",
+					"color": "@tabFontColor",
+					"selectedColor": "@tabSelectedColor"
+				}
+			},
+			{
+				"pagePath": "pages/user/index",
+				"text": "%index.me%",
+				"iconfont": {
+					"text": "\ue685",
+					"selectedText": "\ue64d",
+					"fontSize": "18px",
+					"color": "@tabFontColor",
+					"selectedColor": "@tabSelectedColor"
+				}
+			}
+		]
+	},
+	"globalStyle": {
+		"navigationBarTextStyle": "black",
+		"navigationBarTitleText": "%app.name%",
+		"navigationBarBackgroundColor": "@tabSelectedColor",
+		"allowsBounceVertical": "YES",
+		"navigationStyle": "custom",
+		"titleNView": false,
+		"backgroundColor": "@bgColor",
+		"backgroundColorTop": "@bgColorTop",
+		"backgroundColorBottom": "@bgColorBottom",
+		"app-plus":{
+			"bounce": "none"
+		},
+		"mp-alipay": {
+			"transparentTitle": "always",
+			"titlePenetrate": "YES"
+		}
 	}
 }
