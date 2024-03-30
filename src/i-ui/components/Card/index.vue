@@ -15,7 +15,7 @@
 import { useThemeStore } from "@/store/theme";
 import {ComputedRef, StyleValue} from "vue";
 import {genRadius, genPx} from "../../common/style";
-import { CLICK_EVENT } from "@/i-ui/common/constants";
+import { CLICK_EVENT } from "../../common/constants";
 
 const props = defineProps({
     /** @desc 开启卡片的Header，或者title有值 **/
