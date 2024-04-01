@@ -19,13 +19,18 @@
 	});
 </script>
 <style lang="scss">
+/** @desc 导入 i-uni-ui 的公共样式 **/
 @import "@/uni_modules/i-ui/components/index.scss";
+/** @desc 导入自己的字体图标哭 **/
 @import '@/static/font/iconfont.css';
-/* #ifndef MP */
+
+/** @desc 自定义字体 **/
 @font-face {
     font-family: Latin;
     src: url("~static/fonts/HaeHangul.ttf") format("truetype");
 }
+
+/** @desc 设置全局页面配置 **/
 page {
     max-width: 100vw;
     overflow-x: hidden;
