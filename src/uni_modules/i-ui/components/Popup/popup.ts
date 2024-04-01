@@ -1,5 +1,5 @@
 import { PropType } from 'vue'
-
+// @ts-ignore
 type ParentType = globalThis.ComponentPublicInstance | null;
 export const config = {
     top: 'top',

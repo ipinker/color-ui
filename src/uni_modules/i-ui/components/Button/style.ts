@@ -6,7 +6,6 @@ import {
 import type { ExtractPropTypes } from 'vue';
 import type {ButtonPropsType} from "./button";
 import {genColorString, genDarkColor, genRadius, genSize, RadiusStyle, SizeStyle} from "../../common/style";
-import { useThemeStore } from "../../theme";
 import {ButtonType} from "./button";
 
 /**
@@ -86,7 +85,6 @@ export const genColorMap = (props: ExtractPropTypes<ButtonPropsType>): ColorStyl
         primary, success, warning, info, error,
         type = "default"
     } = props;
-    const theme = useThemeStore().theme;
 
     let bgColor: ColorString = "colorBgContainer",
         textColor: ColorString = "colorText",

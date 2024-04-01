@@ -12,8 +12,9 @@
 </template>
 
 <script lang="ts" setup>
+import { mapStores } from "pinia";
 import { useThemeStore } from "../../theme";
-import {ComputedRef, StyleValue} from "vue";
+import {ComputedRef, StyleValue, computed} from "vue";
 import {genRadius, genPx} from "../../common/style";
 import { CLICK_EVENT } from "../../common/constants";
 
@@ -39,7 +40,7 @@ const props = defineProps({
     event: Boolean
 });
 const emits = defineEmits([CLICK_EVENT]);
-const store = useThemeStore();
+const store = mapStores(useThemeStore).themeStoreStore();
 
 const styleOption: ComputedRef<StyleValue> = computed((): StyleValue => {
     const style: StyleValue = {

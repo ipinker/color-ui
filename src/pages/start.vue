@@ -50,7 +50,7 @@
             <ICell label="Tip（状态提示）" url="/doc/tip"/>
         </ICard>
         <ICard useHeader full title="Icon">
-            <ICell label="FontIcon（字体图标）" url="/doc/fontIcon"/>
+            <ICell label="FontIcon（字体图标）" url="/doc/icon"/>
         </ICard>
         <ICard useHeader full title="Flex（布局）">
             <ICell label="Row（横向布局）" url="/doc/row"/>
@@ -64,12 +64,12 @@
 </template>
 
 <script setup lang="ts">
+    import { computed, onMounted }  from "vue"
     import { useThemeStore } from "@/uni_modules/i-ui/theme"
     const themeStore = useThemeStore();
     const shadowColor = computed(() =>themeStore.theme?.colorInfoShadow);
     const textColor = computed(() => themeStore.theme?.colorText);
     const bgColor = computed(() => themeStore.theme?.colorBgContainer);
-    const { font, borderLeft, bg } = useStyle();
 
 
     onMounted(() => {

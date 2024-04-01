@@ -14,11 +14,16 @@
 </template>
 
 <script setup lang='ts'>
-import { ComponentInternalInstance, StyleValue } from 'vue';
+import { mapStores } from 'pinia';
+import { 
+    ComponentInternalInstance, StyleValue, Ref, 
+    getCurrentInstance, inject, ref, watch, 
+    computed, ComputedRef, 
+    onBeforeMount, onBeforeUnmount, nextTick 
+} from 'vue';
 import { gridItemProps, GridItemPropsType } from "./gridItem"
 import { GridPropsType } from "../Grid/grid"
 import { useThemeStore } from '../../theme';
-import { genDarkColor, genColor } from '../../common/style';
 import { useStyle } from "../../hooks/useStyle";
 
 
@@ -35,7 +40,7 @@ const props: GridItemPropsType = defineProps(gridItemProps);
 const _self = getCurrentInstance();
 const gridProvide: { grid : ComponentInternalInstance } | undefined = inject("GridKey");
 const gridThis : GridProvideType = gridProvide?.grid as unknown as GridProvideType;;
-const store = useThemeStore();
+const store = mapStores(useThemeStore).themeStoreStore();
 
 const { colorValue } = useStyle();
 const column = ref(0);

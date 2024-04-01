@@ -10,8 +10,9 @@
 </template>
 
 <script lang="ts" setup>
+import { PropType, StyleValue, computed, ref } from "vue"
+import { mapStores } from "pinia";
 import { useThemeStore } from "../../theme";
-import {PropType} from "vue";
 import {NavigateType} from "../../common/constants";
 import { genColorString } from "../../common/style";
 import UIIcon from "../Icon/index.vue"
@@ -39,7 +40,7 @@ const props = defineProps({
         type: String
     }
 });
-const store = useThemeStore();
+const store = mapStores(useThemeStore).themeStoreStore();
 const containerColor = computed(() => store.theme?.colorBgContainer);
 const activeColor = computed(() => genColorString(store.theme?.colorInfo as string, 0.15));
 const primaryColor = computed(() => props.arrowColor || store.theme?.colorPrimaryText);

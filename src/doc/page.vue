@@ -29,6 +29,8 @@
 </template>
 
 <script setup lang="ts">
+import { PageStatus } from "@/uni_modules/i-ui/common/constants";
+import { computed, ref, Ref, reactive, nextTick, onMounted } from "vue"
 const title = ref("Page (统一根页面容器)");
 const titleAlign = ref("center");
 const usePrimary = ref(true);
@@ -36,7 +38,7 @@ const useBack = ref(true);
 const center = ref(false);
 const isLoading = ref(false);
 const loadingType = ref();
-const status = ref("default");
+const status: Ref<PageStatus> = ref("default");
 </script>
 
 <style lang="scss" scoped>

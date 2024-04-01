@@ -6,14 +6,12 @@
 </template>
 
 <script lang="ts" setup>
-import { nextTick } from "vue"
+import { computed, ref, Ref, reactive, nextTick, onMounted } from "vue"
 const IDialogRef = ref(null);
 
 const handleOpenDefault = () => {
     nextTick(() => {
 
-        console.log(IDialogRef.value)
-        console.log(IDialogRef.value?.open)
         if(IDialogRef.value && IDialogRef.value?.open){
             IDialogRef.value?.open();
         }

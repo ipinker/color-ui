@@ -27,9 +27,10 @@
 </template>
 
 <script setup lang='ts'>
+import { computed, ref, Ref, reactive, nextTick, onMounted } from "vue"
 import { useThemeStore } from '@/uni_modules/i-ui/theme';
 const store = useThemeStore();
-const column = ref(2);
+const column = ref("2");
 const borderColor = ref('colorBorderSecondary');
 const useBorder = ref(true);
 const square = ref(true);

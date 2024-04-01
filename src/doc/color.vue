@@ -25,8 +25,8 @@
 </template>
 
 <script lang="ts" setup>
-import {Ref} from "vue";
-import {ColorInfo} from "@/i-ui";
+import { computed, ref, Ref, reactive, nextTick, onMounted } from "vue";
+import {ColorInfo} from "@/uni_modules/i-ui";
 
 const color: Ref<ColorInfo> = ref({
     hex: '#7ED321'

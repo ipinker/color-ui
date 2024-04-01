@@ -15,11 +15,11 @@ import UnoCSS from 'unocss/vite'
 // @see https://github.com/vbenjs/vite-plugin-vue-setup-extend
 import vueSetupExtend from 'vite-plugin-vue-setup-extend'
 // @see https://github.com/vbenjs/vite-plugin-svg-icons
-import AutoImport from 'unplugin-auto-import/vite'
+// import AutoImport from 'unplugin-auto-import/vite'
 
 import { visualizer } from 'rollup-plugin-visualizer'
 // https://vitejs.dev/config/
-export default ({ command, mode }) => {
+export default ({ mode } : { mode: string }) => {
 	const isPro = mode === 'production';
 	return defineConfig({
 		plugins: [
@@ -27,12 +27,6 @@ export default ({ command, mode }) => {
             UnoCSS(),
 			// svg 可以当做组件来使用(Vite plugin to load SVG files as Vue components, using SVGO for optimization.)
 			vueSetupExtend(),
-			AutoImport({
-				imports: ['vue', 'uni-app'],
-				dts: 'src/auto-import.d.ts',
-				dirs: ['src/hooks'], // 自动导入 hooks
-				eslintrc: { enabled: true },
-			}),
 			isPro && visualizer({
 				filename: './node_modules/.cache/visualizer/stats.html',
 				open: true,

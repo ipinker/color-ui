@@ -61,6 +61,7 @@
 </template>
 
 <script lang="ts" setup>
+import { computed, ref, Ref, reactive, nextTick, onMounted } from "vue"
 let custom = ref(false);
 let height = ref(100);
 let title = ref("NavigationBar （导航栏）");

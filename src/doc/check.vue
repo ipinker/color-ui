@@ -34,6 +34,7 @@
 </template>
 
 <script lang="ts" setup>
+import { computed, ref, Ref, reactive, nextTick, onMounted } from "vue"
 const checkValue = ref(false);
 const checkValue2 = ref("1");
 const checkValueArr = reactive([]);

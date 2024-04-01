@@ -8,13 +8,14 @@
     </div>
 </template>
 <script setup lang="ts">
+import { mapStores } from "pinia";
 import { useThemeStore } from "../../theme";
-import { ComputedRef, StyleValue} from "vue";
+import { ComputedRef, StyleValue, computed } from "vue";
 import { titleProps, TitlePropsType } from "./title";
 import { useStyle } from "../../hooks/useStyle"
 import { genPx } from "../../common/style";
 const props: TitlePropsType = defineProps(titleProps);
-const store = useThemeStore();
+const store = mapStores(useThemeStore).themeStoreStore();
 const { colorValue } = useStyle();
 const signStyleOpt: ComputedRef<StyleValue> = computed((): StyleValue => {
     const style: StyleValue = {

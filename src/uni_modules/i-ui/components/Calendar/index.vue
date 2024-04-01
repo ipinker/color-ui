@@ -76,6 +76,7 @@
 </template>
 
 <script setup lang='ts'>
+import { mapStores } from "pinia";
 import {
     getOpacityColor,
     formatDate
@@ -84,11 +85,11 @@ import { calendarProps, CalendarPropsType, CalendarEmitsType } from "./calendar"
 import { useThemeStore } from "../../theme";
 import { DayInfo, useCalendar } from "./useCalendar"
 import { CHANGE_EVENT } from "../../common/constants";
-import { StyleValue } from "vue";
+import { StyleValue, computed, ref, onBeforeMount } from "vue";
 import UIButton from "../Button/index.vue"
 const props = defineProps(calendarProps);
 const emits = defineEmits([CHANGE_EVENT, "month"]);
-const store = useThemeStore();
+const store = mapStores(useThemeStore).themeStoreStore();
 const theme = computed(() => store.theme);
 const calendarRef = ref(null);
 let { 

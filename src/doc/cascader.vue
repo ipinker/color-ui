@@ -9,6 +9,7 @@
 </template>
 
 <script setup lang='ts'>
+import { computed, ref, Ref, nextTick, onMounted } from "vue"
 const showCascade = ref(false);
 const list = [
     { label: "第一列", value: "1", 

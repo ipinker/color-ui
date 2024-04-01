@@ -15,6 +15,7 @@
 </template>
 
 <script lang="ts" setup>
+import { computed, ref, Ref, reactive, nextTick, onMounted } from "vue"
     import { useThemeStore } from "@/uni_modules/i-ui/theme"
     const store = useThemeStore();
     const inputValue = ref("");

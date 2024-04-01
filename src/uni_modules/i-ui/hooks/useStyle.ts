@@ -6,14 +6,16 @@
  * @FilePath: /renovation/src/hooks/useStyle.ts
  * @Description: 描述
  */
-import { computed } from "vue";
+import { computed, toRefs } from "vue";
+import { mapStores } from "pinia"
 import { TinyColor } from "@ctrl/tinycolor";
 import type { SeedKey } from "../index";
 import { useThemeStore } from "../theme";
 
+
 export const useStyle = () => {
 
-    const useStore = useThemeStore();
+    const useStore = mapStores(useThemeStore).themeStoreStore();
 
     const colorFunc = (color: SeedKey | string): string => {
         const value: TinyColor = new TinyColor(color);

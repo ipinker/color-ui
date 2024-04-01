@@ -8,10 +8,12 @@
 
 
 #### 直接使用
+* **使用 uni_modules**
 * 1. 将 uni_modules/i-ui 放入项目的 uni_modules 的文件下， 没有则创建
 * 2. 在 page.json 写入 easycom 规则
 * 3. 在 tsconfig.json 类型加入 global.d.ts 类型声明文件，（根据自己项目的类型， 按照实际文件路径填写）
 * 4. 内置主题 uni_modules/i-ui/theme.ts，外部可引用后可直接使用，用到的库 pinia + pinia-plugin-persistedstate
+
 ```json
 // page.json 编写 easycom 规则
 {
@@ -67,6 +69,15 @@ store.use(
 
 export default store;
 ```
+```css
+// 以下两个文件引入scs文件
+// app.vue 
+<style lang="scss">
+@import "@/uni_modules/i-ui/components/index.scss";
+<style>
+// uni.scss 
+@import "@/uni_modules/i-ui/components/index.scss";
+```
 
 ```vue3
 <!-- 主题使用Demo -->
@@ -110,6 +121,12 @@ const changeThemeMode = () => {
 }
 </script>
 ```
+
+
+* **使用 npm **
+* 1. npm install -S i-uni-ui  或者  pnpm add i-uni-ui
+* 2. 其他将以上方式 @/uni_modules/ 改为 i-uni-ui/
+* 3. 。。。
 
 #### 涉及工具类
 ###### ipink-util 

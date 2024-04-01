@@ -22,7 +22,7 @@
 </template>
 
 <script lang="ts" setup>
-	import { PropType } from 'vue';
+	import { PropType, computed } from 'vue';
     import htmlParser from './helper';
     const emits = defineEmits(["navigate"]);
     const props = defineProps({

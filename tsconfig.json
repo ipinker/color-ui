@@ -24,7 +24,7 @@
             "@dcloudio/types",
             "mini-types/types",
             "miniprogram-api-typings",
-            "./src/i-ui/global.d.ts"
+            "./src/uni_modules/i-ui/global.d.ts"
         ]
     },
     "exclude": [

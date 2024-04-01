@@ -56,6 +56,8 @@
     </UIPopup>
 </template>
 <script setup lang='ts'>
+import { computed, watch, nextTick } from "vue"
+import { mapStores } from "pinia";
 import { CANCEL_EVENT, CHANGE_EVENT, UPDATE_MODEL_EVENT, UPDATE_SHOW_EVENT } from "../../common/constants";
 import { dateProps, DatePropsType, WeekItem } from "./date";
 import { useDate } from "./useDate";
@@ -77,7 +79,7 @@ const {
 } = useDate(props);
 const { container, bg, font, text, primaryText, borderBottom, infoText } = useStyle();
 const { t } = i18n.global;
-const store = useThemeStore();
+const store = mapStores(useThemeStore).themeStoreStore();
 const primaryColor = computed(() => store.theme?.colorPrimary)
 const LayoutColor = computed(() => store.theme?.colorBgLayout)
 

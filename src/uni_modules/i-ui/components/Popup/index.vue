@@ -18,8 +18,8 @@
 
 <script lang="ts">
     import { config, TypeEnum, popupProps } from "./popup"
-	// #ifdef H5
 	import { StyleValue } from 'vue'
+	// #ifdef H5
     import keypress from './keypress'
 	// #endif
     import UITransition from "../Transition/index.vue"

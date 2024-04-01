@@ -10,6 +10,8 @@
 </template>
 
 <script setup lang="ts">
+import { useStyle } from "@/uni_modules/i-ui/hooks/useStyle";
+import { computed, ref, Ref, reactive, nextTick, onMounted } from "vue"
 const { bg } = useStyle();
 
 const popupRef = ref(null);

@@ -9,6 +9,8 @@
 </template>
 
 <script setup lang='ts'>
+import { getCurrentInstance, ref, reactive, computed, onMounted, nextTick, provide } from "vue"
+import { mapStores } from "pinia";
 import { CHANGE_EVENT } from "../../common/constants";
 import { gridProps, GridPropsType} from "./grid"
 import { useThemeStore } from "../../theme";
@@ -17,7 +19,7 @@ const props: GridPropsType = defineProps(gridProps);
 const emits = defineEmits([CHANGE_EVENT]);
 const _self = getCurrentInstance();
 const gridRef = ref(null);
-const store = useThemeStore();
+const store = mapStores(useThemeStore).themeStoreStore();
 const { colorValue } = useStyle();
 // #ifdef APP-NVUE
 const dom = uni.requireNativePlugin('dom');

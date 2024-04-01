@@ -32,6 +32,7 @@
 </template>
 
 <script lang="ts" setup>
+import { computed, ref, Ref, nextTick, onMounted } from "vue"
 const bgColor = ref("colorPrimary");
 const color = ref("colorPrimaryText");
 const opacity = ref(0.3);

@@ -15,8 +15,9 @@
 	</div>
 </template>
 <script lang="ts" setup>
+import { mapStores } from "pinia";
 import {CheckType} from "../../index"
-import {ComputedRef, StyleValue} from "vue";
+import {ComputedRef, StyleValue, ref, computed, nextTick} from "vue";
 import {useThemeStore} from "../../theme";
 import {CHANGE_EVENT, UPDATE_MODEL_EVENT} from "../../common/constants";
 import {checkProps, CheckPropsType} from "./check";
@@ -24,7 +25,7 @@ import useCheck from "./useCheck";
 
 const props: CheckPropsType = defineProps(checkProps);
 const emits = defineEmits([UPDATE_MODEL_EVENT, CHANGE_EVENT]);
-const store = useThemeStore();
+const store = mapStores(useThemeStore).themeStoreStore();
 const { checkRef, isGroup, checkGroup, size, mini, disabled, modelValue, activeColor, inactiveColor } = useCheck(props, emits);
 
 let _default = ref(false);

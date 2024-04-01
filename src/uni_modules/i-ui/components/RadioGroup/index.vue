@@ -6,7 +6,7 @@
 
 <script lang="ts" setup>
 import {CheckType} from "../../index";
-import {PropType, nextTick} from "vue";
+import {PropType, nextTick, reactive, provide, toRefs} from "vue";
 import {CHANGE_EVENT, SizeType, UPDATE_MODEL_EVENT} from "../../common/constants";
 
 const props = defineProps({

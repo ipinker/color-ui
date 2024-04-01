@@ -2,7 +2,7 @@
     <span class="margin-rs flex-justify-center ISwitchContainer" :class="{ 'mini' : mini }">
         <span class="ISwitchInactiveLabel margin-rs" :style="[!defaultValue?primaryText:{}]" v-if="inactiveLabel || useLabel">
             {{ inactiveLabel }}
-            <slot name="activeLabel" v-if="!inactiveLabel"/>
+            <slot name="inactiveLabel" v-if="!inactiveLabel"/>
         </span>
 
         <span class="ISwitchContent" :class="{'ISwitchActiveIcon' : defaultValue, 'disabled': disabled}" @click="handleSwitchChange"></span>
@@ -15,12 +15,14 @@
 </template>
 
 <script lang="ts" setup>
+import { computed, nextTick, ref } from "vue"
+import { mapStores } from "pinia"
 import { switchProps, SwitchPropsType } from "./switch";
 import {CHANGE_EVENT, UPDATE_MODEL_EVENT} from "../../common/constants";
 import { useThemeStore } from "../../theme"
 const props: SwitchPropsType = defineProps(switchProps);
 const emits = defineEmits([CHANGE_EVENT, UPDATE_MODEL_EVENT]);
-const store = useThemeStore();
+const store = mapStores(useThemeStore).themeStoreStore();
 const switchRef = ref(null);
 
 const _default = ref(false);

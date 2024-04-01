@@ -73,7 +73,8 @@
 </template>
 
 <script setup lang="ts">
-    import { StyleValue } from "vue";
+    import { mapStores } from "pinia";
+    import { StyleValue, computed } from "vue";
     import { useThemeStore } from "../../theme";
     import { useStyle } from '../../hooks/useStyle';
     import { CHANGE_EVENT, UPDATE_MODEL_EVENT, CONFIRM_EVENT } from "../../common/constants";
@@ -83,7 +84,7 @@
 
     const emits = defineEmits([UPDATE_MODEL_EVENT, CHANGE_EVENT, CONFIRM_EVENT, "blur", "focus", "keyboardheightchange", "linechange"]);
     const { placeHolder } = useStyle();
-    const theme = useThemeStore().theme;
+    const theme = mapStores(useThemeStore).themeStoreStore().theme;
     const placeholderColor = computed(() => theme?.colorTextQuaternary);
     const borderColor = computed(() => theme?.colorBorder);
     const textareaHeight = props.autoHeight ? "auto" : "100%";

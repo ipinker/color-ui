@@ -20,8 +20,9 @@
 </template>
 
 <script setup lang="ts" scoped>
+import { mapStores } from "pinia";
 import {useThemeStore} from "../../theme"
-import {computed, ref} from "vue";
+import {computed, ref, onMounted, onUnmounted} from "vue";
 import {loadingProps} from "./loading";
 import UIPopup from "../Popup/index.vue"
 import Loading0 from "./loading0.vue";
@@ -29,7 +30,7 @@ import Loading1 from "./loading1.vue";
 import Loading2 from "./loading2.vue";
 import Loading3 from "./loading3.vue";
 const props = defineProps(loadingProps);
-const store = useThemeStore();
+const store = mapStores(useThemeStore).themeStoreStore();
 
 
 const _ref = ref(null);

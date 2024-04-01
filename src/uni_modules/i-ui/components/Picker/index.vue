@@ -25,6 +25,8 @@
     </UIPopup>
 </template>
 <script setup lang='ts'>
+import { computed, Ref, ref, watch, nextTick } from "vue"
+import { mapStores } from "pinia";
 import { CANCEL_EVENT, CHANGE_EVENT, LIGHT_MODE_ID, UPDATE_SHOW_EVENT } from "../../common/constants";
 import { pickerProps, PickerPropsType } from "./picker";
 import { usePicker } from "./usePicker";
@@ -34,7 +36,7 @@ import i18n from "../../locale"
 import { useThemeStore } from "../../theme";
 const props: PickerPropsType = defineProps(pickerProps);
 const emits = defineEmits([UPDATE_SHOW_EVENT, CANCEL_EVENT, CHANGE_EVENT]);
-const store = useThemeStore();
+const store = mapStores(useThemeStore).themeStoreStore();
 const { font, container, bg, borderBottom, primaryText } = useStyle();
 const { 
     pickerRef, 

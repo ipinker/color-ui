@@ -18,6 +18,7 @@
     </button>
 </template>
 <script lang="ts" setup>
+import { mapStores } from "pinia"
 import {ref, computed, useSlots, Ref, StyleValue} from "vue";
 import { buttonProps } from "./button";
 import { useThemeStore } from "../../theme";
@@ -38,7 +39,7 @@ import { CLICK_EVENT, LIGHT_MODE_ID, RADIUS_LIST, RadiusToSeedKey, RadiusType } 
 import { genColorString, genDarkColor, genPx } from "../../common/style";
 import { useStyle } from "../../hooks/useStyle"
 
-const store = useThemeStore();
+const store = mapStores(useThemeStore).themeStoreStore();
 const props = defineProps(buttonProps);
 
 const emits = defineEmits(["click"]);
@@ -82,15 +83,15 @@ const IButtonStyle = computed(() => {
         const isLight = store.mode == LIGHT_MODE_ID;
         textColor = colorValue.value(textColor as string);
         bgColor = colorValue.value(bgColor as string);
-        shadowColor = genColorString(bgColor, 0.15);
-        activeBgColor = genDarkColor(bgColor);
+        shadowColor = genColorString(bgColor as string, 0.15);
+        activeBgColor = genDarkColor(bgColor as string);
         if(plain){
             borderColor = activeBgColor;
             activeBgColor = shadowColor;
             activeTextColor = activeBgColor;
         }
-        const _textColor = isLight ? textColor : genDarkColor(textColor);
-        const _BgColor = isLight ? bgColor : genDarkColor(bgColor);
+        const _textColor = isLight ? textColor : genDarkColor(textColor as string);
+        const _BgColor = isLight ? bgColor : genDarkColor(bgColor as string);
         styleOption.color = _textColor;
         if(bgColor) styleOption.backgroundColor = _BgColor;
         if(activeTextColor) {

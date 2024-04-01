@@ -8,10 +8,13 @@
 	</div>
 </template>
 <script setup lang="ts">
+import { ref, defineProps, defineEmits, StyleValue, computed } from "vue"
+import { mapStores } from "pinia"
 import { useThemeStore } from "../../theme";
 import {CLICK_EVENT} from "../../common/constants";
 import { useStyle } from "../../hooks/useStyle"
 import {ColorKey, genPx, genColorString} from "../../common/style";
+
 
 const props = defineProps({
     bgStyleOption: {
@@ -40,7 +43,7 @@ const props = defineProps({
     absolute: Boolean
 });
 const emits = defineEmits([CLICK_EVENT]);
-const store = useThemeStore();
+const store = mapStores(useThemeStore).themeStoreStore();
 const { colorValue } = useStyle();
 const backgroundStyle = computed(() => {
     const style = {
@@ -50,7 +53,7 @@ const backgroundStyle = computed(() => {
     };
     style.backgroundColor = colorValue.value(style.backgroundColor as ColorKey);
     if(+props.opacity < 1){
-        style.backgroundColor = genColorString(style.backgroundColor, +props.opacity);
+        style.backgroundColor = genColorString(style.backgroundColor as string, +props.opacity);
     }
     return style;
 })

@@ -6,6 +6,8 @@
 </template>
 
 <script lang="ts" setup>
+    import { computed } from "vue"
+    import { mapStores } from "pinia";
     import { ComputedRef, StyleValue } from "vue";
     import { useThemeStore } from "../../theme";
     import { genPx } from "../../common/style";
@@ -22,7 +24,7 @@
         plain: Boolean,
         tip: String
     });
-    const store = useThemeStore();
+    const store = mapStores(useThemeStore).themeStoreStore();
     const color = computed(() => store.theme?.colorTextQuaternary);
     const styleOption: ComputedRef<StyleValue> = computed((): StyleValue => {
         return {

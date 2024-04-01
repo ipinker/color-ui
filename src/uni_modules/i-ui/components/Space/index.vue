@@ -9,6 +9,7 @@
 </template>
 
 <script lang="ts" setup>
+import { computed } from "vue"
 import { genPx } from "../../common/style"
 const props = defineProps({
     // 行宽

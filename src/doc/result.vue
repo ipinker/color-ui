@@ -13,9 +13,11 @@
 </template>
 
 <script lang="ts" setup>
-import { ResultStatus } from "@/common/constants"
+import { ResultStatus } from "@/uni_modules/i-ui/common/constants";
+import { BtnInfo } from "@/uni_modules/i-ui/components/Result/result";
+import { computed, ref, Ref, reactive, nextTick, onMounted } from "vue"
 const resultType: Ref<ResultStatus> = ref("success");
-const btnList = [
+const btnList: BtnInfo[] = [
     { label: "返回首页" },
     { label: "下一步", plain: true },
     { label: "返回首页", type: "default", plain: true },

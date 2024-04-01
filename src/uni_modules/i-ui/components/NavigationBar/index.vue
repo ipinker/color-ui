@@ -28,12 +28,13 @@
 
 <script setup lang="ts">
 	import { navigateBack } from "ipink-util";
-    import { StyleValue, ref } from "vue";
+    import { StyleValue, ref, computed, ComputedRef, onMounted } from "vue";
+    import { mapStores } from "pinia";
     import { useThemeStore } from "../../theme";
     import { navigationProps, NavigationBarPropsType } from "./navigationBar"
     import { isLightColor } from "../../common/style";
     import UIIcon from "../Icon/index.vue"
-    const themeStore = useThemeStore();
+    const themeStore = mapStores(useThemeStore).themeStoreStore();
     const props: NavigationBarPropsType = defineProps(navigationProps);
 
     let statusBarHeight = ref(0),

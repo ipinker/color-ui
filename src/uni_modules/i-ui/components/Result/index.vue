@@ -15,20 +15,14 @@
 </template>
 
 <script lang="ts" setup>
+import {PropType, computed} from "vue";
+import { mapStores } from "pinia";
 import { useThemeStore } from "../../theme"
-import {PropType} from "vue";
-import {ButtonType} from "../Button/button";
-import {SizeType, ResultStatus} from "../../common/constants";
 import UIButton from "../Button/index.vue"
 import UIIcon from "../Icon/index.vue"
-type BtnInfo = {
-    label: string
-    url: string
-    type?: ButtonType
-    plain?: boolean
-    size?: SizeType
-}
-const iconTypeMap = {
+import { resultProps, ResultPropsType } from "./result"
+import { ResultStatus} from "../../common/constants";
+const iconTypeMap: { [propName: string]: any } = {
     "success" : "success",
     "error" : "error",
     "info" : "info",
@@ -37,18 +31,9 @@ const iconTypeMap = {
     "E403" : "E403",
     "E500": "E500"
 };
-const props = defineProps({
-    type: {
-        type: String as PropType<ResultStatus>,
-        default: "success"
-    },
-    icon: String,
-    title: String,
-    desc: String,
-    btnList: Array as PropType<BtnInfo[]>
-});
-const store = useThemeStore();
-const iconValue = computed(() => props.icon || iconTypeMap[props.type]);
+const props: ResultPropsType = defineProps(resultProps);
+const store = mapStores(useThemeStore).themeStoreStore();
+const iconValue = computed(() => props.icon || iconTypeMap[props.type as unknown as ResultStatus]);
 const infoDesc = computed(() => store.theme?.colorInfoText);
 const errorColor = computed(() => store.theme?.colorErrorText);
 const successColor = computed(() => store.theme?.colorSuccessText);

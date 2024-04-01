@@ -18,9 +18,11 @@
 </template>
 
 <script setup lang='ts'>
+import { computed, ref, Ref, reactive, nextTick, onMounted } from "vue"
 import { copyValue } from "ipink-util";
-import { iconList, IconType } from '@/i-ui/components/Icon/static/liveicon'; 
-import { useStyle } from '@/i-ui/hooks/useStyle';
+import { iconList, IconType } from '@/uni_modules/i-ui/components/Icon/static/liveicon'; 
+import { useStyle } from '@/uni_modules/i-ui/hooks/useStyle';
+import { onReachBottom } from "@dcloudio/uni-app";
 
 const sortedList = [... iconList].sort((a,b) => a.fontClass.charCodeAt(0) - b.fontClass.charCodeAt(0));
 const { container } = useStyle();

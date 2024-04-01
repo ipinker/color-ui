@@ -3,6 +3,8 @@
 </template>
 
 <script lang="ts" setup>
+import { computed } from "vue"
+import { mapStores } from "pinia";
 import { useThemeStore } from "../../theme";
 const props = defineProps({
     color: {
@@ -14,7 +16,7 @@ const props = defineProps({
         default: "32rpx"
     }
 })
-const store = useThemeStore();
+const store = mapStores(useThemeStore).themeStoreStore();
 const borderColor = computed(() => props.color || store.theme?.colorBorder || "");
 </script>
 

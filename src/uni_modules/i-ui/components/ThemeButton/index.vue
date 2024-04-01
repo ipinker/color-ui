@@ -5,6 +5,8 @@
 </template>
 
 <script setup lang="ts">
+import { computed } from "vue"
+import { mapStores } from "pinia";
 import {useThemeStore} from "../../theme"
 import {DEFAULT_THEME_MODE} from "../../common/constants"
 import UIIcon from "../Icon/index.vue"
@@ -16,7 +18,7 @@ const props = defineProps({
     }
 })
 
-const useStore = useThemeStore();
+const useStore = mapStores(useThemeStore).themeStoreStore();
 const isLight = computed(() => useStore.$state.modeId == DEFAULT_THEME_MODE);
 const [width, height=width] = props.size.split(",");
 const themeStyle = {

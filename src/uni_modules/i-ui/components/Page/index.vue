@@ -14,12 +14,13 @@
 
 <script lang="ts" setup>
 import { computed } from "vue";
+import { mapStores } from "pinia";
 import { useThemeStore } from "../../theme"
 import { PagePropsType, pageProps } from "./page"
 import UINavigationBar from "../NavigationBar/index.vue"
 import UILoading from "../Loading/index.vue"
 const props: PagePropsType = defineProps(pageProps)
-const themeStore = useThemeStore();
+const themeStore = mapStores(useThemeStore).themeStoreStore();
 const pageColor = computed(() => themeStore.theme?.colorBgLayout);
 const textColor = computed(() => themeStore.theme?.colorText);
 const colorForMask = computed(() => themeStore.theme?.colorWhite);

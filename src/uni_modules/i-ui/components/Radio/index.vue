@@ -17,8 +17,9 @@
 	</div>
 </template>
 <script lang="ts" setup>
+import { mapStores } from "pinia";
 import { CheckType } from "../../index"
-import { ComputedRef, StyleValue, nextTick } from "vue";
+import { ComputedRef, StyleValue, nextTick, ref, computed } from "vue";
 import { useThemeStore } from "../../theme";
 import { radioProps, RadioPropsType } from "./radio";
 import {CHANGE_EVENT, UPDATE_MODEL_EVENT} from "../../common/constants";
@@ -26,7 +27,7 @@ import useRadio from "./useRadio";
 
 const props: RadioPropsType = defineProps(radioProps);
 const emits = defineEmits([UPDATE_MODEL_EVENT, CHANGE_EVENT]);
-const store = useThemeStore();
+const store = mapStores(useThemeStore).themeStoreStore();
 const { radioRef, isGroup, radioGroup, size, mini, disabled, modelValue, activeColor } = useRadio(props, emits);
 
 let _default = ref(true);

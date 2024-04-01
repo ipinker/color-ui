@@ -34,6 +34,7 @@
 </template>
 
 <script lang="ts" setup>
+import { computed, ref, Ref, reactive, nextTick, onMounted } from "vue"
 import { copyValue } from "ipink-util"
 const pickerRef = ref();
 const isShowPicker1 = ref(false);
