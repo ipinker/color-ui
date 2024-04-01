@@ -27,7 +27,7 @@
 </template>
 
 <script setup lang='ts'>
-import { useThemeStore } from '@/store/theme';
+import { useThemeStore } from '@/uni_modules/i-ui/theme';
 const store = useThemeStore();
 const column = ref(2);
 const borderColor = ref('colorBorderSecondary');

@@ -19,7 +19,7 @@
 	});
 </script>
 <style lang="scss">
-@import "@i-ui/components/index.scss";
+@import "@/uni_modules/i-ui/components/index.scss";
 @import '@/static/font/iconfont.css';
 /* #ifndef MP */
 @font-face {

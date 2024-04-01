@@ -46,3 +46,4 @@ const disableFields = ref(false);
     height: 400rpx;
 }
 </style>
+@/uni_modules/i-ui

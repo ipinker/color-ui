@@ -2,7 +2,7 @@
     "easycom": {
 		"autoscan": true,
 		"custom": {
-            "^I(.*)": "@/i-ui/components/$1/index.vue"
+            "^I(.*)": "@/uni_modules/i-ui/components/$1/index.vue"
 		}
 	},
 	"pages": [

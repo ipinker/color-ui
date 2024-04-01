@@ -15,7 +15,7 @@
 </template>
 
 <script lang="ts" setup>
-    import { useThemeStore } from "@/store/theme"
+    import { useThemeStore } from "@/uni_modules/i-ui/theme"
     const store = useThemeStore();
     const inputValue = ref("");
 

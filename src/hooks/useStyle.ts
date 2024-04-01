@@ -6,7 +6,7 @@
  * @FilePath: /renovation/src/hooks/useStyle.ts
  * @Description: 描述
  */
-import { useThemeStore } from "@/store/theme";
+import { useThemeStore } from "@/uni_modules/i-ui/theme";
 import { computed } from "vue";
 import { TinyColor } from "@ctrl/tinycolor";
 import type { SeedKey } from "@/typings";

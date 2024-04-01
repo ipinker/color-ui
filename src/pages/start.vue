@@ -64,7 +64,7 @@
 </template>
 
 <script setup lang="ts">
-    import { useThemeStore } from "@/store/theme"
+    import { useThemeStore } from "@/uni_modules/i-ui/theme"
     const themeStore = useThemeStore();
     const shadowColor = computed(() =>themeStore.theme?.colorInfoShadow);
     const textColor = computed(() => themeStore.theme?.colorText);
