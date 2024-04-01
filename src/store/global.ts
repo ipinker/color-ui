@@ -1,11 +1,4 @@
-/*
- * @Author: Gavin New
- * @Date: 2024-02-18 18:00:20
- * @LastEditors: Gavin New
- * @LastEditTime: 2024-02-21 13:44:06
- * @FilePath: /renovation/src/store/global.ts
- * @Description: 描述
- */
+
 // src/store/useCountStore.ts
 import { defineStore } from 'pinia'
 

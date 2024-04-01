@@ -73,7 +73,6 @@
 
 
     onMounted(() => {
-        console.log({... themeStore.theme})
         // #ifdef H5
         document.title = "测试"
         // #endif
