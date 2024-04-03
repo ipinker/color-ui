@@ -45,7 +45,8 @@ export const genButtonSizeStyle = (props: ExtractPropTypes<ButtonPropsType>): Si
  * @description 根据按钮的圆角 <radius> 生成指定的 class 集合
  */
 
-export const genButtonRadiusStyle = (radius: string | number = DEFAULT_STYLE.radius): RadiusStyle => {
+export const genButtonRadiusStyle = (radius: string | number): RadiusStyle => {
+    radius = radius || radius === 0 ? radius : DEFAULT_STYLE.radius;
     return RADIUS_LIST.includes(("" + radius) as RadiusType) ? {} : genRadius(radius);
 };
 

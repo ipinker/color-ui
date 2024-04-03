@@ -142,7 +142,7 @@
 import {CHANGE_EVENT} from "../../../common/constants";
 import {ColorInfo} from "../../../index.d"
 import { Numberify, HSLA, RGBA } from "@ctrl/tinycolor"
-import {ComputedRef, PropType} from "vue";
+import {ComputedRef, PropType, computed, ref} from "vue";
 
 // #ifndef MP-WEIXIN
 const hueWxs : any = {}

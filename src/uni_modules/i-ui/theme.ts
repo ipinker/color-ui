@@ -59,25 +59,37 @@ const themeStoreOptions: Omit<DefineStoreOptions<ThemeStoreId, ThemeStoreState, 
         mode: (state: ThemeStoreState) => state.modeId
     },
     actions: {
-        // 切换主题暗黑模式
+        /** @desc 切换主题暗黑模式 **/
         changeMode(id?: ThemeModeType) {
             if (id && id === this.modeId) return;
             if (id) this.modeId = id
             else this.modeId = this.modeId === "light" ? "dark" : "light";
         },
-        // 切换主题
+        /** @desc 切换主题 **/
         change(id: string) {
             this.id = id;
         },
-        // 获取主题
+        /** @desc 获取主题 **/
         get(id: string): any {
             let theme = this.themeList.find((theme) => theme.id === `${id}-${this.modeId}`);
             if (!theme) theme = this.themeList.find((theme) => theme.id === `${id}-${this.modeId === "light" ? "light" : "dark"}`)
             return theme;
         },
+        /**
+         * @desc 添加单个主题
+         * @param seed { SeedOption }
+         * @param dir 添加的方向 { "push" | "unshift" }
+         * @return: -1 | 1
+         */
         add(seed: SeedOption, dir?: "push" | "unshift" | undefined) {
             return this.addList([seed], dir);
         },
+        /**
+         * @desc 添加多个主题
+         * @param seedList { SeedOption[] }
+         * @param dir 添加的方向 { "push" | "unshift" }
+         * @return: -1 | 1
+         */
         addList(seedList: SeedOption[], dir?: "push" | "unshift" | undefined) {
             type SeedKeyType = keyof SeedOption
             (seedList || []).forEach((item: SeedOption) => {
@@ -91,7 +103,13 @@ const themeStoreOptions: Omit<DefineStoreOptions<ThemeStoreId, ThemeStoreState, 
             else this.themeList = this.themeList.concat(newList);
             return 1
         },
+        /**
+         * @desc 删除指定主题， 不可删除当前使用的主题
+         * @param id { string }
+         * @return: -1 | 1
+         */
         del(id: string) {
+            if(id == this.modeId) return -1;
             const newList: ColorToken[] = [];
             this.themeList.forEach((theme: ColorToken) => {
                 if (theme.id != id && theme.id != `${id}-dark` && theme.id != `${id}-light`) newList.push(theme);
@@ -103,10 +121,16 @@ const themeStoreOptions: Omit<DefineStoreOptions<ThemeStoreId, ThemeStoreState, 
         sort(func: Function) {
             return this.themeList = this.themeList.sort(func as any);
         },
+        /**
+         * @desc 初始化主题列表， 会覆盖原有的
+         * @param seedList { SeedOption[] }
+         * @return: -1 | 1
+         */
         init(seedList: SeedOption[]) {
             const newList = createThemeList({ themeList: seedList, useDark: true }) || [];
             if(!newList.length) return -1
             this.themeList = newList;
+            this.change(this.themeList[0].id);
             return 1;
         }
     }

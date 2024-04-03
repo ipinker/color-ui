@@ -53,7 +53,7 @@ import { clamp } from '../../../common/style';
 import {CHANGE_EVENT} from "../../../common/constants";
 import { useStyle } from "../../../hooks/useStyle";
 import { Numberify, HSLA, HSVA, RGBA } from "@ctrl/tinycolor"
-import {ComputedRef, PropType} from "vue";
+import {ComputedRef, PropType, computed, ref} from "vue";
 import {ColorInfo} from "../../../index.d"
 
 // #ifndef MP-WEIXIN

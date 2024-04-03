@@ -79,7 +79,7 @@ import CheckBoard from './CheckBoard.vue'
 import {CHANGE_EVENT} from "../../../common/constants";
 import {ColorInfo} from "../../../index.d"
 import { Numberify, HSLA, RGBA } from "@ctrl/tinycolor"
-import {ComputedRef, PropType} from "vue";
+import {ComputedRef, PropType, computed, ref} from "vue";
 import {useStyle} from "../../../hooks/useStyle"
 
 // #ifndef MP-WEIXIN

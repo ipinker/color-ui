@@ -34,7 +34,7 @@ import {
 
     genColorMap
 } from "./style"
-import type { SeedKey } from "../../index";
+import type { SeedKey } from "../../index.d";
 import { CLICK_EVENT, LIGHT_MODE_ID, RADIUS_LIST, RadiusToSeedKey, RadiusType } from "../../common/constants";
 import { genColorString, genDarkColor, genPx } from "../../common/style";
 import { useStyle } from "../../hooks/useStyle"
@@ -129,7 +129,7 @@ const IButtonStyle = computed(() => {
     }
     return [
         genButtonSizeStyle(props),
-        genButtonRadiusStyle(props.radius),
+        genButtonRadiusStyle(props.radius || ""),
         styleOption
     ];
 });
@@ -200,9 +200,9 @@ defineExpose({
         }
         &.button-size-mini,
         &.button-size-xs {
-            min-width: 80rpx;
-            height: 40rpx;
-            padding: 0 10rpx;
+            min-width: 40px;
+            height: 20px;
+            padding: 0 5px;
         }
         //  Button`s size
         &.button-size-s,
