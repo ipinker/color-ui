@@ -1,3 +1,8 @@
 import Component from "./index.vue"
 
-export type ComponentType = typeof Component;
+export type {
+    ColorPropsType,
+    ColorEmitsType
+} from "./color"
+
+export type ColorComponentType = typeof Component;

@@ -1,4 +1,4 @@
-import Button from "./index.vue"
+import Component from "./index.vue"
 
 export type {
     ButtonType,
@@ -7,4 +7,4 @@ export type {
     ButtonPropsType
 } from "./button"
 
-export type ButtonComponentType = typeof Button;
+export type ButtonComponentType = typeof Component;

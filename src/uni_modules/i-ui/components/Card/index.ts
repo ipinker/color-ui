@@ -1,3 +1,3 @@
-import Card from "./index.vue"
+import Component from "./index.vue"
 
-export type CardComponentType = typeof Card;
+export type CardComponentType = typeof Component;

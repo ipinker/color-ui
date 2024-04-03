@@ -1,3 +1,3 @@
-import Cell from "./index.vue"
+import Component from "./index.vue"
 
-export type CellComponentType = typeof Cell;
+export type CellComponentType = typeof Component;

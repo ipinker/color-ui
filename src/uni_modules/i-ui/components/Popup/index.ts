@@ -1,3 +1,9 @@
 import Component from "./index.vue"
 
-export type ComponentType = typeof Component;
+export type {
+    PopupType,
+    PopupTypeType,
+    PopupRefType
+} from "./popup"
+
+export type PopupComponentType = typeof Component;

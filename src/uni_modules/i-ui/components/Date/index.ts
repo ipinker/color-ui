@@ -1,3 +1,15 @@
 import Component from "./index.vue"
 
-export type ComponentType = typeof Component;
+export type {
+    FormatType,
+    MonthItemType,
+    HourItemType,
+    DayItemType,
+    MinuteItemType,
+    SecondItemType,
+    WeekItem,
+    DatePropsType,
+    DateEmitsType,
+} from "./date"
+
+export type DateComponentType = typeof Component;

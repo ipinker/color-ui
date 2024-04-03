@@ -1,3 +1,3 @@
 import Component from "./index.vue"
 
-export type ComponentType = typeof Component;
+export type IndexListComponentType = typeof Component;

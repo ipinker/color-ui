@@ -17,7 +17,7 @@
 </template>
 
 <script lang="ts">
-    import { config, TypeEnum, popupProps } from "./popup"
+    import { config, PopupTypeType, popupProps } from "./popup"
 	import { StyleValue } from 'vue'
 	// #ifdef H5
     import keypress from './keypress'
@@ -67,15 +67,15 @@
 			 */
 			type: {
 				handler: function(type) {
-					if (!this.config[type as TypeEnum]) return
+					if (!this.config[type as PopupTypeType]) return
                     // @ts-ignore
-					this[this.config[type as TypeEnum]](true)
+					this[this.config[type as PopupTypeType]](true)
 				},
 				immediate: true
 			},
 			isDesktop: {
 				handler: function(newVal) {
-					if (!this.config[newVal as TypeEnum]) return
+					if (!this.config[newVal as PopupTypeType]) return
                     // @ts-ignore
 					this[this.config[this.type]](true)
 				},
@@ -220,7 +220,7 @@
 				this.clearPropagation = true
 			},
 
-			open(direction: TypeEnum) {
+			open(direction: PopupTypeType) {
 				// fix by mehaotian 处理快速打开关闭的情况
 				if (this.showPopup) {
 					return
@@ -229,18 +229,18 @@
 				if (!(direction && innerType.indexOf(direction as string) !== -1)) {
 					direction = this.type
 				}
-				if (!this.config[direction as TypeEnum]) {
+				if (!this.config[direction as PopupTypeType]) {
 					console.error('缺少类型：', direction)
 					return
 				}
                 // @ts-ignore
-				this[this.config[direction as TypeEnum]]()
+				this[this.config[direction as PopupTypeType]]()
 				this.$emit('change', {
 					show: true,
 					type: direction
 				})
 			},
-			close(type?: keyof TypeEnum) {
+			close(type?: keyof PopupTypeType) {
 				this.showTrans = false
 				this.$emit('change', {
 					show: false,
@@ -271,7 +271,7 @@
 			/**
 			 * 顶部弹出样式处理
 			 */
-			top(type ?: keyof TypeEnum) {
+			top(type ?: keyof PopupTypeType) {
 				this.popupstyle = this.isDesktop ? 'fixforpc-top' : 'top'
 				this.ani = ['slide-top']
 				this.transClass = {
@@ -293,7 +293,7 @@
 			/**
 			 * 底部弹出样式处理
 			 */
-			bottom(type?: keyof TypeEnum) {
+			bottom(type?: keyof PopupTypeType) {
 				this.popupstyle = 'bottom'
 				this.ani = ['slide-bottom']
 				this.transClass = {
@@ -312,7 +312,7 @@
 			/**
 			 * 中间弹出样式处理
 			 */
-			center(type?: keyof TypeEnum) {
+			center(type?: keyof PopupTypeType) {
 				this.popupstyle = 'center'
 				//微信小程序下，组合动画会出现文字向上闪动问题，再此做特殊处理
 				// #ifdef MP-WEIXIN
@@ -339,7 +339,7 @@
 				this.showPopup = true
 				this.showTrans = true
 			},
-			left(type?: keyof TypeEnum) {
+			left(type?: keyof PopupTypeType) {
 				this.popupstyle = 'left'
 				this.ani = ['slide-left']
 				this.transClass = {
@@ -358,7 +358,7 @@
 				this.showPopup = true
 				this.showTrans = true
 			},
-			right(type?: keyof TypeEnum) {
+			right(type?: keyof PopupTypeType) {
 				this.popupstyle = 'right'
 				this.ani = ['slide-right']
 				this.transClass = {

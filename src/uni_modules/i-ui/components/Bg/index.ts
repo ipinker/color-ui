@@ -1,3 +1,3 @@
-import Bg from "./index.vue"
+import Component from "./index.vue"
 
-export type BgComponentType = typeof Bg;
+export type BgComponentType = typeof Component;

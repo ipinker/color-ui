@@ -12,10 +12,10 @@ export const config = {
     share: 'bottom'
 } as const;
 export type PopupType = typeof config;
-export type TypeEnum = keyof (typeof config)
+export type PopupTypeType = keyof (typeof config)
 export type PopupRefType = {
-    open: (type?: TypeEnum) => void
-    close: (type?: TypeEnum) => void
+    open: (type?: PopupTypeType) => void
+    close: (type?: PopupTypeType) => void
 }
 export const popupProps = {
     // 开启动画
@@ -26,7 +26,7 @@ export const popupProps = {
     // 弹出层类型，可选值，top: 顶部弹出层；bottom：底部弹出层；center：全屏弹出层
     // message: 消息提示 ; dialog : 对话框
     type: {
-        type: String as PropType<TypeEnum>,
+        type: String as PropType<PopupTypeType>,
         default: 'center'
     },
     isMaskClick: {

@@ -1,3 +1,9 @@
 import Component from "./index.vue"
 
-export type ComponentType = typeof Component;
+export type {
+    PickerValueType,
+    PickerPropsType,
+    PickerEmitsType
+} from "./picker"
+
+export type PickerComponentType = typeof Component;

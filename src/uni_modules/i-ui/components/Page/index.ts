@@ -1,3 +1,7 @@
 import Component from "./index.vue"
 
-export type ComponentType = typeof Component;
+export type {
+    PagePropsType
+} from "./page"
+
+export type PageComponentType = typeof Component;

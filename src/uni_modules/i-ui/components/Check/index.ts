@@ -1,8 +1,8 @@
-import Check from "./index.vue"
+import Component from "./index.vue"
 
 export type {
     CheckPropsType,
     CheckEmitsType
 } from "./check"
 
-export type CheckComponentType = typeof Check;
+export type CheckComponentType = typeof Component;

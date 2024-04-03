@@ -1,3 +1,8 @@
 import Component from "./index.vue"
 
-export type ComponentType = typeof Component;
+export type { 
+    LoadingType, 
+    LoadingPropsType 
+} from "./loading"
+
+export type LoadingComponentType = typeof Component;

@@ -1,3 +1,5 @@
 import Component from "./index.vue"
 
-export type ComponentType = typeof Component;
+export type {} from "./GridItemPropsType"
+
+export type GridItemComponentType = typeof Component;

@@ -1,3 +1,5 @@
 import Component from "./index.vue"
 
-export type ComponentType = typeof Component;
+export type { DialogOption } from "./dialog"
+
+export type DialogComponentType = typeof Component;

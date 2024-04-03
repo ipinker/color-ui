@@ -1,3 +1,3 @@
-import CheckGroup from "./index.vue"
+import Component from "./index.vue"
 
-export type CheckGroupComponentType = typeof CheckGroup;
+export type CheckGroupComponentType = typeof Component;

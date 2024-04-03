@@ -1,3 +1,8 @@
 import Component from "./index.vue"
 
-export type ComponentType = typeof Component;
+export type {
+    BtnInfo,
+    ResultPropsType
+} from "./result"
+
+export type ResultComponentType = typeof Component;

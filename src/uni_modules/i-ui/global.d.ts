@@ -1,126 +1,126 @@
-import Bg from "./components/Bg/index.vue"
-import Button from "./components/Button/index.vue"
-import Calendar from "./components/Calendar/index.vue"
-import Card from "./components/Card/index.vue"
-import Cascader from "./components/Cascader/index.vue"
-import Cell from "./components/Cell/index.vue"
-import Check from "./components/Check/index.vue"
-import CheckGroup from "./components/CheckGroup/index.vue"
-import Col from "./components/Col/index.vue"
-import Collapse from "./components/Collapse/index.vue"
-import Color from "./components/Color/index.vue"
-import CountDown from "./components/CountDown/index.vue"
-import Date from "./components/Date/index.vue"
-import Dialog from "./components/Dialog/index.vue"
-import Drawer from "./components/Drawer/index.vue"
-import Editor from "./components/Editor/index.vue"
-import Empty from "./components/Empty/index.vue"
-import Form from "./components/Form/index.vue"
-import FormItem from "./components/FormItem/index.vue"
-import Grid from "./components/Grid/index.vue"
-import GridItem from "./components/GridItem/index.vue"
-import Icon from "./components/Icon/index.vue"
-import Img from "./components/Img/index.vue"
-import IndexList from "./components/IndexList/index.vue"
-import Input from "./components/Input/index.vue"
-import Loading from "./components/Loading/index.vue"
-import LoadMore from "./components/LoadMore/index.vue"
-import Longpress from "./components/Longpress/index.vue"
-import NavigationBar from "./components/NavigationBar/index.vue"
-import Number from "./components/Number/index.vue"
-import Page from "./components/Page/index.vue"
-import Pagination from "./components/Pagination/index.vue"
-import Picker from "./components/Picker/index.vue"
-import Popup from "./components/Popup/index.vue"
-import Progress from "./components/Progress/index.vue"
-import Radio from "./components/Radio/index.vue"
-import RadioGroup from "./components/RadioGroup/index.vue"
-import Rate from "./components/Rate/index.vue"
-import Result from "./components/Result/index.vue"
-import Rich from "./components/Rich/index.vue"
-import Row from "./components/Row/index.vue"
-import Search from "./components/Search/index.vue"
-import Select from "./components/Select/index.vue"
-import Sheet from "./components/Sheet/index.vue"
-import Slider from "./components/Slider/index.vue"
-import Space from "./components/Space/index.vue"
-import Steps from "./components/Steps/index.vue"
-import Switch from "./components/Switch/index.vue"
-import Tab from "./components/Tab/index.vue"
-import Tabbar from "./components/Tabbar/index.vue"
-import Table from "./components/Table/index.vue"
-import ThemeButton from "./components/ThemeButton/index.vue"
-import FloatButton from "./components/FloatButton/index.vue"
-import TimeLine from "./components/TimeLine/index.vue"
-import Tip from "./components/Tip/index.vue"
-import Title from "./components/Title/index.vue"
-import Transition from "./components/Transition/index.vue"
-import Upload from "./components/Upload/index.vue"
-import VerifyCode from "./components/Upload/index.vue"
+import { BgComponentType } from "./components/Bg"
+import {ButtonComponentType} from "./components/Button"
+import {CalendarComponentType} from "./components/Calendar"
+import {CardComponentType} from "./components/Card"
+import {CascaderComponentType} from "./components/Cascader"
+import {CellComponentType} from "./components/Cell"
+import {CheckComponentType} from "./components/Check"
+import {CheckGroupComponentType} from "./components/CheckGroup"
+import {ColComponentType} from "./components/Col"
+import {CollapseComponentType} from "./components/Collapse"
+import {ColorComponentType} from "./components/Color"
+import {CountDownComponentType} from "./components/CountDown"
+import {DateComponentType} from "./components/Date"
+import {DialogComponentType} from "./components/Dialog"
+import {DrawerComponentType} from "./components/Drawer"
+import {EditorComponentType} from "./components/Editor"
+import {EmptyComponentType} from "./components/Empty"
+import {FormComponentType} from "./components/Form"
+import {FormItemComponentType} from "./components/FormItem"
+import {GridComponentType} from "./components/Grid"
+import {GridItemComponentType} from "./components/GridItem"
+import {IconComponentType} from "./components/Icon"
+import {ImgComponentType} from "./components/Img"
+import {IndexListComponentType} from "./components/IndexList"
+import {InputComponentType} from "./components/Input"
+import {LoadingComponentType} from "./components/Loading"
+import {LoadMoreComponentType} from "./components/LoadMore"
+import {LongpressComponentType} from "./components/Longpress"
+import {NavigationBarComponentType} from "./components/NavigationBar"
+import {NumberComponentType} from "./components/Number"
+import {PageComponentType} from "./components/Page"
+import {PaginationComponentType} from "./components/Pagination"
+import {PickerComponentType} from "./components/Picker"
+import {PopupComponentType} from "./components/Popup"
+import {ProgressComponentType} from "./components/Progress"
+import {RadioComponentType} from "./components/Radio"
+import {RadioGroupComponentType} from "./components/RadioGroup"
+import {RateComponentType} from "./components/Rate"
+import {ResultComponentType} from "./components/Result"
+import {RichComponentType} from "./components/Rich"
+import {RowComponentType} from "./components/Row"
+import {SearchComponentType} from "./components/Search"
+import {SelectComponentType} from "./components/Select"
+import {SheetComponentType} from "./components/Sheet"
+import {SliderComponentType} from "./components/Slider"
+import {SpaceComponentType} from "./components/Space"
+import {StepsComponentType} from "./components/Steps"
+import {SwitchComponentType} from "./components/Switch"
+import {TabComponentType} from "./components/Tab"
+import {TabbarComponentType} from "./components/Tabbar"
+import {TableComponentType} from "./components/Table"
+import {ThemeButtonComponentType} from "./components/ThemeButton"
+import {FloatButtonComponentType} from "./components/FloatButton"
+import {TimeLineComponentType} from "./components/TimeLine"
+import {TipComponentType} from "./components/Tip"
+import {TitleComponentType} from "./components/Title"
+import {TransitionComponentType} from "./components/Transition"
+import {UploadComponentType} from "./components/Upload"
+import { VerifyCodeComponentType } from "./components/VerifyCode"
 
 // GlobalComponents for Volar
 declare module '@vue/runtime-core'{
     // 3. 给 vue  添加全局组件类型，interface 和之前的合并
     export interface GlobalComponents {
-        IBg: typeof Bg,
-        IButton: typeof Button,
-        ICalendar: typeof Calendar,
-        ICard: typeof Card,
-        ICascader: typeof Cascader,
-        ICell: typeof Cell,
-        ICheck: typeof Check,
-        ICheckGroup: typeof CheckGroup,
-        ICol: typeof Col,
-        ICollapse: typeof Collapse,
-        IColor: typeof Color,
-        ICountDown: typeof CountDown,
-        IDate: typeof Date,
-        IDialog: typeof Dialog,
-        IDrawer: typeof Drawer,
-        IEditor: typeof Editor,
-        IEmpty: typeof Empty,
-        IForm: typeof Form,
-        IFormItem: typeof FormItem,
-        IGrid: typeof Grid,
-        IGridItem: typeof GridItem,
-        IIcon: typeof Icon,
-        IImg: typeof Img,
-        IIndexList: typeof IndexList,
-        IInput: typeof Input,
-        ILoading: typeof Loading,
-        ILoadMore: typeof LoadMore,
-        ILongpress: typeof Longpress,
-        INavigationBar: typeof NavigationBar,
-        INumber: typeof Number,
-        IPage: typeof Page,
-        IPagination: typeof Pagination,
-        IPicker: typeof Picker,
-        IPopup: typeof Popup,
-        IProgress: typeof Progress,
-        IRadio: typeof Radio,
-        IRadioGroup: typeof RadioGroup,
-        IRate: typeof Rate,
-        IResult: typeof Result,
-        IRich: typeof Rich,
-        IRow: typeof Row,
-        ISearch: typeof Search,
-        ISelect: typeof Select,
-        ISheet: typeof Sheet,
-        ISlider: typeof Slider,
-        ISpace: typeof Space,
-        ISteps: typeof Steps,
-        ISwitch: typeof Switch,
-        ITab: typeof Tab,
-        ITabbar: typeof Tabbar,
-        ITable: typeof Table,
-        IThemeButton: typeof ThemeButton,
-        IFloatButton: typeof FloatButton,
-        ITimeLine: typeof TimeLine,
-        ITip: typeof Tip,
-        ITitle: typeof Title,
-        ITransition: typeof Transition,
-        IUpload: typeof Upload,
-        IVerifyCode: typeof VerifyCode,
+        IBg: BgComponentType,
+        IButton: ButtonComponentType,
+        ICalendar: CalendarComponentType,
+        ICard: CardComponentType,
+        ICascader: CascaderComponentType,
+        ICell: CellComponentType,
+        ICheck: CheckComponentType,
+        ICheckGroup: CheckGroupComponentType,
+        ICol: ColComponentType,
+        ICollapse: CollapseComponentType,
+        IColor: ColorComponentType,
+        ICountDown: CountDownComponentType,
+        IDate: DateComponentType,
+        IDialog: DialogComponentType,
+        IDrawer: DrawerComponentType,
+        IEditor: EditorComponentType,
+        IEmpty: EmptyComponentType,
+        IForm: FormComponentType,
+        IFormItem: FormItemComponentType,
+        IGrid: GridComponentType,
+        IGridItem: GridItemComponentType,
+        IIcon: IconComponentType,
+        IImg: ImgComponentType,
+        IIndexList: IndexListComponentType,
+        IInput: InputComponentType,
+        ILoading: LoadingComponentType,
+        ILoadMore: LoadMoreComponentType,
+        ILongpress: LongpressComponentType,
+        INavigationBar: NavigationBarComponentType,
+        INumber: NumberComponentType,
+        IPage: PageComponentType,
+        IPagination: PaginationComponentType,
+        IPicker: PickerComponentType,
+        IPopup: PopupComponentType,
+        IProgress: ProgressComponentType,
+        IRadio: RadioComponentType,
+        IRadioGroup: RadioGroupComponentType,
+        IRate: RateComponentType,
+        IResult: ResultComponentType,
+        IRich: RichComponentType,
+        IRow: RowComponentType,
+        ISearch: SearchComponentType,
+        ISelect: SelectComponentType,
+        ISheet: SheetComponentType,
+        ISlider: SliderComponentType,
+        ISpace: SpaceComponentType,
+        ISteps: StepsComponentType,
+        ISwitch: SwitchComponentType,
+        ITab: TabComponentType,
+        ITabbar: TabbarComponentType,
+        ITable: TableComponentType,
+        IThemeButton: ThemeButtonComponentType,
+        IFloatButton: FloatButtonComponentType,
+        ITimeLine: TimeLineComponentType,
+        ITip: TipComponentType,
+        ITitle: TitleComponentType,
+        ITransition: TransitionComponentType,
+        IUpload: UploadComponentType,
+        IVerifyCode: VerifyCodeComponentType,
     }
 
     interface ComponentCustomProperties {

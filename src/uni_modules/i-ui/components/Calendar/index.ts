@@ -1,8 +1,8 @@
-import Calendar from "./index.vue"
+import Component from "./index.vue"
 
 export type {
     CalendarPropsType,
     CalendarEmitsType
 } from "./calendar"
 
-export type CalendarComponentType = typeof Calendar;
+export type CalendarComponentType = typeof Component;

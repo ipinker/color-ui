@@ -1,3 +1,8 @@
 import Component from "./index.vue"
 
-export type ComponentType = typeof Component;
+export type {
+    IconPropsType, 
+    IconEmitsType
+} from "./icon"
+
+export type IconComponentType = typeof Component;

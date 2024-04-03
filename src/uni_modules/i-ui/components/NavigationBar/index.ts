@@ -1,3 +1,7 @@
 import Component from "./index.vue"
 
-export type ComponentType = typeof Component;
+export type {
+    NavigationBarPropsType
+} from "./navigationBar"
+
+export type NavigationBarComponentType = typeof Component;
