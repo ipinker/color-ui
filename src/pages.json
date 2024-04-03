@@ -46,7 +46,9 @@
                 { "path" : "picker", "style" : { "navigationBarTitleText": "Picker（滚动选择器）"  } },
                 { "path" : "date", "style" : { "navigationBarTitleText": "Date（日期选择器）"  } },
                 { "path" : "calendar", "style" : { "navigationBarTitleText": "Calendar（日历）"  } },
-                { "path" : "select", "style" : { "navigationBarTitleText": "Select（选择器）"  } }
+                { "path" : "select", "style" : { "navigationBarTitleText": "Select（选择器）"  } },
+                { "path" : "theme", "style" : { "navigationBarTitleText": "Theme (主题)"  } },
+                { "path" : "webview", "style" : { "navigationBarTitleText": "WebView"  } }
 
 			]
 		}

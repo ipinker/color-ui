@@ -1,5 +1,9 @@
 <template>
 	<IPage style="padding: 0 20rpx" center title="组件预览">
+        <ICard useHeader full title="Theme（主题）">
+            <ICell label="Theme（主题一览）" url="/doc/theme"/>
+            <ICell label="Colorful（色彩）" url="/doc/webview?title=色彩（Colorful）&url=https%3A%2F%2Fi.ipink.pink%2Fapp%2F%23%2Fpages%2Fcomponents%2Ftheme%2Fcolorful"/>
+        </ICard>
         <ICard useHeader full title="Basic（基础）">
             <ICell label="NavigationBar（导航栏）" url="/doc/navigationBar"/>
             <ICell label="Empty（暂无数据）" url="/doc/empty"/>

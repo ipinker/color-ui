@@ -2,10 +2,10 @@
 import { defineStore, DefineStoreOptions, StoreDefinition } from 'pinia';
 import { THEME_LIST } from "./common/constants";
 import { createThemeList } from "ipink-theme";
-import { MapToken, SeedMap } from 'ipink-theme/dist/theme/interface';
+import type { SeedOption, ColorToken } from 'ipink-theme';
 
-const themeList = THEME_LIST as any;
-const list = createThemeList({ themeList, useDark: true }) || [];
+const themeList: SeedOption[] = THEME_LIST;
+const list: ColorToken[] = createThemeList({ themeList, useDark: true }) || [];
 export type ThemeModeType = "light" | "dark";
 export type ThemeStoreId = "themeStore";
 export type ThemeStoreState = {
@@ -14,11 +14,11 @@ export type ThemeStoreState = {
     /** @desc 模式ID light ｜ dark **/
     modeId: ThemeModeType
     /** @desc 生成后的主题列表： createThemeList({ themeList, useDark: true }) => MapToken[], useDark: boolean 默认不生成暗黑模式， 需要手动开启 **/
-    themeList: MapToken[]
+    themeList: ColorToken[]
 }
 export type ThemeStoreGetters = {
     /** @desc 主题内容： MapToken **/
-    theme: (state: ThemeStoreState) => MapToken | undefined,
+    theme: (state: ThemeStoreState) => ColorToken | undefined,
     /** @desc 主题模式： Dark ｜ Light **/
     mode: (state: ThemeStoreState) => ThemeModeType
 }
@@ -28,17 +28,17 @@ export type ThemeStoreActions = {
     /** @desc 切换主题 **/
     change: (id: string) => void
     /** @desc 根据 ID 获取指定的主题 **/
-    get: (id: string) => MapToken | undefined
+    get: (id: string) => ColorToken | undefined
     /** @desc 添加一个主题 **/
-    add: (seed: SeedMap | any) => number
+    add: (seed: SeedOption) => number
     /** @desc 添加一个主题集合 **/
-    addList: (seed: SeedMap[] | any[]) => number
+    addList: (seed: SeedOption[]) => number
     /** @desc 根据 ID 删除指定主题 **/
     del: (id: string) => number
     /** @desc 传入一个排序函数对主题进行排序 **/
-    sort: (func: Function) => MapToken[]
+    sort: (func: Function) => ColorToken[]
     /** @desc 初始化默认的主题列表， 会覆盖掉内置主题 **/
-    init: (tList: SeedMap[] | any[]) => number
+    init: (tList: SeedOption[]) => number
 }
 export type ThemeStoreOptions = {
     state: () => ThemeStoreState
@@ -59,10 +59,13 @@ const themeStoreOptions: Omit<DefineStoreOptions<ThemeStoreId, ThemeStoreState, 
         mode: (state: ThemeStoreState) => state.modeId
     },
     actions: {
-        // 切换主题
-        changeMode() {
-            this.modeId = this.modeId === "light" ? "dark" : "light";
+        // 切换主题暗黑模式
+        changeMode(id?: ThemeModeType) {
+            if (id && id === this.modeId) return;
+            if (id) this.modeId = id
+            else this.modeId = this.modeId === "light" ? "dark" : "light";
         },
+        // 切换主题
         change(id: string) {
             this.id = id;
         },
@@ -72,20 +75,32 @@ const themeStoreOptions: Omit<DefineStoreOptions<ThemeStoreId, ThemeStoreState, 
             if (!theme) theme = this.themeList.find((theme) => theme.id === `${id}-${this.modeId === "light" ? "light" : "dark"}`)
             return theme;
         },
-        add(seed: any) {
-            return -1
+        add(seed: SeedOption) {
+            return this.addList([seed]);
         },
-        addList(seed: any) {
-            return -1
+        addList(seedList: SeedOption[]) {
+            const newList: ColorToken[] = createThemeList({ themeList: seedList, useDark: true }) || [];
+            if(!newList.length) return -1
+            this.themeList = this.themeList.concat(newList);
+            return 1
         },
         del(id: string) {
-            return -1
+            const newList: ColorToken[] = [];
+            this.themeList.forEach((theme: ColorToken) => {
+                if (theme.id != id && theme.id != `${id}-dark` && theme.id != `${id}-light`) newList.push(theme);
+            })
+            const status = newList.length === this.themeList.length ? -1 : 1;
+            if(status == 1) this.themeList = newList;
+            return status;
         },
         sort(func: Function) {
-            return []
+            return this.themeList = this.themeList.sort(func as any);
         },
-        init(tList: any[]) {
-            return -1
+        init(seedList: SeedOption[]) {
+            const newList = createThemeList({ themeList: seedList, useDark: true }) || [];
+            if(!newList.length) return -1
+            this.themeList = newList;
+            return 1;
         }
     }
 }

@@ -42,8 +42,6 @@ export type OptionsKeyType = {
 }
 
 export type {
-    THEME_LIST_TYPE,
-    THEME_COLOR_TYPE,
     ResultStatus,
     PageStatus,
     NavigateType,

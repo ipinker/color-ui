@@ -1,9 +1,11 @@
+import { SeedOption } from "ipink-theme"
+import { ColorKey } from "..";
 /** @desc light 模式标识， 用来判断是否时约定的 light **/
 export const LIGHT_MODE_ID = "light";
 /** @desc Theme mode : light | dark  **/
-export const DEFAULT_THEME_MODE = "light";
+export const DEFAULT_THEME_MODE = LIGHT_MODE_ID;
 /** @desc 内置的主题生成集合 SeedMap[] **/
-export const THEME_LIST = [
+export const THEME_LIST: SeedOption[] = [
     {"colorPrimary": "#16AD90", id: "gg"},
     {"colorPrimary": "#1677ff", id: "blue"},
     {"colorPrimary": "#2f54eb", id: "geekblue"},
@@ -17,12 +19,8 @@ export const THEME_LIST = [
     {"colorPrimary": "#FC6572", id: "pink"},
     {"colorPrimary": "#818181", id: "gray"}
 ];
-/** @desc 内置的主题生成集合的每项的类型，实际类型本应该是 SeedMap， 这里做了简化， 只对 colorPrimary 进行了自定义 **/
-export type THEME_LIST_TYPE = (typeof THEME_LIST)[number];
 /** @desc 内置的 primary颜色集合 string[] **/
-export const THEME_COLOR_LIST = THEME_LIST.map(theme => theme.colorPrimary);
-/** @desc 内置的primary颜色 **/
-export type THEME_COLOR_TYPE = (typeof THEME_COLOR_LIST)[number];
+export const THEME_COLOR_LIST: ColorKey[] = THEME_LIST.map(theme => theme.colorPrimary);
 
 /** @desc 结果状态类型 **/
 export type ResultStatus = "success" | "error" | "warning" | "info" | "E404" | "E403" | "E500";

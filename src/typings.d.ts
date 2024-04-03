@@ -37,3 +37,9 @@ export type StringMap = { [propName : string] : string };
 export type SeedKey = (keyof SeedMap);
 
 export type CheckType = boolean | string | number;
+
+export interface QueryOption {
+    title?: string
+    url?: string
+    id?: string
+}
