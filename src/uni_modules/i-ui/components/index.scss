@@ -22,8 +22,21 @@ textarea {
 }
 
 page {
-    padding-top: 1rpx;
+    padding-top: 0.5px;
 }
+
+/* #ifndef APP-NVUE */
+view, scroll-view, swiper-item {
+	display: flex;
+	flex-direction: column;
+	flex-shrink: 0;
+	flex-grow: 0;
+	flex-basis: auto;
+	align-items: stretch;
+	align-content: flex-start;
+}
+/* #endif */
+
 
 .statusbar-height {
     height: var(--status-bar-height);
@@ -31,6 +44,10 @@ page {
 
 .statusbar-padding {
     padding-top: var(--status-bar-height);
+}
+
+.tabbar-height {
+    height: var(--window-bottom);
 }
 
 // Safe area
@@ -157,12 +174,12 @@ page {
 
 //  Item
 .set-item {
-	width: 750rpx; min-height: $i-height-l;
+	width: 100%; min-height: $i-height-l;
 	@include center;
 	padding: 0 $i-padding-l;
 	.image {
-		width: 70rpx;
-		height: 70rpx;
+		width: 35px;
+		height: 35px;
 		margin-right: $i-padding-m;
 	}
 	.set-item-input,
@@ -225,32 +242,32 @@ page {
 
 // Circle
 .circle-xxs {
-	width: 20rpx;
-	height: 20rpx;
+	width: 10px;
+	height: 10px;
 }
 .circle-xs {
-	width: 40rpx;
-	height: 40rpx;
+	width: 20px;
+	height: 20px;
 }
 .circle-s {
-	width: 60rpx;
-	height: 60rpx;
+	width: 30px;
+	height: 30px;
 }
 .circle-m {
-	width: 80rpx;
-	height: 80rpx;
+	width: 40px;
+	height: 40px;
 }
 .circle-l {
-	width: 100rpx;
-	height: 100rpx;
+	width: 50px;
+	height: 50px;
 }
 .circle-xl {
-	width: 120rpx;
-	height: 120rpx;
+	width: 60px;
+	height: 60px;
 }
 .circle-xxl {
-	width: 200rpx;
-	height: 200rpx;
+	width: 100px;
+	height: 100px;
 }
 
 // Scrollor
@@ -476,4 +493,14 @@ input::placeholder {
 
 .ellipsis {
     @include ellipsis1;
+}
+
+
+.ellipsi2 {
+    @include ellipsis(2);
+}
+
+
+.ellipsis3 {
+    @include ellipsis(3);
 }

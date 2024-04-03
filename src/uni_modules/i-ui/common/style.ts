@@ -4,11 +4,35 @@
  * @Create: 2024/02/27 13:48
  */
 import { isNumber, isString } from "ipink-util";
-import { UNIT, DEFAULT_STYLE } from "./constants";
-import {SeedKey} from "../index";
+import { DEFAULT_STYLE } from "./constants";
 import { HSLA, HSVA, Numberify, RGBA, TinyColor } from "@ctrl/tinycolor"
-import { ColorInfo } from "../index";
+import type { ColorInfo, SeedKey } from "../index.d";
+import { UIConfigInstance } from "./config"
 
+/** @desc 将一个单位数值转换为px；10px => 10px, 20rpx => 10px, 20 => 10px **/
+export const genPx = (num: string | number) => {
+    if (typeof num === 'string') {
+        if (num.indexOf('px') !== -1) {
+            if (num.indexOf('rpx') !== -1) {
+                num = num.replace('rpx', '');
+            } else if (num.indexOf('upx') !== -1) {
+                num = num.replace('upx', '');
+            } else {
+                return num;
+            }
+        } else if (num.indexOf('%') !== -1) {
+            let rate = Number(num.replace('%', '')) / 100;
+            return uni.getSystemInfoSync().windowHeight * rate + 'px';
+        } else if (num.indexOf("vw") !== -1) {
+            let rate = Number(num.replace('vw', '')) / 100;
+            return uni.getSystemInfoSync().windowWidth * rate + 'px';
+        } else if (num.indexOf("vh") !== -1) {
+            let rate = Number(num.replace('vh', '')) / 100;
+            return uni.getSystemInfoSync().windowHeight * rate + 'px';
+        }
+    }
+    return num ? uni.upx2px(Number(num)) + 'px' : "0px";
+}
 /**
  * @description 几何尺寸
  */
@@ -21,7 +45,6 @@ export type SizeStyle = { width?: string, height?: string, "line-height"?: strin
  */
 export const genSize = (size: string, round?: boolean): SizeStyle  => {
     let sizes = [];
-    let unit = size.indexOf('px') > -1 ? '' : UNIT;
 
     if (size && size.indexOf(",") > -1) sizes = size.split(",");
 
@@ -32,8 +55,8 @@ export const genSize = (size: string, round?: boolean): SizeStyle  => {
     if (!width && !height) return {};
 
     return {
-        width: width + unit,
-        height: (round ? width : height) + unit
+        width: genPx(width),
+        height: genPx(round ? width : height)
     };
 };
 
@@ -47,13 +70,9 @@ export type RadiusStyle = { "border-radius"?: string };
  * @return RadiusStyle extends StyleValue
  */
 export const genRadius = (radius: string | number): RadiusStyle  => {
-    if (isString(radius)) {
-        const _radius = "" + radius;
-        radius = (_radius.indexOf("px") > -1 || _radius.indexOf("%") > -1 || _radius.indexOf("em") > -1) ? _radius : (_radius + UNIT)
-    } else if(isNumber(radius)) radius = "" + radius + UNIT;
-    else radius = DEFAULT_STYLE.radius + UNIT;
+    if(!isNumber(radius) && !isString(radius)) radius = DEFAULT_STYLE.radius + UIConfigInstance.config.unit;
     return {
-        "border-radius": radius
+        "border-radius": genPx(radius)
     };
 };
 
@@ -66,9 +85,10 @@ export type ColorKey = SeedKey | string;
  * @param opacity 透明度 { number }
  * @return string
  **/
-export const genColorString = (color: string, opacity?: number): string => {
+export const genColorString = (color: string, opacity?: number, isHex?: boolean): string => {
     const colorInstance = new TinyColor(color);
     if(opacity && opacity < 1) colorInstance.setAlpha(opacity);
+    if(isHex) return colorInstance.toHexString();
     return colorInstance.toRgbString();
 }
 export const genColor = genColorString;
@@ -89,11 +109,12 @@ export const genDarkColor = (color: string): string => {
 export const genLightColor = (color: string): string => {
     return new TinyColor(color).lighten().toRgbString();
 }
+/** @desc 判断颜色是不是 亮色  **/
 export const isLightColor = (color: string): boolean => {
     return new TinyColor(color).isLight();
 }
 /**
- * @desc 获取一个范围内的值， 不可溢出和下限
+ * @desc 获取一个范围内的值， 不可溢出和低于下限
  * @param value { number }
  * @Return: number
  * Created by Gavin New on 2024/3/8 08:02
@@ -146,27 +167,4 @@ export function genColorInfo(data: ColorInfo, oldHue?: number): ColorInfo {
 	}
 }
 
-export const genPx = (num: string | number) => {
-    if (typeof num === 'string') {
-        if (num.indexOf('px') !== -1) {
-            if (num.indexOf('rpx') !== -1) {
-                num = num.replace('rpx', '');
-            } else if (num.indexOf('upx') !== -1) {
-                num = num.replace('upx', '');
-            } else {
-                return num;
-            }
-        } else if (num.indexOf('%') !== -1) {
-            let rate = Number(num.replace('%', '')) / 100;
-            return uni.getSystemInfoSync().windowHeight * rate + 'px';
-        } else if (num.indexOf("vw") !== -1) {
-            let rate = Number(num.replace('vw', '')) / 100;
-            return uni.getSystemInfoSync().windowWidth * rate + 'px';
-        } else if (num.indexOf("vh") !== -1) {
-            let rate = Number(num.replace('vh', '')) / 100;
-            return uni.getSystemInfoSync().windowHeight * rate + 'px';
-        }
-    }
-    return num ? uni.upx2px(Number(num)) + 'px' : 0;
-}
 

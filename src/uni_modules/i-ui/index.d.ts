@@ -54,11 +54,19 @@ export type {
     DefaultStyleType,
     DefaultStyleKeyType,
 } from "./common/constants"
+
 export type {
     SizeStyle,
     RadiusStyle,
     ColorKey
 } from "./common/style"
+
+export type { 
+    ThemeModeType,
+    ThemeStoreState,
+    ThemeStoreGetters,
+    ThemeStoreActions
+} from "./theme"
 
 export * from "./components/Bg/index"
 export * from "./components/Button/index"

@@ -32,7 +32,7 @@ const props = defineProps({
     /** @desc 圆角 **/
     radius: {
         type: [String , Number],
-        default: "16rpx"
+        default: "16"
     },
     /** @desc 加载效果 **/
     loading: Boolean,
@@ -50,7 +50,7 @@ const styleOption: ComputedRef<StyleValue> = computed((): StyleValue => {
     if(props.height) style.height = genPx(props.height);
     if(props.radius) style.borderRadius = genRadius(props.radius)?.["border-radius"];
     if(props.full) style.width = "100%", style.margin = `${store.theme?.margin}px auto`;
-    style.boxShadow = `0 4rpx 12rpx 0 ${store.theme?.colorShadowBase}`;
+    style.boxShadow = `0 2px 6px 0 ${store.theme?.colorShadowBase}`;
     return style;
 })
 const styleOptionForHeader: ComputedRef<StyleValue> = computed((): StyleValue => {
@@ -67,6 +67,7 @@ const handleEvent = () => {
 
 <style lang="scss">
 .ICardContainer {
+    flex: 1;
     margin: $i-margin-m;
     overflow: hidden;
     .ICardHeader {

@@ -5,7 +5,7 @@
             <UIIcon :color="primaryColor" :icon="arrow" size="40" v-else/>
         </div>
         <div class="INavigatorItemLabel">{{label}}</div>
-        <IIcon class="INavigatorItemIcon margin-r0" :color="primaryColor" :icon="arrow" size="36"/>
+        <IIcon class="INavigatorItemIcon margin-r0" :color="primaryColor" :icon="arrow" size="32"/>
     </div>
 </template>
 
@@ -68,10 +68,10 @@ const handleNavigate = () => {
     }
 }
 .INavigatorItemIcon {
-    width: 44rpx;
-    height: 44rpx;
+    width: 22px;
+    height: 22px;
     margin-right: $i-margin-s;
-    line-height: 44rpx;
+    line-height: 22px;
     text-align: center;
     .img {
         width: 100%;

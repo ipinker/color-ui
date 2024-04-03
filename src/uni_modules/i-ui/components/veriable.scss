@@ -25,29 +25,29 @@
  */
 
 
-/** @desc 22px **/
-$i-font-xxxs: 22rpx;
+/** @desc 11px **/
+$i-font-xxxs: 11px !default;
+/** @desc 12px **/
+$i-font-xxs: 12px !default;
+/** @desc 14px **/
+$i-font-xs: 14px !default;
+/** @desc 15px **/
+$i-font-s: 15px !default;
+/** @desc 16px **/
+$i-font-m: 16px !default;
+/** @desc 18px **/
+$i-font-l: 18px !default;
+/** @desc 20px **/
+$i-font-xl: 20px !default;
+/** @desc 21px **/
+$i-font-xxl: 21px !default;
 /** @desc 24px **/
-$i-font-xxs: 24rpx;
-/** @desc 28px **/
-$i-font-xs: 28rpx;
+$i-font-xxxl: 24px !default;
 /** @desc 30px **/
-$i-font-s: 30rpx;
-/** @desc 36px **/
-$i-font-m: 32rpx;
-/** @desc 36px **/
-$i-font-l: 36rpx;
-/** @desc 40px **/
-$i-font-xl: 40rpx;
-/** @desc 42px **/
-$i-font-xxl: 42rpx;
-/** @desc 48px **/
-$i-font-xxxl: 48rpx;
-/** @desc 58px **/
-$i-font-large: 58rpx;
+$i-font-large: 30px !default;
 
 /** @desc Latin **/
-$i-family-default: Latin;
+$i-family-default: PingFangSC, PingFang SC, Latin !default;
 
 /** @desc 200 **/
 $i-weight-s: 200;
@@ -56,114 +56,114 @@ $i-weight-m: 400;
 /** @desc 600 **/
 $i-weight-l: 600;
 
-/** @desc 30px **/
-$i-line-xs: 30rpx;
-/** @desc 34px **/
-$i-line-s: 34rpx;
-/** @desc 36px **/
-$i-line-m: 36rpx;
-/** @desc 40px **/
-$i-line-l: 40rpx;
-/** @desc 44px **/
-$i-line-xl: 44rpx;
+/** @desc 15px **/
+$i-line-xs: 15px;
+/** @desc 17px **/
+$i-line-s: 17px;
+/** @desc 18px **/
+$i-line-m: 18px;
+/** @desc 20px **/
+$i-line-l: 20px;
+/** @desc 22px **/
+$i-line-xl: 22px;
+
+/** @desc 1px **/
+$i-space-s: 1px;
+/** @desc 2px **/
+$i-space-m: 2px;
+/** @desc 3px **/
+$i-space-l: 3px;
 
 /** @desc 2px **/
-$i-space-s: 2rpx;
+$i-radius-xs: 2px;
+/** @desc 3px **/
+$i-radius-s: 3px;
 /** @desc 4px **/
-$i-space-m: 4rpx;
+$i-radius-m: 4px;
 /** @desc 6px **/
-$i-space-l: 6rpx;
-
-/** @desc 4px **/
-$i-radius-xs: 4rpx;
-/** @desc 6px **/
-$i-radius-s: 6rpx;
+$i-radius-l: 6px;
 /** @desc 8px **/
-$i-radius-m: 8rpx;
-/** @desc 12px **/
-$i-radius-l: 12rpx;
-/** @desc 16px **/
-$i-radius-xl: 16rpx;
-/** @desc 20px **/
-$i-radius-xxl: 20rpx;
+$i-radius-xl: 8px;
+/** @desc 10px **/
+$i-radius-xxl: 10px;
 
 /** Color **/
-$i-color-border: #eeeeee;
-$i-color-txt: #333333;
-$i-color-placeholder: #BCC1C2;
-$i-color-primary: #1666ff;
-$i-color-primary-shadow: rgba(5, 135, 255, 0.1);
-$i-color-white: #ffffff;
-$i-color-whitegray: #efefef;
-$i-color-gray: #909399;
-$i-bg-layout: #f5f5f9;
-$i-bg-container: #fff;
-$i-shadow: 0px -2px 4px 0px $i-color-border;
+$i-color-border: #eeeeee !default;
+$i-color-txt: #333333 !default;
+$i-color-placeholder: #BCC1C2 !default;
+$i-color-primary: #1666ff !default;
+$i-color-primary-shadow: rgba(5, 135, 255, 0.1) !default;
+$i-color-white: #ffffff !default;
+$i-color-whitegray: #efefef !default;
+$i-color-gray: #909399 !default;
+$i-bg-layout: #f5f5f9 !default;
+$i-bg-container: #fff !default;
+$i-shadow: 0px -2px 4px 0px $i-color-border !default;
 
-$i-opacity-xs: 0.1;
-$i-opacity-s: 0.3;
-$i-opacity-m: 0.5;
-$i-opacity-l: 0.65;
-$i-opacity-xl: 0.85;
+$i-opacity-xs: 0.1 !default;
+$i-opacity-s: 0.3 !default;
+$i-opacity-m: 0.5 !default;
+$i-opacity-l: 0.65 !default;
+$i-opacity-xl: 0.85 !default;
+/** @desc 5 **/
+$i-padding-s: 5px;
 /** @desc 10 **/
-$i-padding-s: 10rpx;
-/** @desc 20 **/
-$i-padding-m: 20rpx;
-/** @desc 30 **/
-$i-padding-l: 30rpx;
+$i-padding-m: 10px;
+/** @desc 150 **/
+$i-padding-l: 15px;
 
+/** @desc 5 **/
+$i-margin-s: 5px;
 /** @desc 10 **/
-$i-margin-s: 10rpx;
-/** @desc 20 **/
-$i-margin-m: 20rpx;
-/** @desc 30 **/
-$i-margin-l: 30rpx;
+$i-margin-m: 10px;
+/** @desc 15 **/
+$i-margin-l: 15px;
 
 /** @desc 1 **/
-$i-border-s: 1rpx;
+$i-border-s: 1px;
 /** @desc 2 **/
-$i-border-m: 2rpx;
+$i-border-m: 2px;
 /** @desc 4 **/
-$i-border-l: 4rpx;
+$i-border-l: 4px;
 
 
+/** @desc 15 **/
+$i-height-xxs: 15px;
+/** @desc 25 **/
+$i-height-xs: 25px;
 /** @desc 30 **/
-$i-height-xxs: 30rpx;
+$i-height-s: 30px;
+/** @desc 40 **/
+$i-height-m: 40px;
 /** @desc 50 **/
-$i-height-xs: 50rpx;
+$i-height-l: 50px;
 /** @desc 60 **/
-$i-height-s: 60rpx;
-/** @desc 80 **/
-$i-height-m: 80rpx;
-/** @desc 100 **/
-$i-height-l: 100rpx;
-/** @desc 120 **/
-$i-height-xl: 120rpx;
-/** @desc 140 **/
-$i-height-xxl: 140rpx;
+$i-height-xl: 60px;
+/** @desc 70 **/
+$i-height-xxl: 70px;
 /** @desc 100vh **/
 $i-height-full: 100vh;
 
+/** @desc 25 **/
+$i-width-xxs: 25px;
+/** @desc 35 **/
+$i-width-xs: 35px;
+/** @desc 40 **/
+$i-width-s: 40px;
 /** @desc 50 **/
-$i-width-xxs: 50rpx;
-/** @desc 70 **/
-$i-width-xs: 70rpx;
-/** @desc 80 **/
-$i-width-s: 80rpx;
-/** @desc 100 **/
-$i-width-m: 100rpx;
+$i-width-m: 50px;
+/** @desc 60 **/
+$i-width-l: 60px;
 /** @desc 120 **/
-$i-width-l: 120rpx;
+$i-width-xl: 120px;
+/** @desc 180 **/
+$i-width-xxl: 180px;
 /** @desc 240 **/
-$i-width-xl: 240rpx;
-/** @desc 375 **/
-$i-width-xxl: 375rpx;
-/** @desc 480 **/
-$i-width-xxxl: 480rpx;
-/** @desc 690 **/
-$i-width-xxxxl: 690rpx;
+$i-width-xxxl: 240px;
+/** @desc 690vw **/
+$i-width-xxxxl: calc(100vw - 30px);
 /** @desc 710 **/
-$i-width-xxxxxl: 710rpx;
+$i-width-xxxxxl: calc(100vw - 20px);
 /** @desc 750 **/
 $i-width-full: 100vw;
 
@@ -185,9 +185,8 @@ $i-index-xxl: 10000;
 }
 
 /** @desc Position style **/
-@mixin position($top, $right, $bottom, $left, $position: fixed, $index) {
+@mixin position($position: fixed, $top, $right, $bottom, $left, $index) {
 	position: $position;
-	z-index: $index;
 	@if $right {
 		right: $right;
 	}
@@ -208,7 +207,9 @@ $i-index-xxl: 10000;
 
 /** @desc Flex **/
 @mixin flex($direction: row, $justify: flex-start, $align: flex-start) {
+	/* #ifndef APP-NVUE */
 	display: flex;
+	/* #endif */
 	flex-direction: $direction;
 	justify-content: $justify;
 	align-items: $align;
@@ -216,7 +217,9 @@ $i-index-xxl: 10000;
 
 /** @desc Flex center **/
 @mixin center($direction: row) {
+	/* #ifndef APP-NVUE */
 	display: flex;
+	/* #endif */
 	justify-content: center;
 	align-items: center;
 	flex-direction: $direction;
@@ -224,7 +227,9 @@ $i-index-xxl: 10000;
 
 /** @desc Flex row center **/
 @mixin verCenter($direction: row) {
+	/* #ifndef APP-NVUE */
 	display: flex;
+	/* #endif */
 	align-items: center;
 	flex-direction: $direction;
 	justify-content: flex-start;
@@ -232,7 +237,9 @@ $i-index-xxl: 10000;
 
 /** @desc Flex column center **/
 @mixin horCenter($direction: row) {
+	/* #ifndef APP-NVUE */
 	display: flex;
+	/* #endif */
 	justify-content: center;
 	align-items: flex-start;
 	flex-direction: $direction;
@@ -240,7 +247,7 @@ $i-index-xxl: 10000;
 
 
 /** @desc Flex center **/
-@mixin abscenter($index: 1) {
+@mixin absCenter($index: 1) {
 	position: absolute;
 	left: 50%;
 	top: 50%;

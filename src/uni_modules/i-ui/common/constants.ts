@@ -1,4 +1,8 @@
+/** @desc light 模式标识， 用来判断是否时约定的 light **/
 export const LIGHT_MODE_ID = "light";
+/** @desc Theme mode : light | dark  **/
+export const DEFAULT_THEME_MODE = "light";
+/** @desc 内置的主题生成集合 SeedMap[] **/
 export const THEME_LIST = [
     {"colorPrimary": "#16AD90", id: "gg"},
     {"colorPrimary": "#1677ff", id: "blue"},
@@ -13,12 +17,14 @@ export const THEME_LIST = [
     {"colorPrimary": "#FC6572", id: "pink"},
     {"colorPrimary": "#818181", id: "gray"}
 ];
+/** @desc 内置的主题生成集合的每项的类型，实际类型本应该是 SeedMap， 这里做了简化， 只对 colorPrimary 进行了自定义 **/
 export type THEME_LIST_TYPE = (typeof THEME_LIST)[number];
+/** @desc 内置的 primary颜色集合 string[] **/
 export const THEME_COLOR_LIST = THEME_LIST.map(theme => theme.colorPrimary);
+/** @desc 内置的primary颜色 **/
 export type THEME_COLOR_TYPE = (typeof THEME_COLOR_LIST)[number];
 
-export const UNIT = "rpx";
-
+/** @desc 结果状态类型 **/
 export type ResultStatus = "success" | "error" | "warning" | "info" | "E404" | "E403" | "E500";
 /** @desc 页面级的状态分类 ：正常页面 | 无数据页面 ｜ 错误页 ｜ 成功页 ｜ 警告 ｜ 信息页 ｜ 403 ｜ 404 ｜ 500 **/
 export type PageStatus = ResultStatus | "default" | "empty";
@@ -38,14 +44,15 @@ export const CLOSE_EVENT = "close";
 export const OPEN_EVENT = "open";
 export const CUSTOM_EVENT = "custom";
 
+/** @desc Label 通用Key **/
 export const LABEL_KEY = "label";
+/** @desc Value 通用Key **/
 export const VALUE_KEY = "value";
+/** @desc 子集合 通用Key **/
 export const CHILDREN_KEY = "children";
 
 /** @desc Common border width : 2  **/
 export const BORDER_WIDTH: number = 2;
-/** @desc Theme mode : light | dark  **/
-export const DEFAULT_THEME_MODE = "light";
 /** @desc 枚举 尺寸集合 ： "mini", "small", "normal", "big", "large"  **/
 export const ENUM_SIZE_LIST = ["mini", "small", "normal", "big", "large"] as const;
 /** @desc 枚举 尺寸类型 ： "mini" ｜ "small" ｜ "normal" ｜ "big" ｜ "large"  **/

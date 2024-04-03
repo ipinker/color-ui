@@ -55,7 +55,7 @@
 		"@dcloudio/uni-quickapp-webview": "3.0.0-alpha-3081120230719001",
 		"echarts": "^5.4.3",
 		"ipink-theme": "^0.0.23",
-        "ipink-util": "^1.0.6",
+        "ipink-util": "^1.0.9",
 		"pinia": "2.0.32",
 		"pinia-plugin-persistedstate": "^3.2.1",
 		"uuid": "^8.3.2",

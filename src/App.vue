@@ -10,6 +10,7 @@
 	import { onLaunch, onShow, onHide, onBackPress } from "@dcloudio/uni-app";
     import { useGlobalStore } from "@/store/global";
     const globalStore = useGlobalStore();
+
 	onLaunch(() => {
         const sysInfo: UniApp.GetSystemInfoResult = uni.getSystemInfoSync();
         globalStore.changeSystem(sysInfo);
