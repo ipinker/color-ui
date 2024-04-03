@@ -7,6 +7,7 @@
                 <slot name="operate"/>
             </template>
         </UINavigationBar>
+        <view class="StatusBarRelative" v-if="!title && nav"></view>
         <slot />
         <UILoading :color="colorForMask" size="60rpx" :type="loadingType" useMask v-if="isLoading"/>
     </div>
@@ -33,8 +34,14 @@ page,
     width: 100vw;
     max-width: 100vw;
     overflow-x: hidden;
-    min-height: 100vh;
+    min-height: calc(100vh - var(--window-bottom));
     background-color: v-bind(pageColor);
     color: v-bind(textColor);
+}
+.StatusBarRelative {
+    height: var(--status-bar-height);
+}
+.TabBarRelative {
+    height: var(--window-bottom);
 }
 </style>

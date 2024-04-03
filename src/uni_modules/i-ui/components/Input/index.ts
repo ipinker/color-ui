@@ -1,3 +1,3 @@
 import Input from "./index.vue";
 
-export const InputComponent = Input;
+export type InputComponentType = typeof Input;
