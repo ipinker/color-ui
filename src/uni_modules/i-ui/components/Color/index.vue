@@ -106,7 +106,7 @@ import { Numberify, RGBA, TinyColor, HSLA, HSVA } from "@ctrl/tinycolor"
 import { genColorInfo, genPx } from "../../common/style"
 import { CANCEL_EVENT, CONFIRM_EVENT, UPDATE_MODEL_EVENT } from "../../common/constants";
 import { Ref, StyleValue, WritableComputedRef } from "vue";
-import { ColorInfo, ColorInfoKey } from "../../index"
+import { ColorInfo, ColorInfoKey } from "../../index.d"
 import { colorProps, ColorPropsType } from "./color"
 import UIButton from "../Button/index.vue"
 import EditableInput from './components/EditableInput.vue'

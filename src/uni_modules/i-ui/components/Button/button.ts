@@ -43,10 +43,7 @@ export const buttonProps = {
     /**
      * @description 圆角
      */
-    radius: {
-        type: String,
-        default: ""
-    },
+    radius: String,
     /**
      * @description 按钮的类型 ButtonTypes
      */

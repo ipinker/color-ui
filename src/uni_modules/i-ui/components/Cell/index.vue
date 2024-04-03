@@ -1,45 +1,28 @@
 <template>
-    <div class="INavigatorItem flex flex-align-center" @click="handleNavigate">
+    <div class="INavigatorItem flex flex-align-center" :style="[styleOption]" @click="handleNavigate">
         <div class="INavigatorItemIcon" v-if="icon">
             <img class="img" :src="icon" v-if="icon.indexOf('/') > -1"/>
             <UIIcon :color="primaryColor" :icon="arrow" size="40" v-else/>
         </div>
-        <div class="INavigatorItemLabel">{{label}}</div>
+        <div class="INavigatorItemLabel" v-if="label">{{label}}</div>
+        <template v-else>
+            <slot />
+        </template>
         <IIcon class="INavigatorItemIcon margin-r0" :color="primaryColor" :icon="arrow" size="32"/>
     </div>
 </template>
 
 <script lang="ts" setup>
-import { PropType, StyleValue, computed, ref } from "vue"
+import { PropType, computed } from "vue"
 import { mapStores } from "pinia";
 import { useThemeStore } from "../../theme";
-import {NavigateType} from "../../common/constants";
+import {CLICK_EVENT, NavigateType} from "../../common/constants";
 import { genColorString } from "../../common/style";
+import { cellProps , CellPropsType } from "./cell"
 import UIIcon from "../Icon/index.vue"
 
-const props = defineProps({
-    icon: String,
-    iconStyle: Object,
-    label: {
-        type: String,
-        required: true
-    },
-    url: {
-        type: String,
-        required: true
-    },
-    type: {
-        type: String as PropType<NavigateType>,
-        default: "navigateTo"
-    },
-    arrow: {
-        type: String,
-        default: "forward-new"
-    },
-    arrowColor: {
-        type: String
-    }
-});
+const props: CellPropsType = defineProps(cellProps);
+const emits = defineEmits([CLICK_EVENT]);
 const store = mapStores(useThemeStore).themeStoreStore();
 const containerColor = computed(() => store.theme?.colorBgContainer);
 const activeColor = computed(() => genColorString(store.theme?.colorInfo as string, 0.15));
@@ -52,6 +35,7 @@ const handleNavigate = () => {
             url: props.url
         })
     }
+    emits(CLICK_EVENT);
 }
 </script>
 

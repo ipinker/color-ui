@@ -54,7 +54,7 @@ import {CHANGE_EVENT} from "../../../common/constants";
 import { useStyle } from "../../../hooks/useStyle";
 import { Numberify, HSLA, HSVA, RGBA } from "@ctrl/tinycolor"
 import {ComputedRef, PropType} from "vue";
-import {ColorInfo} from "../../../index"
+import {ColorInfo} from "../../../index.d"
 
 // #ifndef MP-WEIXIN
 const saturationWxs : any = {}

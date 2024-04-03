@@ -75,13 +75,20 @@ const themeStoreOptions: Omit<DefineStoreOptions<ThemeStoreId, ThemeStoreState, 
             if (!theme) theme = this.themeList.find((theme) => theme.id === `${id}-${this.modeId === "light" ? "light" : "dark"}`)
             return theme;
         },
-        add(seed: SeedOption) {
-            return this.addList([seed]);
+        add(seed: SeedOption, dir?: "push" | "unshift" | undefined) {
+            return this.addList([seed], dir);
         },
-        addList(seedList: SeedOption[]) {
+        addList(seedList: SeedOption[], dir?: "push" | "unshift" | undefined) {
+            type SeedKeyType = keyof SeedOption
+            (seedList || []).forEach((item: SeedOption) => {
+                Object.keys(item).forEach((key) => {
+                    if(!item[key as unknown as SeedKeyType]) delete item[key as unknown as SeedKeyType];
+                })
+            })
             const newList: ColorToken[] = createThemeList({ themeList: seedList, useDark: true }) || [];
-            if(!newList.length) return -1
-            this.themeList = this.themeList.concat(newList);
+            if(!newList.length) return -1;
+            if(dir == "unshift") this.themeList = newList.concat(this.themeList)
+            else this.themeList = this.themeList.concat(newList);
             return 1
         },
         del(id: string) {

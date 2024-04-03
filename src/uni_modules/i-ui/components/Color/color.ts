@@ -1,4 +1,4 @@
-import {ColorInfo} from "../../index";
+import {ColorInfo} from "../../index.d";
 import {ExtractPropTypes, PropType} from "vue";
 
 export const colorProps = {

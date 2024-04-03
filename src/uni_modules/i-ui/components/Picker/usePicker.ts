@@ -2,7 +2,7 @@ import { PickerPropsType, PickerValueType } from "./picker";
 import { PopupRefType } from "../Popup/popup";
 import { isArray, isNumber, isObject, isString } from "ipink-util";
 import { CHILDREN_KEY } from "../../common/constants";
-import { StrNum, OptionsKeyType, AnyMap } from "../../index"
+import { StrNum, OptionsKeyType, AnyMap } from "../../index.d"
 
 export function usePicker (props: PickerPropsType) {
 

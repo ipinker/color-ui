@@ -18,7 +18,7 @@
 </template>
 <script lang="ts" setup>
 import { mapStores } from "pinia";
-import { CheckType } from "../../index"
+import { CheckType } from "../../index.d"
 import { ComputedRef, StyleValue, nextTick, ref, computed } from "vue";
 import { useThemeStore } from "../../theme";
 import { radioProps, RadioPropsType } from "./radio";

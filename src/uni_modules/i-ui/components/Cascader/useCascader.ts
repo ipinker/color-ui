@@ -1,6 +1,6 @@
 import { Ref, ref, toRefs } from "vue"
 import { PopupRefType } from "../Popup/popup";
-import { AnyMap } from "../../index"
+import { AnyMap } from "../../index.d"
 export function useCascader () {
     const cascaderRef: Ref<PopupRefType | null> = ref(null);
     let currentSelect: Ref<AnyMap | any> = ref(null),

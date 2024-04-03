@@ -140,7 +140,7 @@
 
 <script lang="ts" setup>
 import {CHANGE_EVENT} from "../../../common/constants";
-import {ColorInfo} from "../../../index"
+import {ColorInfo} from "../../../index.d"
 import { Numberify, HSLA, RGBA } from "@ctrl/tinycolor"
 import {ComputedRef, PropType} from "vue";
 

@@ -1,6 +1,6 @@
 import {ExtractPropTypes, PropType} from "vue";
 import {CLICK_EVENT} from "../../common/constants";
-import {SeedKey} from "../../index";
+import {SeedKey} from "../../index.d";
 import type {IconEnum} from "./static/liveicon"
 
 export const iconProps = {

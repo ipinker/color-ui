@@ -1,5 +1,5 @@
 import { ExtractPropTypes, PropType } from "vue"
-import { AnyMap, OptionsKeyType } from "../../index"
+import { AnyMap, OptionsKeyType } from "../../index.d"
 
 export type ItemOptionType = {
     /** @desc 下一步按钮名称 **/

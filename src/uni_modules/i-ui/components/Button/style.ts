@@ -1,7 +1,8 @@
 import {
     SIZE_LIST, SizeType,
     RadiusType, RADIUS_LIST,
-    Animation, ANIMATION_LIST
+    Animation, ANIMATION_LIST,
+    DEFAULT_STYLE
 } from "../../common/constants";
 import type { ExtractPropTypes } from 'vue';
 import type {ButtonPropsType} from "./button";
@@ -44,7 +45,7 @@ export const genButtonSizeStyle = (props: ExtractPropTypes<ButtonPropsType>): Si
  * @description 根据按钮的圆角 <radius> 生成指定的 class 集合
  */
 
-export const genButtonRadiusStyle = (radius: string | number = 0): RadiusStyle => {
+export const genButtonRadiusStyle = (radius: string | number = DEFAULT_STYLE.radius): RadiusStyle => {
     return RADIUS_LIST.includes(("" + radius) as RadiusType) ? {} : genRadius(radius);
 };
 
