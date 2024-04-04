@@ -25,7 +25,7 @@ const handleClick = () => {
     position: relative;
     display: inline-block;
     width: 100%;
-    padding: 20rpx 0 15rpx;
+    padding: 10px 0 8px;
     line-height: $i-line-m;
     font-size: $i-font-m;
 }

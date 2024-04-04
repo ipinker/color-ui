@@ -48,7 +48,11 @@
                 { "path" : "calendar", "style" : { "navigationBarTitleText": "Calendar（日历）"  } },
                 { "path" : "select", "style" : { "navigationBarTitleText": "Select（选择器）"  } },
                 { "path" : "theme", "style" : { "navigationBarTitleText": "Theme (主题)"  } },
-                { "path" : "webview", "style" : { "navigationBarTitleText": "WebView"  } }
+                { "path" : "webview", "style" : { "navigationBarTitleText": "WebView"  } },
+                { "path" : "form", "style" : { "navigationBarTitleText": "Form （表单）"  } },
+                { "path" : "drawer", "style" : { "navigationBarTitleText": "Drawer （抽屉）"  } },
+                { "path" : "sheet", "style" : { "navigationBarTitleText": "Sheet（操作菜单）"  } },
+                { "path" : "tip", "style" : { "navigationBarTitleText": "Tip（提示）"  } }
 
 			]
 		}

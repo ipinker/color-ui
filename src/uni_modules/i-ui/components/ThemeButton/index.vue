@@ -10,6 +10,7 @@ import { mapStores } from "pinia";
 import {useThemeStore} from "../../theme"
 import {DEFAULT_THEME_MODE} from "../../common/constants"
 import UIIcon from "../Icon/index.vue"
+import { genPx, genSize } from "../../common/style";
 
 const props = defineProps({
     size: {
@@ -20,10 +21,10 @@ const props = defineProps({
 
 const useStore = mapStores(useThemeStore).themeStoreStore();
 const isLight = computed(() => useStore.$state.modeId == DEFAULT_THEME_MODE);
-const [width, height=width] = props.size.split(",");
+const{ width, height=width } = genSize(props.size);
 const themeStyle = {
-    width: width + 'rpx',
-    height: height + 'rpx'
+    width: width,
+    height: height
 }
 const changeTheme = () => useStore.changeMode();
 </script>

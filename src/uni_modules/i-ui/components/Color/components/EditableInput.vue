@@ -67,7 +67,7 @@ const handleUpdate = (e: any) => {
 };
 </script>
 
-<style>
+<style lang="scss" scoped>
 	.IEditableInput {
 		position: relative;
 	}
@@ -76,11 +76,11 @@ const handleUpdate = (e: any) => {
 		padding: 0;
 		border: 0;
 		outline: none;
-		font-size: 20rpx;
+		font-size: $i-font-xxxs;
 	}
 
 	.IInput__label {
-		font-size: 20rpx;
+		font-size: $i-font-xxxs;
 		text-transform: capitalize;
 	}
 </style>

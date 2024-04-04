@@ -291,14 +291,14 @@ const handleMouseUp = (e: any) => {
 </script>
 
 
-<style>
+<style lang="scss" scoped>
 	.i-hue {
 		position: absolute;
-		top: 0rpx;
-		right: 0rpx;
-		bottom: 0rpx;
-		left: 0rpx;
-		border-radius: 4rpx;
+		top: 0;
+		right: 0;
+		bottom: 0;
+		left: 0;
+		border-radius: 2px;
 	}
 
 	.i-hue--horizontal {
@@ -311,7 +311,7 @@ const handleMouseUp = (e: any) => {
 
 	.i-hue-container {
 		cursor: pointer;
-		margin: 0 4rpx;
+		margin: 0 2px;
 		position: relative;
 		height: 100%;
 	}
@@ -323,12 +323,12 @@ const handleMouseUp = (e: any) => {
 
 	.i-hue-picker {
 		cursor: pointer;
-		margin-top: 2rpx;
-		width: 8rpx;
-		border-radius: 2rpx;
-		height: 16rpx;
-		box-shadow: 0 0 4rpx rgba(0, 0, 0, .6);
+		margin-top: 1px;
+		width: 4px;
+		border-radius: 1px;
+		height: 8px;
+		box-shadow: 0 0 2px rgba(0, 0, 0, .6);
 		background: #fff;
-		transform: translateX(-4rpx);
+		transform: translateX(-2px);
 	}
 </style>

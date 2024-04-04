@@ -119,8 +119,8 @@ defineExpose({
 
             &.IRadioActive {
                  &::after {
-                     width: 12rpx;
-                     height: 12rpx;
+                     width: 6px;
+                     height: 6px;
                  }
             }
             &:active {

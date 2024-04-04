@@ -43,9 +43,9 @@ const warningColor = computed(() => store.theme?.colorWarningText);
 
 <style lang="scss">
 .IResultContainer {
-    padding: 80rpx 24rpx 50rpx;
+    padding: 40px 12px 24px;
     .IResultIcon {
-        font-size: 140rpx;
+        font-size: 70px;
         color: v-bind(errorColor);
         &.success {
             color: v-bind(successColor);
@@ -61,18 +61,18 @@ const warningColor = computed(() => store.theme?.colorWarningText);
         }
     }
     .IResultTitle {
-        margin-top: 48rpx;
+        margin-top: 24px;
         font-size: $i-font-xxxl;
         font-weight: $i-weight-l;
     }
     .IResultDesc {
-        margin-top: 16rpx;
+        margin-top: 8px;
         font-size: $i-font-xs;
         color: v-bind(infoDesc);
     }
     .IResultBtn {
         width: 100%;
-        margin-top: 48rpx;
+        margin-top: 24px;
         .IResultBtnItem {
             margin: 0;
             margin-left: $i-margin-m;

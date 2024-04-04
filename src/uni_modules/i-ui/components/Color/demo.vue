@@ -24,7 +24,7 @@
 				</view>
 			</view>
 		</view>
-		<view class="wrapper-content">
+		<view class="wrapper-content row">
 			<view class="wrapper-content-chrome">
 				<ZColorPicker v-model="colors" showButton/>
 			</view>
@@ -62,7 +62,6 @@
 
 		.wrapper-content {
 			padding: 30rpx 0;
-			display: flex;
 			flex-direction: column;
 			align-items: center;
 
@@ -82,7 +81,7 @@
 			padding: 50rpx;
 
 			@media only screen and (min-width: 760rpx) {
-				display: flex;
+                @include flex;
 				justify-content: center;
 			}
 
@@ -90,7 +89,7 @@
 				font-size: 186rpx;
 				font-weight: bold;
 				font-family: '851';
-				display: flex;
+                @include flex;
 				align-items: center;
 				letter-spacing: 20rpx;
 				position: relative;

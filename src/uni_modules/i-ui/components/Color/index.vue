@@ -1,36 +1,36 @@
 <template>
-	<div role="application" aria-label="ColorPicker color picker"
-		:class="['i-color', disableAlpha ? 'i-color__disable-alpha' : '']"
+	<div role="application" aria-label="ColorPicker color picker" class="IColorContainer"
+		:class="[ disableAlpha ? 'IColor__disable-alpha' : '']"
 		:style="[containerStyle]"
         v-if="colors.rgb"
 	>
-		<div class="i-color-saturation-wrap">
+		<div class="IColor-saturation-wrap">
 			<Saturation v-model="colors" :navbarHeight="navbarHeight" @change="childChange"></Saturation>
 		</div>
-		<div class="i-color-body">
-			<div class="i-color-controls">
-				<div class="i-color-color-wrap">
-					<div :aria-label="`current color is ${colors.hex}`" class="i-color-active-color"
+		<div class="IColor-body">
+			<div class="IColor-controls row">
+				<div class="IColor-color-wrap">
+					<div :aria-label="`current color is ${colors.hex}`" class="IColor-active-color"
 						:style="[activeColor]"></div>
 					<CheckBoard v-if="!disableAlpha"
-						:custom-style="{width: '60rpx',height: '60rpx',borderRadius: '30rpx',backgroundSize: 'auto'}">
+						:custom-style="{width: '30px',height: '30px',borderRadius: '15px',backgroundSize: 'auto'}">
 					</CheckBoard>
 				</div>
 
-				<div class="i-color-sliders">
-					<div class="i-color-hue-wrap">
+				<div class="IColor-sliders">
+					<div class="IColor-hue-wrap">
 						<Hue v-model="colors" @change="childChange"></Hue>
 					</div>
-					<div class="i-color-alpha-wrap" v-if="!disableAlpha">
+					<div class="IColor-alpha-wrap" v-if="!disableAlpha">
 						<Alpha v-model="colors" @change="childChange"></Alpha>
 					</div>
 				</div>
 			</div>
 
-			<div class="i-color-fields-wrap" v-if="!disableFields">
-				<div class="i-color-fields" v-show="fieldsIndex === 0">
+			<div class="IColor-fields-wrap row" v-if="!disableFields">
+				<div class="IColor-fields" v-show="fieldsIndex === 0">
 					<!-- hex -->
-					<div class="i-color-field">
+					<div class="IColor-field">
 						<EditableInput v-if="!hasAlpha" :input-content-style="inputContentStyle"
 							:input-label-style="inputLabelStyle" label="hex" :value="colors.hex" @change="inputChange">
 						</EditableInput>
@@ -39,59 +39,59 @@
 						</EditableInput>
 					</div>
 				</div>
-				<div class="i-color-fields" v-show="fieldsIndex === 1">
+				<div class="IColor-fields row" v-show="fieldsIndex === 1">
 					<!-- rgba -->
-					<div class="i-color-field">
+					<div class="IColor-field">
 						<EditableInput label="r" :input-content-style="inputContentStyle" :input-label-style="inputLabelStyle"
 							:value="colors.rgba && colors.rgba.r || ''" @change="inputChange"></EditableInput>
 					</div>
-					<div class="i-color-field">
+					<div class="IColor-field">
 						<EditableInput label="g" :input-content-style="inputContentStyle" :input-label-style="inputLabelStyle"
 							:value="colors.rgba && colors.rgba.g || ''" @change="inputChange"></EditableInput>
 					</div>
-					<div class="i-color-field">
+					<div class="IColor-field">
 						<EditableInput label="b" :input-content-style="inputContentStyle" :input-label-style="inputLabelStyle"
 							:value="colors.rgba && colors.rgba.b || ''" @change="inputChange"></EditableInput>
 					</div>
-					<div class="i-color-field" v-if="!disableAlpha">
+					<div class="IColor-field" v-if="!disableAlpha">
 						<EditableInput label="a" :input-content-style="inputContentStyle" :input-label-style="inputLabelStyle"
 							:value="colors.a" :arrow-offset="0.01" :max="1" @change="inputChange"></EditableInput>
 					</div>
 				</div>
-				<div class="i-color-fields" v-show="fieldsIndex === 2">
+				<div class="IColor-fields" v-show="fieldsIndex === 2">
 					<!-- hsla -->
-					<div class="i-color-field">
+					<div class="IColor-field">
 						<EditableInput label="h" :input-content-style="inputContentStyle" :input-label-style="inputLabelStyle"
 							:value="hsl.h" @change="inputChange">
 						</EditableInput>
 					</div>
-					<div class="i-color-field">
+					<div class="IColor-field">
 						<EditableInput label="s" :input-content-style="inputContentStyle" :input-label-style="inputLabelStyle"
 							:value="hsl.s" @change="inputChange">
 						</EditableInput>
 					</div>
-					<div class="i-color-field">
+					<div class="IColor-field">
 						<EditableInput label="l" :input-content-style="inputContentStyle" :input-label-style="inputLabelStyle"
 							:value="hsl.l" @change="inputChange">
 						</EditableInput>
 					</div>
-					<div class="i-color-field" v-if="!disableAlpha">
+					<div class="IColor-field" v-if="!disableAlpha">
 						<EditableInput label="a" :input-content-style="inputContentStyle" :input-label-style="inputLabelStyle"
 							:value="colors.a" :arrow-offset="0.01" :max="1" @change="inputChange"></EditableInput>
 					</div>
 				</div>
-				<div class="i-color-toggle-btn" role="button" aria-label="Change another color definition"
+				<div class="IColor-toggle-btn" role="button" aria-label="Change another color definition"
 					@click="toggleViews">
-					<div class="i-color-toggle-icon">
-						<div class="i-color-arrow i-color-arrow-up"></div>
-						<div class="i-color-arrow i-color-arrow-down"></div>
+					<div class="IColor-toggle-icon">
+						<div class="IColor-arrow IColor-arrow-up"></div>
+						<div class="IColor-arrow IColor-arrow-down"></div>
 					</div>
-					<div class="i-color-toggle-icon-highlight" v-show="highlight"></div>
+					<div class="IColor-toggle-icon-highlight" v-show="highlight"></div>
 				</div>
 			</div>
 		</div>
 		<slot name="bottom"></slot>
-		<div class="i-color-button flex-center" v-if="showButton">
+		<div class="IColor-button flex-center" v-if="showButton">
 			<UIButton class="button-left" @click="cancel">
 				取消
 			</UIButton>
@@ -138,10 +138,10 @@ const colors: WritableComputedRef<ColorInfo> = computed({
 })
 
 const widthNumber = computed(() => {
-    return genPx(props.width)
+    return props.width && genPx(props.width) || ""
 })
 const heightNumber = computed(() => {
-    return genPx(props.height)
+    return props.height && genPx(props.height) || ""
 })
 const containerStyle = computed(() => {
     const obj: StyleValue = {};
@@ -151,13 +151,13 @@ const containerStyle = computed(() => {
 })
 const inputContentStyle = computed(() => {
     return {
-        fontSize: '22rpx',
+        fontSize: '11px',
         color: '#333',
         width: '100%',
-        borderRadius: '4rpx',
+        borderRadius: '2px',
         border: 'none',
-        boxShadow: 'inset 0 0 0 2rpx #dadada',
-        height: '42rpx',
+        boxShadow: 'inset 0 0 0 1px #dadada',
+        height: '21px',
         textAlign: 'center'
     }
 })
@@ -165,12 +165,12 @@ const inputContentStyle = computed(() => {
 const inputLabelStyle = computed(() => {
     return {
         textTransform: 'uppercase',
-        fontSize: '22rpx',
-        lineHeight: '22rpx',
+        fontSize: '11px',
+        lineHeight: '11px',
         color: '#969696',
         textAlign: 'center',
         display: 'block',
-        marginTop: '24rpx'
+        marginTop: '12px'
     }
 })
 const hsl = computed(() => {
@@ -290,171 +290,165 @@ function isTransparent(color: any) {
 </script>
 
 
-<style>
-	.i-color {
-		border-radius: 4rpx;
+<style lang="scss" scoped>
+	.IColorContainer {
+		border-radius: 2px;
 		box-sizing: initial;
-		width: 480rpx;
+		width: 240px;
 		font-family: Menlo;
 		background-color: #fff;
 	}
 
-	.i-color-controls {
-		display: flex;
+	.IColor-controls {
 	}
 
-	.i-color-color-wrap {
+	.IColor-color-wrap {
 		position: relative;
-		width: 72rpx;
+		width: 36px;
 	}
 
-	.i-color-active-color {
+	.IColor-active-color {
 		position: relative;
-		width: 60rpx;
-		height: 60rpx;
-		border-radius: 30rpx;
+		width: 30px;
+		height: 30px;
+		border-radius: 15px;
 		overflow: hidden;
 		z-index: 1;
 	}
 
-	.i-color-sliders {
+	.IColor-sliders {
 		flex: 1;
 	}
 
-	.i-color-fields-wrap {
-		display: flex;
-		padding-top: 32rpx;
+	.IColor-fields-wrap {
+		padding-top: 16px;
 	}
 
-	.i-color-fields {
-		display: flex;
-		margin-left: -12rpx;
+	.IColor-fields {
+		margin-left: -6px;
 		flex: 1;
 	}
 
-	.i-color-field {
-		padding-left: 12rpx;
+	.IColor-field {
+		padding-left: 6px;
 		width: 100%;
 	}
 
-	.i-color-toggle-btn {
-		width: 64rpx;
+	.IColor-toggle-btn {
+		width: 32px;
 		text-align: right;
 		position: relative;
 	}
 
-	.i-color-toggle-icon {
-		margin-left: 28rpx;
-		margin-top: 24rpx;
+	.IColor-toggle-icon {
+		margin-left: 14px;
+		margin-top: 12px;
 		position: relative;
 		z-index: 2;
 	}
 
-	.i-color-toggle-icon-highlight {
+	.IColor-toggle-icon-highlight {
 		position: absolute;
-		width: 48rpx;
-		height: 56rpx;
+		width: 24px;
+		height: 28px;
 		background: #eee;
-		border-radius: 8rpx;
-		top: 20rpx;
-		left: 24rpx;
+		border-radius:4px;
+		top: 10px;
+		left: 12px;
 	}
 
-	.i-color-arrow {
-		border: 2rpx solid black;
-		border-width: 0rpx 2rpx 2rpx 0rpx;
-		height: 12rpx;
-		width: 12rpx;
+	.IColor-arrow {
+		border: 1px solid black;
+		border-width: 0 1px 1px 0;
+		height: 6px;
+		width: 6px;
 	}
 
-	.i-color-arrow-down {
+	.IColor-arrow-down {
 		transform: rotate(45deg);
 	}
 
-	.i-color-arrow-up {
+	.IColor-arrow-up {
 		transform: rotate(-135deg);
 	}
 
-	.i-color-hue-wrap {
+	.IColor-hue-wrap {
 		position: relative;
-		height: 20rpx;
-		margin-bottom: 16rpx;
+		height: 10px;
+		margin-bottom: 8px;
 	}
 
-	.i-color-alpha-wrap {
+	.IColor-alpha-wrap {
 		position: relative;
-		height: 20rpx;
+		height: 10px;
 	}
 
-	.i-color-hue-wrap .i-hue {
-		border-radius: 4rpx;
+	.IColor-hue-wrap .i-hue {
+		border-radius: 2px;
 	}
 
-	.i-color-alpha-wrap .i-alpha-gradient {
-		border-radius: 4rpx;
+	.IColor-alpha-wrap .i-alpha-gradient {
+		border-radius: 2px;
 	}
 
-	.i-color-hue-wrap .i-hue-picker,
-	.i-color-alpha-wrap .i-alpha-picker {
-		width: 24rpx;
-		height: 24rpx;
-		border-radius: 12rpx;
-		transform: translate(-12rpx, -4rpx);
+	.IColor-hue-wrap .i-hue-picker,
+	.IColor-alpha-wrap .i-alpha-picker {
+		width: 12px;
+		height: 12px;
+		border-radius: 6px;
+		transform: translate(-6px, -2px);
 		background-color: rgb(248, 248, 248);
-		box-shadow: 0 2rpx 8rpx 0 rgba(0, 0, 0, 0.37);
+		box-shadow: 0 1px 4px 0 rgba(0, 0, 0, 0.37);
 	}
 
-	.i-color-body {
-		padding: 32rpx 32rpx 24rpx;
+	.IColor-body {
+		padding: 16px 16px 12px;
 		background-color: #fff;
 	}
 
-	.i-color-saturation-wrap {
+	.IColor-saturation-wrap {
 		width: 100%;
 		padding-bottom: 55%;
 		position: relative;
-		border-radius: 4rpx 4rpx 0 0;
+		border-radius: 2px 2px 0 0;
 		overflow: hidden;
 	}
 
-	.i-color-saturation-wrap .i-saturation-circle {
-		width: 24rpx;
-		height: 24rpx;
+	.IColor-saturation-wrap .i-saturation-circle {
+		width: 12px;
+		height: 12px;
 	}
 
-	.i-color__disable-alpha .i-color-active-color {
-		width: 36rpx;
-		height: 36rpx;
+	.IColor__disable-alpha .IColor-active-color {
+		width: 18px;
+		height: 18px;
 	}
 
-	.i-color__disable-alpha .i-color-color-wrap {
-		width: 60rpx;
+	.IColor__disable-alpha .IColor-color-wrap {
+		width: 30px;
 	}
 
-	.i-color__disable-alpha .i-color-hue-wrap {
-		margin-top: 8rpx;
-		margin-bottom: 8rpx;
+	.IColor__disable-alpha .IColor-hue-wrap {
+		margin-top: 4px;
+		margin-bottom:4px;
 	}
 
-	.i-color-button {
-		display: flex;
-		align-items: center;
-		justify-content: flex-end;
-		padding: 30rpx;
+	.IColor-button {
+		padding: 15px;
 	}
 
 	.button-left {
 		margin: 0;
-		font-size: 24rpx;
-		padding: 0 20rpx;
-		line-height: 44rpx;
+		font-size: $i-font-xxs;
+		padding: 0 $i-padding-s;
+		line-height: $i-line-xl;
 	}
 
 	.button-right {
 		margin: 0;
-		margin-left: 20rpx;
-		font-size: 24rpx;
-		padding: 0 20rpx;
-		line-height: 44rpx;
+		margin-left: $i-margin-s;
+		font-size: $i-font-xxs;
+		padding: 0 $i-padding-s;
+		line-height: $i-line-xl;
 	}
 </style>

@@ -9,7 +9,7 @@
             Title card content
         </ICard>
 
-        <ICard title="Props" width="600">
+        <ICard title="Props width=600" width="600">
             <ITitle>title { string }</ITitle>
             <ITitle>width { string | number }</ITitle>
             <ITitle>height { string | number }</ITitle>

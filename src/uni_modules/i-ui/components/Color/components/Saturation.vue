@@ -211,11 +211,11 @@ const handleMouseUp = (e: any) => {
 
 	.i-saturation-circle {
 		cursor: head;
-		width: 8rpx;
-		height: 8rpx;
-		box-shadow: 0 0 0 3rpx #fff, inset 0 0 2rpx 2rpx rgba(0, 0, 0, .3), 0 0 2rpx 4rpx rgba(0, 0, 0, .4);
+		width: 4px;
+		height: 4px;
+		box-shadow: 0 0 0 1.5px #fff, inset 0 0 1px 1px rgba(0, 0, 0, .3), 0 0 1px 2px rgba(0, 0, 0, .4);
 		border-radius: 50%;
-		transform: translate(-4rpx, -4rpx);
+		transform: translate(-2px, -2px);
 	}
 </style>
 ../../../common/style.js../../../common/constants.js../../../hooks/useStyle.js

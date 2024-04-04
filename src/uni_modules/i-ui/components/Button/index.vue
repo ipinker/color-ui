@@ -207,9 +207,9 @@ defineExpose({
         //  Button`s size
         &.button-size-s,
         &.button-size-small {
-            min-width: 150rpx;
-            height: 48rpx;
-            padding: 0 14rpx;
+            min-width: 75px;
+            height: 24px;
+            padding: 0 7px;
             .LiveIcon,
             .iconfont {
                 font-size: $i-font-xxs;
@@ -218,15 +218,15 @@ defineExpose({
         &.button-size-,
         &.button-size-m,
         &.button-size-normal {
-            min-width: 240rpx;
-            height: 64rpx;
-            padding: 0 24rpx;
+            min-width: 120px;
+            height: 32px;
+            padding: 0 12px;
         }
         &.button-size-l,
         &.button-size-big {
-            min-width: 360rpx;
-            height: 80rpx;
-            padding: 0 30rpx;
+            min-width: 180px;
+            height: 40px;
+            padding: 0 15px;
             &,
             .LiveIcon,
             .iconfont {
@@ -234,9 +234,9 @@ defineExpose({
             }
         }
         &.button-size-xl {
-            min-width: 480rpx;
-            height: 90rpx;
-            padding: 0 30rpx;
+            min-width: 240px;
+            height: 45px;
+            padding: 0 15px;
             &,
             .LiveIcon,
             .iconfont {
@@ -245,9 +245,9 @@ defineExpose({
         }
         &.button-size-large,
         &.button-size-xxl {
-            min-width: 690rpx;
-            height: 100rpx;
-            padding: 0 30rpx;
+            min-width: 330px;
+            height: 50px;
+            padding: 0 15px;
             &,
             .LiveIcon,
             .iconfont {
@@ -262,45 +262,45 @@ defineExpose({
             padding: 0;
             &.button-size-mini,
             &.button-size-xs {
-                min-width: 40rpx;
-                max-width: 40rpx;
-                min-height: 40rpx;
-                max-height: 40rpx;
+                min-width: 20px;
+                max-width: 20px;
+                min-height: 20px;
+                max-height: 20px;
             }
             &.button-size-s,
             &.button-size-small {
-                min-width: 48rpx;
-                max-width: 48rpx;
-                min-height: 48rpx;
-                max-height: 48rpx;
+                min-width: 24px;
+                max-width: 24px;
+                min-height: 24px;
+                max-height: 24px;
             }
             &.button-size-,
             &.button-size-m,
             &.button-size-normal {
-                min-width: 64rpx;
-                min-height: 64rpx;
-                max-width: 64rpx;
-                max-height: 64rpx;
+                min-width: 32px;
+                min-height: 32px;
+                max-width: 32px;
+                max-height: 32px;
             }
             &.button-size-l,
             &.button-size-big {
-                min-width: 80rpx;
-                min-height: 80rpx;
-                max-width: 80rpx;
-                max-height: 80rpx;
+                min-width: 40px;
+                min-height: 40px;
+                max-width: 40px;
+                max-height: 40px;
             }
             &.button-size-xl {
-                min-width: 100rpx;
-                min-height: 100rpx;
-                max-width: 100rpx;
-                max-height: 100rpx;
+                min-width: 50px;
+                min-height: 50px;
+                max-width: 50px;
+                max-height: 50px;
             }
             &.button-size-xxl,
             &.button-size-large {
-                min-width: 120rpx;
-                min-height: 120rpx;
-                max-width: 120rpx;
-                max-height: 120rpx;
+                min-width: 60px;
+                min-height: 60px;
+                max-width: 60px;
+                max-height: 60px;
             }
         }
         // Link and plan text
@@ -310,14 +310,16 @@ defineExpose({
             border: none !important;
             padding: 0 !important;
             box-shadow: none !important;
+            min-width: auto;
+            width: auto;
         }
 
         & > .IButtonIconMR8 {
-            margin-right: 16rpx !important;
+            margin-right: 8px !important;
         }
 
         &.button-ele-block {
-            display: flex;
+            @include flex(row);
             width: 100%;
         }
 

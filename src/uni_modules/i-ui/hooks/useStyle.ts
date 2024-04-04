@@ -9,7 +9,7 @@
 import { computed, toRefs } from "vue";
 import { mapStores } from "pinia"
 import { TinyColor } from "@ctrl/tinycolor";
-import type { SeedKey } from "../index";
+import type { SeedKey } from "../index.d";
 import { useThemeStore } from "../theme";
 
 
@@ -23,14 +23,14 @@ export const useStyle = () => {
         return useStore.theme?.[color as SeedKey] as string;
     };
 
-    const shadow = computed(() => ({ "box-shadow" : `0 4rpx 12rpx 0 ${useStore.theme?.colorShadowBase}`}));
+    const shadow = computed(() => ({ "box-shadow" : `0 2px 6px 0 ${useStore.theme?.colorShadowBase}`}));
 
 
-    const border = computed(() => ({ "border" : `${useStore.theme?.borderWidth}rpx solid ${useStore.theme?.colorBorder}` }));
-    const borderTop = computed(() => ({ "border-top" : `${useStore.theme?.borderWidth}rpx solid ${useStore.theme?.colorBorder}`}));
-    const borderLeft = computed(() => ({ "border-left" : `${useStore.theme?.borderWidth}rpx solid ${useStore.theme?.colorBorder}` }));
-    const borderBottom = computed(() => ({ "border-bottom" : `${useStore.theme?.borderWidth}rpx solid ${useStore.theme?.colorBorder}` }));
-    const borderRight = computed(() => ({ "border-right" : `${useStore.theme?.borderWidth}rpx solid ${useStore.theme?.colorBorder}` }));
+    const border = computed(() => ({ "border" : `${useStore.theme?.borderWidth}px solid ${useStore.theme?.colorBorder}` }));
+    const borderTop = computed(() => ({ "border-top" : `${useStore.theme?.borderWidth}px solid ${useStore.theme?.colorBorder}`}));
+    const borderLeft = computed(() => ({ "border-left" : `${useStore.theme?.borderWidth}px solid ${useStore.theme?.colorBorder}` }));
+    const borderBottom = computed(() => ({ "border-bottom" : `${useStore.theme?.borderWidth}px solid ${useStore.theme?.colorBorder}` }));
+    const borderRight = computed(() => ({ "border-right" : `${useStore.theme?.borderWidth}px solid ${useStore.theme?.colorBorder}` }));
 
     const placeHolder = computed(() => ({ "color": useStore.theme?.colorTextQuaternary })) ;
     const disabledFont = computed(() => ({ "color" : useStore.theme?.colorTextQuaternary}));

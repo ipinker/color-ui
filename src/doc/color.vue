@@ -21,6 +21,10 @@
             <ITitle>confirm</ITitle>
             <ITitle>cancel</ITitle>
         </ICard>
+        <ICard title="Slots" width="690rpx">
+            <ITitle>bottom</ITitle>
+        </ICard>
+        
     </IPage>
 </template>
 

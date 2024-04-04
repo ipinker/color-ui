@@ -53,22 +53,22 @@ defineExpose({
 <style lang="scss">
     .ISwitchContainer {
         display: inline-flex;
-        min-width: 104rpx;
-        height: 60rpx;
+        min-width: 54px;
+        height: 30px;
         .ISwitchActiveLabel,
         .ISwitchInactiveLabel {
-            line-height: 60rpx;
+            line-height: 30px;
             font-size: $i-font-s;
             transition: color .3s;
         }
         .ISwitchContent {
             display: inline-block;
-            width: 104rpx;
-            height: 60rpx;
+            width: 52px;
+            height: 30px;
             background: v-bind(inactiveColorValue);
-            border-radius: 30rpx;
+            border-radius: 15px;
             transition: all .3s;
-            border: 2rpx solid $i-color-border;
+            border: 1px solid $i-color-border;
             position: relative;
             overflow: hidden;
             box-sizing: border-box;
@@ -78,25 +78,25 @@ defineExpose({
                 left: 50%;
                 top: 50%;
                 transform: translate(-50%, -50%);
-                width: 98rpx;
-                height: 54rpx;
+                width: 49px;
+                height: 27px;
                 background-color: v-bind(inactiveColorValue);
                 display: inline-block;
                 transition: all .3s;
-                border-radius: 30rpx;
+                border-radius: 15px;
             }
             &::after {
                 content: " ";
                 position: absolute;
-                left: 2rpx;
-                top: 2rpx;
-                width: 52rpx;
-                height: 52rpx;
+                left: 1px;
+                top: 1.2px;
+                width: 26px;
+                height: 26px;
                 display: inline-block;
                 background-color: v-bind(containerColor);
                 border-radius: 50%;
                 transition: all .3s;
-                box-shadow: 0 4rpx 8rpx 0 v-bind(shadowColor);
+                box-shadow: 0 2px 4px 0 v-bind(shadowColor);
             }
             &.disabled {
                 opacity: $i-opacity-l;
@@ -116,34 +116,34 @@ defineExpose({
                     background-color: transparent;
                 }
                 &::after {
-                    left: 47rpx;
+                    left: 23.5px;
                 }
             }
         }
         &.mini {
-            min-width: 70rpx;
-            height: 42rpx;
+            min-width: 37px;
+            height: 21px;
             .ISwitchInactiveLabel,
             .ISwitchActiveLabel {
-                line-height: 42rpx;
+                line-height: 21px;
                 font-size: $i-font-xxs;
             }
             .ISwitchContent {
-                width: 70rpx;
-                height: 42rpx;
-                border-radius: 21rpx;
-                border: 1.2rpx solid $i-color-border;
+                width: 35px;
+                height: 21px;
+                border-radius: 10.5px;
+                border: 0.6px solid $i-color-border;
                 &::before {
-                    width: 64rpx;
-                    height: 36rpx;
-                    border-radius: 21rpx;
+                    width: 32px;
+                    height: 18px;
+                    border-radius: 10.5px;
                 }
                 &::after {
-                    width: 36rpx;
-                    height: 36rpx;
-                    left: 2rpx;
-                    top: 2rpx;
-                    box-shadow: 0 3rpx 6rpx 0 v-bind(shadowColor);
+                    width: 18px;
+                    height: 18px;
+                    left: 1px;
+                    top: 1px;
+                    box-shadow: 0 1.5px 3px 0 v-bind(shadowColor);
                 }
                 &.ISwitchActiveIcon {
                     &::before {
@@ -151,7 +151,7 @@ defineExpose({
                         height: 0;
                     }
                     &::after {
-                        left: 30rpx;
+                        left: 15px;
                     }
                 }
             }

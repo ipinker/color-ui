@@ -1,7 +1,7 @@
 <template>
     <UIPopup ref="pickerRef" type="bottom" @change="handlePopupChange" :isMaskClick="isMaskClick">
         <view class="IPickerBody" :style="[container]">
-            <view class="IPickerHeader" :style="[borderBottom]" @touchmove.stop.prevent catchtouchmove="true">
+            <view class="IPickerHeader row" :style="[borderBottom]" @touchmove.stop.prevent catchtouchmove="true">
                 <view class="IPickerBtn" :style="[font('colorTextQuaternary')]" @tap="handleCancel">{{t("common.cancel")}}</view>
                 <view class="IPickerHeaderTitle">{{title || t("common.selectPlaceholder")}}</view>
                 <view class="IPickerBtn confirm" :style="[primaryText]" @tap="handleConfirm">{{t("common.ok")}}</view>
@@ -49,7 +49,7 @@ const {
     initData,
 } = usePicker(props);
 const { t } = i18n.global;
-const itemHeight = `height: 88rpx`;
+const itemHeight = `height: 44px`;
 const maskBgImage = computed(() => {
     if(store.modeId == LIGHT_MODE_ID) return `linear-gradient(180deg, hsla(0, 0%, 100%, 0.95), hsla(0, 0%, 100%, 0.6)), 
         linear-gradient(0deg, hsla(0, 0%, 100%, 0.95), hsla(0, 0%, 100%, 0.6))`
@@ -193,14 +193,13 @@ defineExpose({
         width: 100%;
     }
     .IPickerHeader {
-        display: flex;
         align-items: center;
+        justify-content: space-between;
         padding: 0 $i-padding-l;
         height: $i-height-l;
         position: relative;
         text-align: center;
         font-size: $i-font-m;
-        justify-content: space-between;
         border-radius: $i-radius-xxl $i-radius-xxl 0 0;
 
         .IPickerBtn {
@@ -225,10 +224,10 @@ defineExpose({
 
     .IPickerContent {
         width: 100%;
-        height: 372rpx;
+        height: 186px;
         overflow: hidden;
         text-align: center;
-        line-height: 88rpx;
+        line-height: 44px;
         font-size: $i-font-m;
     }
 

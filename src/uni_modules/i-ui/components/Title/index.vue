@@ -48,7 +48,7 @@ const containerStyle = computed(() => {
             border-radius: $i-radius-s;
         }
         .ITitle {
-            max-width: calc(100% - 16rpx);
+            max-width: calc(100% - 16px);
             line-height: $i-line-l;
             font-size: $i-font-l;
             font-weight: $i-weight-l;

@@ -27,7 +27,7 @@
     </UIPopup>
 </template>
 <script lang="ts" setup>
-import { PropType, StyleValue } from 'vue';
+import { PropType, ref, Ref, computed, ComputedRef, watch } from 'vue';
 import { useStyle } from '../../hooks/useStyle';
 import { DialogOption } from "./dialog";
 import UIPopup from "../Popup/index.vue";
@@ -101,32 +101,32 @@ defineExpose({
 
 <style lang="scss" scoped>
     .IDialogContainer {
-        width: 660rpx;
-        border-radius: 24rpx;
+        width: 330px;
+        border-radius: $i-radius-xxl;
         .IDialogTitle {
             width: 100%;
             font-size: $i-font-l;
-            font-weight: 600;
-            line-height: 50rpx;
+            font-weight: $i-weight-l;
+            line-height: $i-line-xl;
             text-align: center;
-            padding-top: 30rpx;
+            padding-top: $i-padding-m;
         }
         .IDialogContent {
             width: 100%;
-            min-height: 200rpx;
-            padding: 20rpx 40rpx;
+            min-height: 100px;
+            padding: $i-padding-s $i-padding-l;
             font-size: $i-font-s;
-            line-height: 46rpx;
+            line-height: $i-line-xl;
             text-align: center;
             @include center;
         }
 
         .IDialogFooter {
             width: 100%;
-            height: 90rpx;
+            height: 45px;
             .IDialogFooterItem {
                 height: 100%;
-                line-height: 90rpx;
+                line-height: 45px;
                 text-align: center;
                 flex: 1;
             }

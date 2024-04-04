@@ -1,7 +1,7 @@
 <template>
     <UIPopup ref="dateRef" type="bottom" @change="handlePopupChange" :isMaskClick="isMaskClick" :stopTop="stopTop">
         <view class="IDateBody" :style="[text, container]">
-            <view class="IDateHeader" :style="[borderBottom]" @touchmove.stop.prevent catchtouchmove="true">
+            <view class="IDateHeader row" :style="[borderBottom]" @touchmove.stop.prevent catchtouchmove="true">
                 <view class="IDateHeaderBtn" :style="[infoText]" @tap="handleCancel">{{t("common.cancel")}}</view>
                 <view class="">{{title || t("common.selectPlaceholder")}}</view>
                 <view class="IDateHeaderBtn" :style="[primaryText]" @tap="handleConfirm">{{t("common.ok")}}</view>
@@ -15,7 +15,7 @@
                                     bg('colorBgLayout'), 
                                     item.check?primaryText:infoText, 
                                     { 
-                                        border : '1rpx solid ' + (item.check?primaryColor:LayoutColor) 
+                                        border : '1px solid ' + (item.check?primaryColor:LayoutColor) 
                                     }
                                 ]"
                                 v-for="(item,index) in myWeekList" :key="index"
@@ -29,7 +29,7 @@
                         </view>
                     </scroll-view>
                 </view>
-                <picker-view indicator-style="height: 80rpx" :value="selectedValue" @change="wrapperChange">
+                <picker-view indicator-style="height: 40px" :value="selectedValue" @change="wrapperChange">
                     <picker-view-column v-if="format.indexOf('yy')>=0">
                         <view class="item" v-for="(item,index) in years" :key="index">
                             {{item}}{{t("calender.year")}}</view>
@@ -195,11 +195,10 @@ defineExpose({
 <style lang="scss" scoped>
     .IDateBody {
         width: 100%;
-        z-index: 3000;
     }
     .IDateWeek {
         width: 100%;
-        height: 96rpx;
+        height: 48px;
         overflow: hidden;
         padding: 0 $i-padding-m;
     }
@@ -209,7 +208,7 @@ defineExpose({
         white-space: nowrap;
     }
     .IDateWeekBody {
-        height: 96rpx;
+        height: 48px;
         padding-right: $i-padding-m;
         @include verCenter;
         flex-wrap: nowrap;
@@ -217,19 +216,19 @@ defineExpose({
     }
     .IDateWeekitem {
         position: relative;
-        min-width: 120rpx;
-        max-width: 120rpx;
-        height: 56rpx;
+        min-width: 60px;
+        max-width: 60px;
+        height: 28px;
         border-radius: $i-radius-m;
-        line-height: 56rpx;
+        line-height: 28px;
         box-sizing: border-box;
         margin-left: $i-margin-m;
         white-space: nowrap;
         overflow: hidden;
         .IDateWeekitemIcon {
             position: absolute;
-            right: -1rpx;
-            top: -1rpx;
+            right: -1px;
+            top: -1px;
             opacity: 0;
             font-size: $i-font-m;
             line-height: 1;
@@ -240,15 +239,14 @@ defineExpose({
     }
     
     .IDateHeader {
-        display: flex;
         align-items: center;
         padding: 0 $i-padding-l;
-        height: 100rpx;
+        height: 50px;
         position: relative;
         text-align: center;
         font-size: $i-font-s;
         justify-content: space-between;
-        border-radius: 16rpx 16rpx 0px 0px;
+        border-radius: 8px 8px 0px 0px;
 
         .IDateHeaderBtn {
             font-size: $i-font-s;
@@ -258,20 +256,19 @@ defineExpose({
     .item {
         text-align: center;
         width: 100%;
-        line-height: 88rpx;
+        line-height: 44px;
         font-size: $i-font-s;
     }
 
     .IDateContent {
         width: 100%;
-        height: 372rpx;
+        height: 186px;
         overflow: hidden;
-        z-index: 666;
         text-align: center;
-        line-height: 88rpx;
+        line-height: 44px;
         font-size: $i-font-s;
         &.max {
-            height: 468rpx;
+            height: 234px;
         }
     }
 

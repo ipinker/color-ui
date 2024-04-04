@@ -75,9 +75,9 @@ view, scroll-view, swiper-item {
 .row,
 .flex {
     // #ifndef APP-NVUE
-	display: flex;
+	display: flex !important;
     // #endif
-    flex-direction: row;
+    flex-direction: row !important;
 }
 .wrap,
 .flex-wrap {
@@ -150,9 +150,9 @@ view, scroll-view, swiper-item {
 .col,
 .flex-column {
     // #ifndef APP-NVUE
-	display: flex;
+	display: flex !important;
     // #endif
-    flex-direction: column;
+    flex-direction: column !important;
 }
 .row-inline,
 .inline-flex {

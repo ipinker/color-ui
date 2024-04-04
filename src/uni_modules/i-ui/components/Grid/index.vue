@@ -1,6 +1,6 @@
 <template>
-	<div class="IGridContainer">
-		<div :id="elId" ref="gridRef" class="IGrid" :class="{ 'IGridborder': useBorder }" 
+	<div class="IGridContainer col">
+		<div :id="elId" ref="gridRef" class="IGrid row" :class="{ 'IGridborder': useBorder }" 
         :style="[ gridStyle ]"
         >
 			<slot />
@@ -93,11 +93,7 @@ provide("GridKey", {
 
 <style lang="scss" >
 	.IGridContainer {
-		/* #ifndef APP-NVUE */
-		display: flex;
-		/* #endif */
 		flex: 1;
-		flex-direction: column;
 		/* #ifdef H5 */
 		width: 100%;
 		/* #endif */
@@ -105,11 +101,6 @@ provide("GridKey", {
 	}
 
 	.IGrid {
-		/* #ifndef APP-NVUE */
-		display: flex;
-		/* #endif */
-		// flex: 1;
-		flex-direction: row;
 		flex-wrap: wrap;
 	}
 

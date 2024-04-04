@@ -164,27 +164,27 @@ const handleMouseUp = () => {
 <style>
 	.i-alpha {
 		position: absolute;
-		top: 0rpx;
-		right: 0rpx;
-		bottom: 0rpx;
-		left: 0rpx;
+		top: 0;
+		right: 0;
+		bottom: 0;
+		left: 0;
 	}
 
 	.i-alpha-checkboard-wrap {
 		position: absolute;
-		top: 0rpx;
-		right: 0rpx;
-		bottom: 0rpx;
-		left: 0rpx;
+		top: 0;
+		right: 0;
+		bottom: 0;
+		left: 0;
 		overflow: hidden;
 	}
 
 	.i-alpha-gradient {
 		position: absolute;
-		top: 0rpx;
-		right: 0rpx;
-		bottom: 0rpx;
-		left: 0rpx;
+		top: 0;
+		right: 0;
+		bottom: 0;
+		left: 0;
 	}
 
 	.i-alpha-container {
@@ -192,7 +192,7 @@ const handleMouseUp = () => {
 		position: relative;
 		z-index: 2;
 		height: 100%;
-		margin: 0 6rpx;
+		margin: 0 3px;
 	}
 
 	.i-alpha-pointer {
@@ -202,12 +202,12 @@ const handleMouseUp = () => {
 
 	.i-alpha-picker {
 		cursor: pointer;
-		width: 8rpx;
-		border-radius: 2rpx;
-		height: 16rpx;
-		box-shadow: 0 0 4rpx rgba(0, 0, 0, .6);
+		width:4px;
+		border-radius: 1px;
+		height: 8px;
+		box-shadow: 0 0 2px rgba(0, 0, 0, .6);
 		background: #fff;
-		margin-top: 2rpx;
-		transform: translateX(-4rpx);
+		margin-top: 1px;
+		transform: translateX(-2px);
 	}
 </style>

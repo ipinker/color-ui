@@ -3,7 +3,7 @@
         <ITitle style="margin: 10rpx 30rpx;">
             搜索：<IInput v-model="keyword" placeholder="请输入" border @change="handleInputChange"/>
         </ITitle>
-        <div class="GridContainer w-100vw" :style="[container]">
+        <view class="GridContainer w-100vw" :style="[container]">
             <IGrid :column="column" square active >
                 <IGridItem v-for="(item,index) in genSearchList" :key="index" :index="index">
                     <div class="IconBox flex-column-center" @click="handleCopy(item)">
@@ -12,8 +12,8 @@
                     </div>
                 </IGridItem>
             </IGrid>
-            <text @click="handleLoadmore">{{ loadmoreText }}</text>
-        </div>
+            <text class="full" style="text-align:center" @click="handleLoadmore">{{ loadmoreText }}</text>
+        </view>
     </IPage>
 </template>
 

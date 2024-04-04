@@ -3,6 +3,7 @@
 </template>
 
 <script lang="ts" setup>
+import { computed } from "vue"
 let _checkboardCache: any = {}
 const props = defineProps({
     size: {
@@ -49,10 +50,10 @@ function getCheckboard(c1: string, c2: string, size: number | string) {
 <style>
 	.ICheckerboard {
 		position: absolute;
-		top: 0rpx;
-		right: 0rpx;
-		bottom: 0rpx;
-		left: 0rpx;
+		top: 0;
+		right: 0;
+		bottom: 0;
+		left: 0;
 		background-size: contain;
 	}
 </style>

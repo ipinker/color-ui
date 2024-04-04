@@ -18,6 +18,7 @@
 </template>
 
 <script lang="ts" setup>
+import { ref } from "vue"
 const switchValue = ref(false);
 const switchValue2 = ref(true);
 </script>

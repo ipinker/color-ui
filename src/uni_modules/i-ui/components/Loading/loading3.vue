@@ -6,6 +6,8 @@
 import { computed } from "vue"
 import { mapStores } from "pinia";
 import { useThemeStore } from "../../theme";
+import { genPx } from "../../common/style";
+
 const props = defineProps({
     color: {
         type: String,
@@ -13,20 +15,21 @@ const props = defineProps({
     },
     size: {
         type: [String, Number],
-        default: "32rpx"
+        default: "32"
     }
 })
 const store = mapStores(useThemeStore).themeStoreStore();
 const borderColor = computed(() => props.color || store.theme?.colorBorder || "");
+const fontSize = computed(() => genPx(props.size));
 </script>
 
 <style lang="scss" scoped>
 .ILoadingIcon {
     display: inline-block;
-    width: v-bind(size);
-    height: v-bind(size);
+    width: v-bind(fontSize);
+    height: v-bind(fontSize);
     border-radius: 50%;
-    border: 3rpx solid v-bind(borderColor);
+    border: 2px solid v-bind(borderColor);
     border-right-color: transparent;
     animation: defaultLoading 0.95s linear infinite;
 }

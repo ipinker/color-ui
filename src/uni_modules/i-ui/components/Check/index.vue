@@ -93,22 +93,22 @@ defineExpose({
             &::after {
                 content: "";
                 background-color: v-bind(checkColor);
-                width: 15rpx;
-                height: 4rpx;
+                width: 7.5px;
+                height: 2px;
                 position: absolute;
-                top: 19rpx;
-                left: 3rpx;
+                top: 9.5px;
+                left: 1.5px;
                 transform: rotate(40deg);
                 border-radius: $i-radius-xs;
             }
             &::before {
                 content: "";
                 background-color: v-bind(checkColor);
-                width: 24rpx;
-                height: 4rpx;
+                width: 12px;
+                height: 2px;
                 position: absolute;
-                top: 15rpx;
-                left: 11rpx;
+                top: 7.5px;
+                left: 5.5px;
                 transform: rotate(-45deg);
                 border-radius: $i-radius-xs;
             }

@@ -14,7 +14,7 @@
                     @click="handleConfirm" v-if="confirm"
                 > {{confirmText || t("common.ok")}} </view>
 			</view>
-			<view class="ICascaderBody">
+			<view class="ICascaderBody row">
 				<view class="ICascaderFirstColumn" :style="[firstStyle]">
 					<scroll-view scroll-y :style="[scrollHeight]" class="ICascaderItem">
 						<template v-for="(item,index) in list"  :key="index">
@@ -201,7 +201,7 @@ const lastStyle = computed(() => {
 })
 const scrollHeight = computed(() => {
     return {
-        height: props.option?'700rpx':'800rpx'
+        height: props.option?'350px':'400px'
     }
 })
 watch(() => props.list, (v = []) => {
@@ -221,6 +221,7 @@ watch(() => props.show, (v) => {
 
 function handleChangeItem(type: -1 | 0 | 1 | 2 | 3, item: AnyMap, index: number) {
     let hasChildren = (Array.isArray(item[props.keys.children]) && item[props.keys.children].length) || props.option;
+    console.log(type, hasChildren, item[props.keys.children])
     if(type === 0){
         if(index === firstIndex.value) return ;
         firstIndex.value = index;
@@ -310,6 +311,7 @@ defineExpose({
 </script>
 <style lang="scss"> 
 	.ICascaderContainer {
+        width: 100%;
 		border-radius: $i-radius-xxl $i-radius-xxl 0 0;
 		overflow: hidden;
 	}
@@ -322,8 +324,8 @@ defineExpose({
     }
     .ICascaderHeaderIcon {
         position: absolute;
-        left: 10rpx;
-        top: 20rpx;
+        left: 5px;
+        top: 10px;
         font-size: $i-font-xl;
         width: $i-height-s;
         height: $i-height-s;
@@ -339,27 +341,26 @@ defineExpose({
 
     .ICascaderHeaderConfirm {
         position: absolute;
-        right: 30rpx;
-        top: 20rpx;
+        right: 15px;
+        top: 10px;
         font-size: $i-font-xs;
         line-height: $i-height-s;
     }
 
     .ICascaderBody {
         width: 100%;
-        height: 800rpx;
-        display: flex;
+        height: 400px;
     }
     .ICascaderItem {
         width: 100%;
     }
     .ICascaderItemName {
         width: 100%;
-        height: 90rpx;
+        height: 45px;
         font-size: $i-font-xs;
         transition: all .3s;
         padding: 0 $i-padding-m;
-        line-height: 90rpx;
+        line-height: 45px;
         filter: none;
         @include ellipsis1;
         &:active {

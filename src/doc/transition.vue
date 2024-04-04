@@ -15,7 +15,7 @@
 </template>
 
 <script lang="ts" setup>
-
+    import { ref, computed } from "vue"
     import {TinyColor} from "@ctrl/tinycolor";
 
     let index = ref(0.1);

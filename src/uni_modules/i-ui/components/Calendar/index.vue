@@ -284,35 +284,35 @@ defineExpose({
 .ICalendarContainer {
 	position: relative;
 	width: 100%;
-	min-height: 800rpx;
+	min-height: 400px;
 	.ICalendarWatermark {
-		height: 750rpx;
+		height: 375px;
 		width: 100%;
-		padding-top: 100rpx;
+		padding-top: 50px;
 		box-sizing: border-box;
 		@include center;
-		font-size: 300rpx;
+		font-size: 150px;
 	}
 }
 .ICalendar {
 	width: 100%;
 	box-sizing: border-box;
 	&.ICalendarWatermarkTop {
-		margin-top: -750rpx;
+		margin-top: -375px;
 	}
 	.ICalendarHeader {
 		width: 100%;
-		height: 80rpx;
+		height: 40px;
 		@include center;
 		.ICalendarHeaderName {
 			font-size: $i-font-l;
 			font-weight: 500;
-			width: 240rpx;
+			width: 120px;
 			text-align: center;
 		}
 		.ICalendarHeaderIcon {
-			width: 60rpx;
-			height: 60rpx;
+			width: 30px;
+			height: 30px;
 			@include center;
 			font-size: $i-font-xs;
 			font-weight: bold;
@@ -324,11 +324,11 @@ defineExpose({
 	
 	.ICalendarWeek {
 		width: 100%;
-		height: 100rpx;
+		height: 50px;
 		@include verCenter;
 		justify-content: space-between;
 		.ICalendarWeekItem {
-			width: calc(100vw / 7);
+			width: calc(100% / 7);
 			height: 100% ;
 			@include center;
 			font-size: $i-font-xs;
@@ -341,17 +341,17 @@ defineExpose({
 		flex-wrap: wrap;
 		.ICalendarDayItem {			
 			width: calc(100% / 7);
-			height: 100rpx;
+			height: 50px;
 			@include center;
 			.ICalendarDayItemVal {
 				width: 100%;
-				height: 100rpx;
+				height: 50px;
 				@include center(column);
 				font-size: $i-font-l;
 				&.active {
 					background-color: $i-color-primary;
 					color: $i-color-white;
-					border-radius: 8rpx;
+					border-radius:4px;
 				}
 				&.feature {
 					color: $i-color-txt;
@@ -380,7 +380,7 @@ defineExpose({
 				}
 				
 				.d2 {
-					margin-top: 5rpx;
+					margin-top: 2.5px;
 					font-size: $i-font-xxxs;
 				}
 				.dt {
@@ -391,13 +391,13 @@ defineExpose({
 		}
 	}
 	.ICalendarConfirm {
-		padding: 30rpx;
+		padding: 15px;
 		box-sizing: border-box;
 		width: 100%;
-		min-height: 140rpx;
+		min-height: 7px;
 		@include center(column);
 		.ICalendarConfirmSelect {
-			height: 50rpx;
+			height: 25px;
 			font-size: $i-font-xxs;
 		}
 	}

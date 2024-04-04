@@ -1,5 +1,5 @@
 <template>
-    <view class="IPageBody" :class="{ 'flex-column-align-center' : center }">
+    <view class="IPageBody col" :class="{ 'flex-column-align-center' : center }">
         <UINavigationBar :title="title" :useBack="useBack" :titleAlign="titleAlign" :usePrimary="usePrimary"
             v-if="title"
         >
@@ -9,7 +9,7 @@
         </UINavigationBar>
         <view class="StatusBarRelative" v-if="!title && nav"></view>
         <slot />
-        <UILoading :color="colorForMask" size="60rpx" :type="loadingType" useMask v-if="isLoading"/>
+        <UILoading :color="colorForMask" size="60" :type="loadingType" useMask v-if="isLoading"/>
     </view>
 </template>
 
@@ -37,10 +37,6 @@ page,
     min-height: calc(100vh - var(--window-bottom));
     background-color: v-bind(pageColor);
     color: v-bind(textColor);
-	/* #ifndef APP-NVUE */
-	display: flex;
-	/* #endif */
-    flex-direction: column;
 }
 .StatusBarRelative {
     height: var(--status-bar-height);
