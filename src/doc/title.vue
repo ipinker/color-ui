@@ -21,6 +21,7 @@
 </template>
 
 <script setup lang='ts'>
+import { ref, computed, Ref, watch, onMounted, nextTick } from "vue"
 const title = ref("Title (标题)");
 const width = ref("");
 const color = ref("");

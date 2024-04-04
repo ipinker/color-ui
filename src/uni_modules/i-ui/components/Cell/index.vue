@@ -1,15 +1,15 @@
 <template>
-    <div class="INavigatorItem flex flex-align-center" :style="[styleOption]" @click="handleNavigate">
-        <div class="INavigatorItemIcon" v-if="icon">
+    <view class="INavigatorItem flex flex-align-center" :style="[styleOption]" @click="handleNavigate">
+        <view class="INavigatorItemIcon" v-if="icon">
             <img class="img" :src="icon" v-if="icon.indexOf('/') > -1"/>
             <UIIcon :color="primaryColor" :icon="arrow" size="40" v-else/>
-        </div>
-        <div class="INavigatorItemLabel" v-if="label">{{label}}</div>
-        <template v-else>
+        </view>
+        <view class="INavigatorItemLabel" v-if="label">{{label}}</view>
+        <view class="INavigatorItemLabel row" v-else>
             <slot />
-        </template>
-        <IIcon class="INavigatorItemIcon margin-r0" :color="primaryColor" :icon="arrow" size="32"/>
-    </div>
+        </view>
+        <UIIcon class="INavigatorItemIcon margin-r0" :color="primaryColor" :icon="arrow" size="32"/>
+    </view>
 </template>
 
 <script lang="ts" setup>

@@ -1,5 +1,19 @@
 <template>
    <IPage title='Theme（主题）' useBack>
+        <ICard title="基本使用">
+            <view class="code">import {useThemeStore} from "i-uni-ui/theme"</view>
+            <view class="code">const themeStore = useThemeStore()</view>
+            <view class="code">themeStore.get("blue") // 获取blue主题，如果开启了暗黑则获取主题的指定模式</view>
+            <view class="code">themeStore.theme // 当前在使用的主题 ColorToken </view>
+            <view class="code">themeStore.mode  // 当前主题所显示模式 dark | light </view>
+            <view class="code">themeStore.change(id?: string)  // 切换到指定主题 </view>
+            <view class="code">themeStore.changeMode(mode?:dark | light)  // 切换到指定模式 </view>
+            <view class="code">themeStore.add(seed: SeedOption)  // 添加主题 </view>
+            <view class="code">themeStore.addList(seedList: SeedOption[])  // 添加多个主题 </view>
+            <view class="code">themeStore.del(id: string)  // 删除主题 </view>
+            <view class="code">themeStore.sort(sortFunction: Function)  // 主题排序 </view>
+            <view class="code">themeStore.init(seedList: SeedOption[])  // 初始化默认主题列表 </view>
+        </ICard>
 
         <ICard title="主题操作（Methods）">
             <IForm class="form">
@@ -19,13 +33,21 @@
                 </IRow>
 
                 <IForm class="form">
-                    <IInput class="input" type="number" border placeholder="输入要删除的索引" :maxlength="list.length-1" v-model="delIndex" />
+                    <IInput class="input" type="number" border :placeholder="'输入要删除的索引 0~'+(list.length-1)" :maxlength="list.length-1" v-model="delIndex" />
                     <IButton plain error @click="handleDelByIndex">删除</IButton>
                 </IForm>
             </IForm>
         </ICard>
-       <ICard title="当前主题列表">
-            <ICell @click="handleTheme(item)" :styleOption="styleOption(item)" :label="item.id + ' 点击切换主题'" v-for="item in list" :key="item.id"></ICell>
+       <ICard title="当前主题列表（点击切换主题）S/W/E/I">
+            Primary | Success | Error | Warning | Info
+            <ICell @click="handleTheme(item)" :styleOption="styleOption(item)" v-for="item in list" :key="item.id">
+                <text>{{item.id}}</text>
+                <text class="full"></text>
+                <text class="itemColor" :style="{backgroundColor : item.colorSuccess}">S</text>
+                <text class="itemColor" :style="{backgroundColor : item.colorError}">E</text>
+                <text class="itemColor" :style="{backgroundColor : item.colorWarning}">W</text>
+                <text class="itemColor" :style="{backgroundColor : item.colorInfo}">I</text>
+            </ICell>
        </ICard>
    </IPage>
    <view class="IThemeButtonFloat">
@@ -43,6 +65,7 @@ const theme = useThemeStore();
 const shadowColor = computed(() =>theme.theme?.colorInfoShadow);
 const textColor = computed(() => theme.theme?.colorText);
 const bgColor = computed(() => theme.theme?.colorBgContainer);
+const primaryBg = computed(() => theme.theme?.colorPrimary)
 const list = computed(() => {
     const map: any = {};
     theme.themeList.forEach(item => {
@@ -54,7 +77,7 @@ const list = computed(() => {
     })
     return Object.values(map) as ColorToken[]
 });
-const delIndex = ref(-1)
+const delIndex = ref()
 
 const primaryColor = ref();
 const warningColor = ref();
@@ -83,7 +106,6 @@ function handleTheme(item: ColorToken) {
 
 const styleOption = computed(() => {
     return (item: ColorToken): StyleValue => {
-        console.log(theme.theme)
         return {
             backgroundColor: item.colorPrimary,
             marginBottom: '10px',
@@ -100,7 +122,6 @@ const styleOption = computed(() => {
     position: fixed;
     right: 50rpx;
     bottom: 50rpx;
-    background-color: #999;
     background-color: v-bind(bgColor);
     box-shadow: 0 4rpx 12rpx v-bind(shadowColor);
     color: v-bind(textColor);
@@ -110,5 +131,18 @@ const styleOption = computed(() => {
 .input,
 view.input {
     margin-bottom: 8px;
+}
+
+.code {
+    font-size: $i-font-xxxs;
+    line-height: $i-line-s;
+}
+
+.itemColor {
+    display: inline-block;
+    width: 20px;
+    height: 100%;
+    margin-right: 10px;
+    text-align: center;
 }
 </style>

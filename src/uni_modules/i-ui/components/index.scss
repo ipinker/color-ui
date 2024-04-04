@@ -24,16 +24,21 @@ textarea {
 page {
     padding-top: 0.5px;
 }
-
+$flex: flex !default;
+$column: column !default;
+$alignItems: stretch !default;
+$alignContent: stretch !default;
+$auto: stretch !default;
+$zero: 0 !default;
 /* #ifndef APP-NVUE */
 view, scroll-view, swiper-item {
-	display: flex;
-	flex-direction: column;
-	flex-shrink: 0;
-	flex-grow: 0;
-	flex-basis: auto;
-	align-items: stretch;
-	align-content: flex-start;
+	display: $flex;
+	flex-direction: $column;
+	flex-shrink: $zero;
+	flex-grow: $zero;
+	flex-basis: $auto;
+	align-items: $alignItems;
+	align-content: $alignContent;
 }
 /* #endif */
 
@@ -60,16 +65,25 @@ view, scroll-view, swiper-item {
 	bottom: constant(safe-area-inset-bottom);
 }
 
+.block {
+    display: block;
+}
+.inline-block {
+    display: inline-block;
+}
 // Flex
+.row,
 .flex {
     // #ifndef APP-NVUE
 	display: flex;
     // #endif
     flex-direction: row;
 }
+.wrap,
 .flex-wrap {
     flex-wrap: wrap;
 }
+.row-start,
 .flex-justify-start {
     // #ifndef APP-NVUE
 	display: flex;
@@ -77,6 +91,7 @@ view, scroll-view, swiper-item {
     flex-direction: row;
     justify-content: flex-start;
 }
+.row-center,
 .flex-justify-center {
     // #ifndef APP-NVUE
 	display: flex;
@@ -84,6 +99,7 @@ view, scroll-view, swiper-item {
     flex-direction: row;
     justify-content: center;
 }
+.row-end,
 .flex-justify-end {
     // #ifndef APP-NVUE
 	display: flex;
@@ -91,6 +107,7 @@ view, scroll-view, swiper-item {
     flex-direction: row;
     justify-content: flex-end;
 }
+.row-between,
 .flex-justify-between {
     // #ifndef APP-NVUE
 	display: flex;
@@ -98,6 +115,7 @@ view, scroll-view, swiper-item {
     flex-direction: row;
     justify-content: space-between;
 }
+.row-around,
 .flex-justify-around {
     // #ifndef APP-NVUE
 	display: flex;
@@ -105,6 +123,7 @@ view, scroll-view, swiper-item {
     flex-direction: row;
     justify-content: space-around;
 }
+.row-align-start,
 .flex-align-start {
     // #ifndef APP-NVUE
 	display: flex;
@@ -112,6 +131,7 @@ view, scroll-view, swiper-item {
     flex-direction: row;
     align-items: flex-start;
 }
+.row-align-center,
 .flex-align-center {
     // #ifndef APP-NVUE
 	display: flex;
@@ -119,6 +139,7 @@ view, scroll-view, swiper-item {
     flex-direction: row;
     align-items: center;
 }
+.row-align-end,
 .flex-align-end {
     // #ifndef APP-NVUE
 	display: flex;
@@ -126,21 +147,25 @@ view, scroll-view, swiper-item {
     flex-direction: row;
     align-items: flex-end;
 }
+.col,
 .flex-column {
     // #ifndef APP-NVUE
 	display: flex;
     // #endif
     flex-direction: column;
 }
+.row-inline,
 .inline-flex {
     // #ifndef APP-NVUE
 	display: inline-flex;
     // #endif
     flex-direction: row;
 }
+.full,
 .flex-full {
 	flex: 1;
 }
+
 .flex-center {
     // #ifndef APP-NVUE
 	display: flex;
@@ -157,6 +182,8 @@ view, scroll-view, swiper-item {
 	justify-content: center;
 	align-items: center;
 }
+
+.col-center,
 .flex-column-align-center {
     // #ifndef APP-NVUE
 	display: flex;
@@ -164,6 +191,7 @@ view, scroll-view, swiper-item {
 	flex-direction: column;
 	align-items: center;
 }
+.col-align-center,
 .flex-column-justify-center {
     // #ifndef APP-NVUE
 	display: flex;
@@ -173,8 +201,9 @@ view, scroll-view, swiper-item {
 }
 
 //  Item
-.set-item {
-	width: 100%; min-height: $i-height-l;
+.cell-item {
+	width: 100%; 
+    min-height: $i-height-l;
 	@include center;
 	padding: 0 $i-padding-l;
 	.image {

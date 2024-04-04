@@ -99,10 +99,10 @@
 
 <style lang="scss">
 .INavigationBarContainer {
-    width: 1rpx;
+    width: 1px;
 }
 .INavigationBarRelative {
-    height: calc(100rpx + var(--status-bar-height));
+    height: calc(50px + var(--status-bar-height));
 }
 .INavigationBar {
     position: fixed;
@@ -116,7 +116,7 @@
 }
 .INavigationBody  {
     position: relative;
-    height: 100rpx;
+    height: 50px;
     width: $i-width-full;
     overflow-y: hidden;
 }
@@ -153,7 +153,7 @@
 .INavigationContext {
     @include ellipsis(2);
     text-align: center;
-    padding: 0 80rpx;
+    padding: 0 40px;
     width: 100%;
 }
 .INavigationRight {

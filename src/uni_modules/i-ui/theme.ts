@@ -55,23 +55,28 @@ const themeStoreOptions: Omit<DefineStoreOptions<ThemeStoreId, ThemeStoreState, 
         };
     },
     getters: {
-        theme: (state: ThemeStoreState) => state.themeList.find((theme) => `${state.id}-${state.modeId}` === theme.id),
+        theme: (state: ThemeStoreState) => {
+            console.log(state.id, state.themeList)
+            return state.themeList.find((theme) => `${state.id}-${state.modeId}` === theme.id || state.id === theme.id)
+        },
         mode: (state: ThemeStoreState) => state.modeId
     },
     actions: {
         /** @desc 切换主题暗黑模式 **/
         changeMode(id?: ThemeModeType) {
-            if (id && id === this.modeId) return;
             if (id) this.modeId = id
             else this.modeId = this.modeId === "light" ? "dark" : "light";
         },
         /** @desc 切换主题 **/
         change(id: string) {
+            if(!id) return;
+            if(id.includes("-light")) id = id.split("-light")[0];
+            if(id.includes("-dark")) id = id.split("-dark")[0];
             this.id = id;
         },
         /** @desc 获取主题 **/
         get(id: string): any {
-            let theme = this.themeList.find((theme) => theme.id === `${id}-${this.modeId}`);
+            let theme = this.themeList.find((theme) => theme.id === `${id}-${this.modeId}` || theme.id === id);
             if (!theme) theme = this.themeList.find((theme) => theme.id === `${id}-${this.modeId === "light" ? "light" : "dark"}`)
             return theme;
         },
@@ -133,7 +138,8 @@ const themeStoreOptions: Omit<DefineStoreOptions<ThemeStoreId, ThemeStoreState, 
             this.change(this.themeList[0].id);
             return 1;
         }
-    }
+    },
+    persist: true
 }
 
 export const useThemeStore: StoreDefinition<ThemeStoreId, ThemeStoreState, ThemeStoreGetters, ThemeStoreActions> = defineStore( 'themeStore', themeStoreOptions);
