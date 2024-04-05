@@ -41,6 +41,37 @@ export type OptionsKeyType = {
     children: string
 }
 
+/** @desc 设置主题样式用到的key； ThemeButton **/
+export interface ThemeJsonOption {
+    /** @desc uni.setNavigationBarColor backgroundColor **/
+    navBgColor?: string
+    /** @desc uni.setNavigationBarColor frontColor **/
+    navTxtStyle?: "black" | "white"
+    /** @desc uni.setBackgroundTextStyle textStyle **/
+    bgTxtStyle?: "light" | "dark"
+    /** @desc uni.setBackgroundColor backgroundColor **/
+    bgColor?: string
+    /** @desc uni.setBackgroundColor backgroundColorTop **/
+    bgColorTop?: string
+    /** @desc uni.setBackgroundColor backgroundColorBottom **/
+    bgColorBottom?: string
+    /** @desc uni.setTabBarStyle backgroundImage **/
+    bgImage?: string
+    /** @desc uni.setTabBarStyle color **/
+    tabFontColor?: string
+    /** @desc uni.setTabBarStyle selectedColor **/
+    tabSelectedColor?: string
+    /** @desc uni.setTabBarStyle backgroundColor **/
+    tabBgColor?: string
+    /** @desc uni.setTabBarStyle borderStyle **/
+    tabBorderStyle?: "white" | "black"
+}
+
+export interface ThemeJson {
+    dark: ThemeJsonOption
+    light: ThemeJsonOption
+}
+
 export type {
     ResultStatus,
     PageStatus,

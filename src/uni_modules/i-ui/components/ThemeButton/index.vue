@@ -8,16 +8,14 @@
 import { computed } from "vue"
 import { mapStores } from "pinia";
 import {useThemeStore} from "../../theme"
-import {DEFAULT_THEME_MODE} from "../../common/constants"
+import {CLICK_EVENT, DEFAULT_THEME_MODE} from "../../common/constants"
 import UIIcon from "../Icon/index.vue"
-import { genPx, genSize } from "../../common/style";
+import { genSize } from "../../common/style";
+import { setDarkMode, themeButtonProps, ThemeButtonPropsType, ThemeButtonEmitsType } from "./themeButton"
 
-const props = defineProps({
-    size: {
-        type: String,
-        default: "50"
-    }
-})
+const props: ThemeButtonPropsType = defineProps(themeButtonProps)
+
+const emits = defineEmits([CLICK_EVENT])
 
 const useStore = mapStores(useThemeStore).themeStoreStore();
 const isLight = computed(() => useStore.$state.modeId == DEFAULT_THEME_MODE);
@@ -26,7 +24,11 @@ const themeStyle = {
     width: width,
     height: height
 }
-const changeTheme = () => useStore.changeMode();
+const changeTheme = () => {
+    useStore.changeMode();
+    if(props.useBuiltIn) setDarkMode(useStore.mode);
+    emits(CLICK_EVENT, useStore.mode);
+}
 </script>
 
 <style lang="scss" scoped>
