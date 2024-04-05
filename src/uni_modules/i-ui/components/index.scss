@@ -1,6 +1,11 @@
 @import "./veriable.scss";
 @import "./Icon/static/liveicon.css";
 
+html.dark-theme,
+.dark-theme {
+    background-color: #000000;
+}
+
 *,
 page,
 input,
