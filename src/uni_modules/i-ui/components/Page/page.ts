@@ -3,7 +3,10 @@ import { PageStatus } from "../../common/constants"
 
 export const pageProps = {
     /** @desc 状态栏占位符 **/
-    nav: Boolean,
+    nav: {
+        type: Boolean,
+        default: true
+    },
     /** @desc 页面内容是否水平居中 **/
     center: Boolean,
     /** @desc 导航栏文字, 有值则显示导航栏 **/

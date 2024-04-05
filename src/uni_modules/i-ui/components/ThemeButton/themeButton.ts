@@ -1,5 +1,5 @@
 import type { ThemeModeType, ThemeJson, ThemeJsonOption } from "../../type";
-import { CLICK_EVENT, LIGHT_MODE_ID } from "../../index";
+import { CHANGE_EVENT, LIGHT_MODE_ID } from "../../index";
 import json from "./theme.json";
 import { ExtractPropTypes } from "vue";
 /**
@@ -100,5 +100,5 @@ export const themeButtonProps = {
 export type ThemeButtonPropsType = ExtractPropTypes<typeof themeButtonProps>;
 
 export type ThemeButtonEmitsType = {
-    [CLICK_EVENT] : (mode: ThemeModeType) => void
+    [CHANGE_EVENT] : (mode: ThemeModeType) => void
 }
