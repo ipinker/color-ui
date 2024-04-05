@@ -77,7 +77,7 @@
 <script lang="ts" setup>
 import CheckBoard from './CheckBoard.vue'
 import {CHANGE_EVENT} from "../../../common/constants";
-import {ColorInfo} from "../../../index.d"
+import {ColorInfo} from "../../../type.d"
 import { Numberify, HSLA, RGBA } from "@ctrl/tinycolor"
 import {ComputedRef, PropType, computed, ref} from "vue";
 import {useStyle} from "../../../hooks/useStyle"
@@ -211,3 +211,4 @@ const handleMouseUp = () => {
 		transform: translateX(-2px);
 	}
 </style>
+../../../type

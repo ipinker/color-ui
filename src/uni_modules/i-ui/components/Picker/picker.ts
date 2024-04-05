@@ -1,5 +1,5 @@
 import { ExtractPropTypes, PropType } from "vue";
-import { OptionsKeyType, AnyMap } from "../../index.d"
+import { OptionsKeyType, AnyMap } from "../../type"
 export type PickerValueType = string | number | string[] | number[];
 export const pickerProps = {
     /** @desc 通过keys值，支持数据各种名称，必传项； **/

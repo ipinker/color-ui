@@ -18,7 +18,7 @@
 </template>
 <script lang="ts" setup>
 import { mapStores } from "pinia";
-import { CheckType } from "../../index.d"
+import { CheckType } from "../../type.d"
 import { ComputedRef, StyleValue, nextTick, ref, computed } from "vue";
 import { useThemeStore } from "../../theme";
 import { radioProps, RadioPropsType } from "./radio";
@@ -139,4 +139,4 @@ defineExpose({
             line-height: $i-font-xl;
 		}
 	}
-</style>
+</style>../../type

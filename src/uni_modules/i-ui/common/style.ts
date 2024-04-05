@@ -6,7 +6,7 @@
 import { isNumber, isString } from "ipink-util";
 import { DEFAULT_STYLE } from "./constants";
 import { HSLA, HSVA, Numberify, RGBA, TinyColor } from "@ctrl/tinycolor"
-import type { ColorInfo, SeedKey } from "../index.d";
+import type { ColorInfo, SeedKey } from "../type";
 import { UIConfigInstance } from "./config"
 
 /** @desc 将一个单位数值转换为px；10px => 10px, 20rpx => 10px, 20 => 10px **/

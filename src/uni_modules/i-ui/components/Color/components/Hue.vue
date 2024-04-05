@@ -140,7 +140,7 @@
 
 <script lang="ts" setup>
 import {CHANGE_EVENT} from "../../../common/constants";
-import {ColorInfo} from "../../../index.d"
+import {ColorInfo} from "../../../type.d"
 import { Numberify, HSLA, RGBA } from "@ctrl/tinycolor"
 import {ComputedRef, PropType, computed, ref} from "vue";
 
@@ -332,3 +332,4 @@ const handleMouseUp = (e: any) => {
 		transform: translateX(-2px);
 	}
 </style>
+../../../type

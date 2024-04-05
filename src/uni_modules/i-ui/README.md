@@ -83,6 +83,7 @@ export default store;
 <!-- 主题使用Demo -->
 <script setup lang="ts">
 import { useThemeStore } from "@/uni_modules/i-ui/theme.ts"
+import { SeedOption } from "@/uni_modules/i-ui/type"
 
 const themeStore = useThemeStore();
 const theme = themeStore.theme; // 当前主题可使用的变量集合
@@ -94,7 +95,7 @@ const theme = themeStore.theme; // 当前主题可使用的变量集合
     实际使用可将 theme 打印出来参阅
 */
 /* 内置的 themeList, 每个成员可传对象必须有id，其他的字段参考 SeedMao 类型
-    const THEME_LIST: any[] = [
+    const THEME_LIST: SeedOption[] = [
         {"colorPrimary": "#16AD90", id: "gg"},
         {"colorPrimary": "#1677ff", id: "blue"},
         {"colorPrimary": "#2f54eb", id: "geekblue"},

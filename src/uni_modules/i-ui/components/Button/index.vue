@@ -34,7 +34,7 @@ import {
 
     genColorMap
 } from "./style"
-import type { SeedKey } from "../../index.d";
+import type { SeedKey } from "../../type.d";
 import { CLICK_EVENT, LIGHT_MODE_ID, RADIUS_LIST, RadiusToSeedKey, RadiusType } from "../../common/constants";
 import { genColorString, genDarkColor, genPx } from "../../common/style";
 import { useStyle } from "../../hooks/useStyle"
@@ -335,4 +335,4 @@ defineExpose({
             }
 		}
     }
-</style>
+</style>../../type

@@ -9,7 +9,7 @@
 import { computed, toRefs } from "vue";
 import { mapStores } from "pinia"
 import { TinyColor } from "@ctrl/tinycolor";
-import type { SeedKey } from "../index.d";
+import type { SeedKey } from "../type";
 import { useThemeStore } from "../theme";
 
 

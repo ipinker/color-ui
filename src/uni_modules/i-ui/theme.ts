@@ -30,9 +30,9 @@ export type ThemeStoreActions = {
     /** @desc 根据 ID 获取指定的主题 **/
     get: (id: string) => ColorToken | undefined
     /** @desc 添加一个主题 **/
-    add: (seed: SeedOption) => number
+    add: (seed: SeedOption, dir?: "push" | "unshift" | undefined) => number
     /** @desc 添加一个主题集合 **/
-    addList: (seed: SeedOption[]) => number
+    addList: (seed: SeedOption[], dir?: "push" | "unshift" | undefined) => number
     /** @desc 根据 ID 删除指定主题 **/
     del: (id: string) => number
     /** @desc 传入一个排序函数对主题进行排序 **/

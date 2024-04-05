@@ -1,4 +1,4 @@
-import {CheckType} from "../../index.d";
+import {CheckType} from "../../type";
 import {ExtractPropTypes, PropType} from "vue";
 import {CHANGE_EVENT, UPDATE_MODEL_EVENT} from "../../common/constants";
 import {SizeType} from "../../common/constants";

@@ -54,7 +54,7 @@ import {CHANGE_EVENT} from "../../../common/constants";
 import { useStyle } from "../../../hooks/useStyle";
 import { Numberify, HSLA, HSVA, RGBA } from "@ctrl/tinycolor"
 import {ComputedRef, PropType, computed, ref} from "vue";
-import {ColorInfo} from "../../../index.d"
+import {ColorInfo} from "../../../type.d"
 
 // #ifndef MP-WEIXIN
 const saturationWxs : any = {}
@@ -218,4 +218,4 @@ const handleMouseUp = (e: any) => {
 		transform: translate(-2px, -2px);
 	}
 </style>
-../../../common/style.js../../../common/constants.js../../../hooks/useStyle.js
+../../../common/style.js../../../common/constants.js../../../hooks/useStyle.js../../../type.js

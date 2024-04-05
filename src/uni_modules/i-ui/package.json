@@ -1,9 +1,8 @@
 {
 	"name": "i-uni-ui",
 	"description": "用于uniapp的UI，仅支持vue3",
-	"version": "1.0.0-beta.12",
+	"version": "1.0.0-beta.17",
 	"main": "./index.ts",
-	"types": "./index.d.ts",
     "keywords": [
         "uniapp",
         "uni",
@@ -32,13 +31,15 @@
 		"components",
 		"hooks",
 		"locale",
-		"package.json",
+        "theme.ts",
+		"index.ts",
+		"type.d.ts",
+		"global.d.ts",
 		"README.md",
 		"DEV.PLAN.md",
-		"index.d.ts",
-		"global.d.ts",
-        "theme.ts",
-        "LICENSE"
+		"CHANGELOG.md",
+        "LICENSE",
+		"package.json"
 	],
 	"author": "Gavin New",
 	"license": ""

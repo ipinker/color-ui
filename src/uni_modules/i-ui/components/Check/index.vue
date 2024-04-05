@@ -16,7 +16,7 @@
 </template>
 <script lang="ts" setup>
 import { mapStores } from "pinia";
-import {CheckType} from "../../index.d"
+import {CheckType} from "../../type.d"
 import {ComputedRef, StyleValue, ref, computed, nextTick} from "vue";
 import {useThemeStore} from "../../theme";
 import {CHANGE_EVENT, UPDATE_MODEL_EVENT} from "../../common/constants";
@@ -136,4 +136,4 @@ defineExpose({
             line-height: $i-font-xl;
 		}
 	}
-</style>
+</style>../../type

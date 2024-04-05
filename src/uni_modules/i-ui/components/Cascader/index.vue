@@ -105,7 +105,7 @@ import { CANCEL_EVENT, CONFIRM_EVENT, CUSTOM_EVENT, UPDATE_MODEL_EVENT, UPDATE_S
 import { cascadeProps, CascadePropsType } from "./cascader"
 import { useStyle } from "../../hooks/useStyle"
 import { useCascader } from "./useCascader"
-import { AnyMap } from "../../index.d"
+import { AnyMap } from "../../type.d"
 import i18n from "../../locale"
 import UIButton from "../Button/index.vue"
 import UIIcon from "../Icon/index.vue"
@@ -393,3 +393,4 @@ defineExpose({
         margin-left: $i-margin-m;
     }
 </style>
+../../type
