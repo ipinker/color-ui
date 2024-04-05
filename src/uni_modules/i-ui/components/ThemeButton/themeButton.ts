@@ -2,37 +2,40 @@ import type { ThemeModeType, ThemeJson, ThemeJsonOption } from "../../type";
 import { CHANGE_EVENT, LIGHT_MODE_ID } from "../../index";
 import json from "./theme.json";
 import { ExtractPropTypes } from "vue";
+const localThemeJson = json as ThemeJson;
 /**
  * @desc 设置Tabbar的字体色背景色
- * @param tabColorMap { { color, selectedColor, borderStyle, backgroundColor } }
+ * @param mode 当前主题模式 { ThemeModeType }
+ * @param themeJson 覆盖原主题方案的JSON { ThemeJson }
  * @return: 
  */
 export function setAppStyle(mode: ThemeModeType, themeJson?: ThemeJson) {
-    if(!themeJson) themeJson = json as ThemeJson;
-    let isLight: boolean = mode == LIGHT_MODE_ID;
+    if(!themeJson) themeJson = localThemeJson as ThemeJson;
     let colorMap = themeJson[mode];
+    let localColorMap = localThemeJson[mode];
     const styleMap: any = {
-        color: colorMap?.tabFontColor,
-        selectedColor: colorMap?.tabSelectedColor,
-        borderStyle: colorMap?.tabBorderStyle
+        color: colorMap?.tabFontColor || localColorMap?.tabFontColor,
+        selectedColor: colorMap?.tabSelectedColor || localColorMap?.tabSelectedColor,
+        borderStyle: colorMap?.tabBorderStyle || localColorMap?.tabBorderStyle
     }
-    if (isLight) styleMap.backgroundColor = "transparent";
-    else styleMap.backgroundColor = colorMap?.bgColor;
+    styleMap.backgroundColor = colorMap?.tabBgColor || localColorMap?.tabBgColor;
     try {
         uni.setBackgroundColor && uni.setBackgroundColor({
-            backgroundColor: colorMap.bgColor,
-            backgroundColorTop: colorMap.bgColorTop,
-            backgroundColorBottom: colorMap.bgColorBottom
+            backgroundColor: colorMap.bgColor || localColorMap?.bgColor,
+            backgroundColorTop: colorMap.bgColorTop || localColorMap?.bgColorTop,
+            backgroundColorBottom: colorMap.bgColorBottom || localColorMap?.bgColorBottom
         });
     } catch (error) {}
     try {
         uni.setNavigationBarColor && uni.setNavigationBarColor({
-            frontColor: colorMap.navTxtStyle == "white" ? '#ffffff' : "#000000",
-            backgroundColor: colorMap.navBgColor,
+            frontColor: (colorMap.navTxtStyle || localColorMap.navTxtStyle) == "white" ? '#ffffff' : "#000000",
+            backgroundColor: colorMap.navBgColor || localColorMap.navBgColor,
         }) 
     } catch (error) {}
     try { 
-        uni.setBackgroundTextStyle && uni.setBackgroundTextStyle({ textStyle: colorMap.bgTxtStyle as string }) 
+        uni.setBackgroundTextStyle && uni.setBackgroundTextStyle({ 
+            textStyle: (colorMap.bgTxtStyle || localColorMap.bgTxtStyle) as string 
+        }) 
     } catch (error) {}
     try { 
         uni.setTabBarStyle && uni.setTabBarStyle(styleMap) 
