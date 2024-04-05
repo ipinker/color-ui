@@ -1,10 +1,15 @@
 import { UIConfigInstance } from "./common/config"
-export const UIConfig = UIConfigInstance;
+import { setDarkMode, setAppStyle as setStyle } from "./components/ThemeButton/themeButton";  
 export * from "./common/constants"
 export * from "./common/style"
+export const UIConfig = UIConfigInstance;
+export const setThemeMode = setDarkMode;
+export const setAppStyle = setStyle;
 const _uni : any = uni;
 _uni.$i = {
     config: UIConfigInstance,
+    setThemeMode,
+    setAppStyle
 }
 
 const install = (Vue: any) => {

@@ -7,7 +7,7 @@ import { ExtractPropTypes } from "vue";
  * @param tabColorMap { { color, selectedColor, borderStyle, backgroundColor } }
  * @return: 
  */
-export function setTabBarStyle(mode: ThemeModeType, themeJson?: ThemeJson) {
+export function setAppStyle(mode: ThemeModeType, themeJson?: ThemeJson) {
     if(!themeJson) themeJson = json as ThemeJson;
     let isLight: boolean = mode == LIGHT_MODE_ID;
     let colorMap = themeJson[mode];
@@ -82,7 +82,7 @@ export function setDarkMode(mode: ThemeModeType) {
         }
     }
     // #endif
-    setTabBarStyle(mode);
+    setAppStyle(mode);
 }
 
 export const themeButtonProps = {
