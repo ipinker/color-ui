@@ -1,6 +1,6 @@
 <template>
     <IPage>
-        <INavigationBar
+        <INavigationBar :opacity="opacity"
             :custom="custom"
             :height="height"
             :title="title"
@@ -29,6 +29,8 @@
             <IButton primary plain @click="custom = !custom">Set custom -> {{custom}}</IButton>
             <ITitle title="props：useBack"/>
             <IButton primary plain @click="useBack = !useBack">Set useBack -> {{useBack}}</IButton>
+            <ITitle title="props：opacity"/>
+            <IInput v-model="opacity" placeholder="透明度（0～1）"></IInput>
             <ITitle title="props：height"/>
             <IButton primary plain @click="handleSetHeight">Set height -> {{height}}</IButton>
             <ITitle title="props：title"/>
@@ -75,6 +77,7 @@ let useBack = ref(true);
 let backTxt = ref(undefined);
 let backIcon = ref(undefined);
 let primary = ref(true);
+let opacity = ref(1);
 
 let showOperate = ref(false);
 let showContent = ref(false);

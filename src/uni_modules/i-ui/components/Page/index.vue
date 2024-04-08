@@ -1,6 +1,6 @@
 <template>
     <view class="IPageBody col" :class="{ 'flex-column-align-center' : center }">
-        <UINavigationBar :title="title" :useBack="useBack" :titleAlign="titleAlign" :usePrimary="usePrimary"
+        <UINavigationBar :opacity="opacity" :title="title" :useBack="useBack" :titleAlign="titleAlign" :usePrimary="usePrimary"
             v-if="title"
         >
             <template v-slot="operate">

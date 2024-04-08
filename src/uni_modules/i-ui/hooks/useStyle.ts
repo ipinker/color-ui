@@ -11,6 +11,8 @@ import { mapStores } from "pinia"
 import { TinyColor } from "@ctrl/tinycolor";
 import type { SeedKey } from "../type";
 import { useThemeStore } from "../theme";
+import { LIGHT_MODE_ID } from "../common/constants";
+import { genDarkColor } from "../common/style";
 
 
 export const useStyle = () => {
@@ -19,7 +21,10 @@ export const useStyle = () => {
 
     const colorFunc = (color: SeedKey | string): string => {
         const value: TinyColor = new TinyColor(color);
-        if(value.isValid) return value.toRgbString();
+        if(value.isValid){
+            if(useStore.mode === LIGHT_MODE_ID) return value.toRgbString();
+            return value.darken().toRgbString();
+        }
         return useStore.theme?.[color as SeedKey] as string;
     };
 

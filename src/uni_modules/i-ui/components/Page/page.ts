@@ -9,6 +9,8 @@ export const pageProps = {
     },
     /** @desc 页面内容是否水平居中 **/
     center: Boolean,
+    /** @desc 导航栏透明度 **/
+    opacity: [Number, String],
     /** @desc 导航栏文字, 有值则显示导航栏 **/
     title: String,
     /** @desc 导航栏文字横向布局 **/

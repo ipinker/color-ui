@@ -56,7 +56,6 @@ const themeStoreOptions: Omit<DefineStoreOptions<ThemeStoreId, ThemeStoreState, 
     },
     getters: {
         theme: (state: ThemeStoreState) => {
-            console.log(state.id, state.themeList)
             return state.themeList.find((theme) => `${state.id}-${state.modeId}` === theme.id || state.id === theme.id)
         },
         mode: (state: ThemeStoreState) => state.modeId
