@@ -29,6 +29,8 @@ const props = defineProps({
     width: String,
     /** @desc 高度， 不传则自适应 **/
     height: String,
+    /** @desc padding **/
+    padding: String,
     /** @desc 圆角 **/
     radius: {
         type: [String , Number],
@@ -49,6 +51,7 @@ const styleOption: ComputedRef<StyleValue> = computed((): StyleValue => {
     };
     if(props.width) style.width = genPx(props.width);
     if(props.height) style.height = genPx(props.height);
+    if(props.padding) style.padding = genPx(props.padding);
     if(props.radius) style.borderRadius = genRadius(props.radius)?.["border-radius"];
     if(props.full) style.width = "100%", style.margin = `${store.theme?.margin}px auto`;
     style.boxShadow = `0 2px 6px 0 ${store.theme?.colorShadowBase}`;
@@ -70,6 +73,7 @@ const handleEvent = () => {
 .ICardContainer {
     margin: $i-margin-m;
     overflow: hidden;
+    position: relative;
     .ICardHeader {
         padding: $i-padding-m;
         font-size: $i-font-m;
