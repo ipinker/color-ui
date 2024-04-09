@@ -12,7 +12,6 @@ import { TinyColor } from "@ctrl/tinycolor";
 import type { SeedKey } from "../type";
 import { useThemeStore } from "../theme";
 import { LIGHT_MODE_ID } from "../common/constants";
-import { genDarkColor } from "../common/style";
 
 
 export const useStyle = () => {

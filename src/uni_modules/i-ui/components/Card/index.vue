@@ -1,5 +1,5 @@
 <template>
-    <div class="ICardContainer" :style="[styleOption]" :class="{ full }">
+    <div class="ICardContainer" :style="[styleOption]" :class="{ full, noPadding }">
         <template v-if="useHeader || title">
             <div class="ICardHeader" :style="[styleOptionForHeader]" v-if="title">{{title}}</div>
             <div class="ICardHeader" :style="[styleOptionForHeader]" v-if="!title"><slot name="header"></slot></div>
@@ -37,7 +37,8 @@ const props = defineProps({
     /** @desc 加载效果 **/
     loading: Boolean,
     /** @desc 开启后可以使用v-on:click **/
-    event: Boolean
+    event: Boolean,
+    noPadding: Boolean
 });
 const emits = defineEmits([CLICK_EVENT]);
 const store = mapStores(useThemeStore).themeStoreStore();
@@ -67,7 +68,6 @@ const handleEvent = () => {
 
 <style lang="scss">
 .ICardContainer {
-    flex: 1;
     margin: $i-margin-m;
     overflow: hidden;
     .ICardHeader {
@@ -79,6 +79,14 @@ const handleEvent = () => {
     .ICardBody {
         padding: $i-padding-m;
         font-size: $i-font-s;
+    }
+    &.full {
+        margin: 0;
+    }
+    &.noPadding {
+        .ICardBody {
+            padding: 0;
+        }
     }
 }
 </style>
