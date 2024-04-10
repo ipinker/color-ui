@@ -11,6 +11,11 @@ export const pageProps = {
     center: Boolean,
     /** @desc 导航栏透明度 **/
     opacity: [Number, String],
+    gradientType: String,
+    gradientValue: String,
+    color: String,
+    bgColor: String,
+    statusColor: String,
     /** @desc 导航栏文字, 有值则显示导航栏 **/
     title: String,
     /** @desc 导航栏文字横向布局 **/
