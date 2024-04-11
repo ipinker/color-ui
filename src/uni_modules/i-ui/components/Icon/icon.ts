@@ -14,7 +14,8 @@ export const iconProps = {
     color: String as PropType<SeedKey | string>,
     bgColor: String,
     /**  @description 开启本选项， color，bgColor 值应该为 SeedMap 类型内的属性  **/
-    primary: Boolean
+    primary: Boolean,
+    radius: String
 } as const;
 
 export type IconPropsType = ExtractPropTypes<typeof iconProps>;

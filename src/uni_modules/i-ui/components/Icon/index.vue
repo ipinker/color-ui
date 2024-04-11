@@ -12,7 +12,7 @@ import {iconProps, IconPropsType, IconEmitsType} from "./icon";
 import {ComputedRef, StyleValue, ref, computed } from "vue";
 import {CLICK_EVENT} from "../../common/constants";
 import { useStyle } from "../../hooks/useStyle"
-import {genSize} from "../../common/style";
+import {genPx, genSize} from "../../common/style";
 import {iconList} from "./static/liveicon"
 const props: IconPropsType = defineProps(iconProps);
 const emits = defineEmits([CLICK_EVENT]);
@@ -53,6 +53,10 @@ const fontIconStyle: ComputedRef<StyleValue> = computed((): StyleValue => {
         style.height = height;
         style.lineHeight = height;
         style.fontSize = width;
+    }
+    if(props.radius){
+        style.borderRadius = props.radius.indexOf("%") > -1 ? props.radius : genPx(props.radius);
+        style.overflow = "hidden";
     }
     return style;
 })

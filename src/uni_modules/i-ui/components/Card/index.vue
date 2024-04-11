@@ -52,6 +52,7 @@ const styleOption: ComputedRef<StyleValue> = computed((): StyleValue => {
     if(props.width) style.width = genPx(props.width);
     if(props.height) style.height = genPx(props.height);
     if(props.padding) style.padding = genPx(props.padding);
+    if(props.noPadding) style.padding = 0;
     if(props.radius) style.borderRadius = genRadius(props.radius)?.["border-radius"];
     if(props.full) style.width = "100%", style.margin = `${store.theme?.margin}px auto 0`;
     style.boxShadow = `0 2px 6px 0 ${store.theme?.colorShadowBase}`;
