@@ -53,7 +53,7 @@ const styleOption: ComputedRef<StyleValue> = computed((): StyleValue => {
     if(props.height) style.height = genPx(props.height);
     if(props.padding) style.padding = genPx(props.padding);
     if(props.radius) style.borderRadius = genRadius(props.radius)?.["border-radius"];
-    if(props.full) style.width = "100%", style.margin = `${store.theme?.margin}px auto`;
+    if(props.full) style.width = "100%", style.margin = `${store.theme?.margin}px auto 0`;
     style.boxShadow = `0 2px 6px 0 ${store.theme?.colorShadowBase}`;
     return style;
 })
@@ -71,7 +71,7 @@ const handleEvent = () => {
 
 <style lang="scss">
 .ICardContainer {
-    margin: $i-margin-m;
+    margin: $i-margin-m auto 0;
     overflow: hidden;
     position: relative;
     .ICardHeader {

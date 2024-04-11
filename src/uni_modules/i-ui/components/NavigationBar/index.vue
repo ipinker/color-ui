@@ -7,7 +7,7 @@
                 <slot />
             </div>
             <div class="INavigationBody" :style="[{ height: contentHeightValue + 'px' }, navigationBarBackground]" v-else>
-                <div class="INavigationContent">
+                <div class="INavigationContent" :class="{'StatusBarPaddingTop' : statusBarInBody}">
                     <div class="INavigationContentBox flex-align-center" :style="[navigationTextColor]">
                         <div class="INavigationBack flex-align-center ActiveLight" v-if="useBack" @click="handleBack">
                             <UIIcon size="40" :icon="backIcon" />{{backTxt}}
@@ -73,7 +73,7 @@
         if(props.statusBarInBody) return uni.upx2px(+props.height) + statusBarHeight.value;
         return uni.upx2px(+props.height)
     })
-    const navigateHeight = computed(() => contentHeightValue.value + statusBarHeight.value);
+    const navigateHeight = computed(() => contentHeightValue.value + (props.statusBarInBody ? 0 : statusBarHeight.value));
     const maskColor = computed(() => themeStore.theme?.colorBgMask)
     onMounted(() => {
         try {
@@ -126,7 +126,10 @@
     bottom: 0; top:0;
     width: $i-width-full;
     height: 100%;
-    
+    &.StatusBarPaddingTop {
+        box-sizing: border-box;
+        padding-top: var(--status-bar-height)
+    }
 }
 .INavigationContentBox {
     position: relative;

@@ -1,6 +1,9 @@
 <template>
     <view class="IPageBody col" :class="{ 'flex-column-align-center' : center }">
-        <UINavigationBar :opacity="opacity" :title="title" :useBack="useBack" :titleAlign="titleAlign" :usePrimary="usePrimary"
+        <UINavigationBar :opacity="opacity" :title="title" :useBack="useBack" 
+            :titleAlign="titleAlign" :usePrimary="usePrimary" :statusBarInBody="statusBarInBody"
+            :gradientType="gradientType" :gradientValue="gradientValue"
+            :color="color" :bgColor="bgColor" :statusColor="statusColor"
             v-if="title"
         >
             <template v-slot="operate">
