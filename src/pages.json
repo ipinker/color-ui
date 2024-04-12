@@ -6,7 +6,8 @@
 		}
 	},
 	"pages": [
-		{ "path": "pages/start", "style": { "navigationBarTitleText": "启动页" } }
+		{ "path": "pages/start", "style": { "navigationBarTitleText": "启动页" } },
+		{ "path": "pages/api", "style": { "navigationBarTitleText": "Api" } }
 	],
 	"subPackages": [
 		{
@@ -90,6 +91,23 @@
 			}
 		]
 	},
+    "tabBar": {
+		"color": "@tabFontColor",
+		"selectedColor": "@tabSelectedColor",
+		"borderStyle": "@tabBorderStyle",
+		"spacing": "5px",
+		"fontSize": "14px",
+		"blurEffect": "extralight",
+	    "list": [
+			{
+				"pagePath": "pages/start",
+				"text": "组件库"
+			},{
+				"pagePath": "pages/api",
+				"text": "Api"
+			}
+        ]
+    },
 	"globalStyle": {
 		"navigationBarTextStyle": "black",
 		"navigationBarTitleText": "%app.name%",

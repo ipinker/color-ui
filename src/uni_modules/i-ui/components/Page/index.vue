@@ -13,6 +13,7 @@
         <view class="StatusBarRelative" v-if="!title && nav"></view>
         <slot />
         <UILoading :color="colorForMask" size="60" :type="loadingType" useMask v-if="isLoading"/>
+        <view :style="[pageSafeAreaStyle]"></view>
     </view>
 </template>
 
@@ -23,11 +24,19 @@ import { useThemeStore } from "../../theme"
 import { PagePropsType, pageProps } from "./page"
 import UINavigationBar from "../NavigationBar/index.vue"
 import UILoading from "../Loading/index.vue"
+import { getSystemInfo } from "../../common/util";
+
 const props: PagePropsType = defineProps(pageProps)
 const themeStore = mapStores(useThemeStore).themeStoreStore();
 const pageColor = computed(() => themeStore.theme?.colorBgLayout);
 const textColor = computed(() => themeStore.theme?.colorText);
 const colorForMask = computed(() => themeStore.theme?.colorWhite);
+
+let SYS_INFO = getSystemInfo();
+const pageSafeAreaStyle = {
+    "height":  +(props.tabHeight || 0) + (SYS_INFO.safeAreaInsets?.bottom || 0) + "px"
+};
+
 </script>
 
 <style lang="scss">
@@ -37,10 +46,12 @@ page,
     width: 100vw;
     max-width: 100vw;
     overflow-x: hidden;
-    min-height: calc(100vh - var(--window-bottom));
+    min-height: 100vh;
     background-color: v-bind(pageColor);
     color: v-bind(textColor);
+
 }
+
 .StatusBarRelative {
     height: var(--status-bar-height);
 }

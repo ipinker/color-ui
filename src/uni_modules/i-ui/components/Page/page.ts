@@ -7,6 +7,10 @@ export const pageProps = {
         type: Boolean,
         default: false
     },
+    tabHeight: {
+        type: [Number, String],
+        default: 0
+    },
     /** @desc 页面内容是否水平居中 **/
     center: Boolean,
     /** @desc 导航栏透明度 **/

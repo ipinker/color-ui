@@ -168,3 +168,4 @@ export function genColorInfo(data: ColorInfo, oldHue?: number): ColorInfo {
 }
 
 
+export const SYS_CACHE_KEY = "SYS_INFO_CACHE";
