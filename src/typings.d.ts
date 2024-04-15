@@ -1,5 +1,5 @@
 // 全局要用的类型放到这里
-import type { SeedMap } from "ipink-theme/dist/theme/interface";
+import type { ColorToken } from "ipink-theme/dist/theme/interface";
 
 export type Num = string | number;
 
@@ -34,7 +34,7 @@ export interface ServerResult<T = unknown> {
 
 export type StringMap = { [propName : string] : string };
 
-export type SeedKey = (keyof SeedMap);
+export type SeedKey = (keyof ColorToken);
 
 export type CheckType = boolean | string | number;
 

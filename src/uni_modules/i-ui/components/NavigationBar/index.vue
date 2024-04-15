@@ -33,6 +33,7 @@
     import { useThemeStore } from "../../theme";
     import { navigationProps, NavigationBarPropsType } from "./navigationBar"
     import { isLightColor } from "../../common/style";
+    import { UIConfigInstance }from "../../common/config"
     import UIIcon from "../Icon/index.vue"
     const themeStore = mapStores(useThemeStore).themeStoreStore();
     const props: NavigationBarPropsType = defineProps(navigationProps);
@@ -46,7 +47,9 @@
         }),
         navigationBarBackground = computed(() => {
             let bgValue = ""
-            if (props.gradientType) bgValue = props.gradientType+'-gradient('+props.gradientValue+')';
+            const gradientType = props.gradientType || UIConfigInstance.config?.navigationBarProps?.gradientType;
+            const gradientValue = props.gradientValue ||  UIConfigInstance.config?.navigationBarProps?.gradientValue;
+            if (gradientType && gradientType != "none") bgValue = gradientType+'-gradient('+gradientValue+')';
             else bgValue = props.bgColor || (props.primary ? themeStore.theme?.colorPrimary : themeStore.theme?.colorBgContainer) || "";
             return {
                 background : bgValue
@@ -54,7 +57,8 @@
         }),
         navigationTextColor = computed(() => {
             let colorValue = "";
-            if (props.gradientType) colorValue = themeStore.theme?.colorWhiteTextBase || "";
+            const gradientType = props.gradientType || UIConfigInstance.config?.navigationBarProps?.gradientType;
+            if (gradientType && gradientType != "none") colorValue = themeStore.theme?.colorWhiteTextBase || "";
             else {
                 const bgColor = props.bgColor || (props.primary ? themeStore.theme?.colorPrimary : themeStore.theme?.colorBgContainer) || "";
                 colorValue = (isLightColor(bgColor) ? themeStore.theme?.colorText : themeStore.theme?.colorWhiteTextBase) || "";

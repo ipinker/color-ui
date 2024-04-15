@@ -114,8 +114,8 @@ const changeThemeMode = () => {
     // changeMode();       // 切换模式  light ｜ dark
     // change(id: string); // 切换主题, 内置： 
     // get(id: string);    // 获取指定的主题（模式默认当前模式）
-    // init(themeList: SeedMap[]) // 初始化内置主题， 可以将原内置主题覆盖
-    // add(theme: SeedMap) // 添加主题
+    // init(themeList: ColorOption[]) // 初始化内置主题， 可以将原内置主题覆盖
+    // add(theme: ColorOption) // 添加主题
     // del(id: string) // 删除主题
     // sort(sortFunction: Function) // 排序主题
     themeStore.changeMode();

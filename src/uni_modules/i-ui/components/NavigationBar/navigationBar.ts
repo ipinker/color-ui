@@ -29,7 +29,7 @@ export const navigationProps = {
         type: String,
         default: ""
     },
-    gradientType: { // 渐变类型 linear | radial
+    gradientType: { // 渐变类型 linear | radial | none | ""
         type: String,
         default: ""
     },

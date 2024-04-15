@@ -37,7 +37,8 @@ import {
 import type { SeedKey } from "../../type.d";
 import { CLICK_EVENT, LIGHT_MODE_ID, RADIUS_LIST, RadiusToSeedKey, RadiusType } from "../../common/constants";
 import { genColorString, genDarkColor, genPx } from "../../common/style";
-import { useStyle } from "../../hooks/useStyle"
+import { useStyle } from "../../hooks/useStyle";
+import { ColorToken } from "ipink-theme";
 
 const store = mapStores(useThemeStore).themeStoreStore();
 const props = defineProps(buttonProps);
@@ -72,12 +73,12 @@ const IButtonStyle = computed(() => {
     } = genColorMap(props);
     const styleOption: StyleValue = {};
     if(!_custom){
-        styleOption.color = store.theme?.[textColor as SeedKey] as string;
+        styleOption.color = store.theme?.[textColor as unknown as SeedKey] as string;
         if(bgColor) styleOption.backgroundColor = store.theme?.[bgColor as SeedKey] as string;
         if(activeTextColor) textActiveColor.value = store.theme?.[activeTextColor as SeedKey] as string;
         if(activeBgColor) bgActiveColor.value = store.theme?.[activeBgColor as SeedKey] as string;
         if(shadowColor) styleOption.boxShadow = `0 2px 6px ${store.theme?.[shadowColor as SeedKey] as string}`;
-        if(borderColor) styleOption.borderColor = store.theme?.[borderColor as SeedKey] as string;
+        if(borderColor) styleOption.borderColor = store.theme?.[borderColor as (keyof ColorToken)] as string;
     }
     else {
         const isLight = store.mode == LIGHT_MODE_ID;
@@ -95,7 +96,7 @@ const IButtonStyle = computed(() => {
         styleOption.color = _textColor;
         if(bgColor) styleOption.backgroundColor = _BgColor;
         if(activeTextColor) {
-            const _activeTextColor = isLight ? activeTextColor : genDarkColor(activeTextColor);
+            const _activeTextColor = isLight ? activeTextColor : genDarkColor(activeTextColor as string);
             textActiveColor.value = _activeTextColor;
         }
         if(activeBgColor) {
@@ -107,14 +108,14 @@ const IButtonStyle = computed(() => {
             styleOption.boxShadow = `0 2px 0 ${_shadowColor}`
         };
         if(borderColor) {            
-            const _borderColor = isLight ? borderColor : genDarkColor(borderColor);
-            styleOption.borderColor = _borderColor;
+            const _borderColor = isLight ? borderColor : genDarkColor(borderColor as string);
+            styleOption.borderColor = _borderColor as string;
         }
     }
     if(disabled && _type != "link" && _type != "text"){
         styleOption.backgroundColor = genColorString(bgColor as string, 0.03);
         styleOption.color = store.theme?.[textColor as SeedKey] as string;
-        styleOption.borderColor = store.theme?.[borderColor as SeedKey] as string;
+        styleOption.borderColor = store.theme?.[borderColor as SeedKey ] as string;
     }
     if(borderColor) styleOption.borderStyle = "solid", styleOption.borderWidth = store.theme?.borderWidth + 'px';
     if(RADIUS_LIST.includes(("" + props.radius) as RadiusType)){
@@ -175,10 +176,6 @@ defineExpose({
         display: inline-flex;
         align-items: center;
         justify-content: center;
-        margin-right: $i-margin-m;
-        &:last-child {
-            margin-right: 0;
-        }
 
         .LiveIcon,
         .iconfont {

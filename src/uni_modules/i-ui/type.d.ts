@@ -1,5 +1,5 @@
 // 全局要用的类型放到这里
-import type { SeedMap as SeedMapType } from "ipink-theme/dist/theme/interface";
+import type { ColorToken } from "ipink-theme/dist/theme/interface";
 import { HSLA, HSVA, Numberify, RGBA } from "@ctrl/tinycolor";
 
 export type Num = string | number;
@@ -9,9 +9,7 @@ export type StrNum = string | number;
 export type StringMap = { [propName : string] : string };
 export type AnyMap = { [propName : string] : any };
 
-export type SeedMap = SeedMapType;
 
-export type SeedKey = (keyof SeedMapType);
 
 export type CheckType = boolean | string | number;
 
@@ -87,7 +85,8 @@ export type {
 export type {
     SizeStyle,
     RadiusStyle,
-    ColorKey
+    ColorKey,
+    SeedKey
 } from "./common/style"
 
 export type { 

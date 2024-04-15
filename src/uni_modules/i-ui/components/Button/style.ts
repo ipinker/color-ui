@@ -8,6 +8,7 @@ import type { ExtractPropTypes } from 'vue';
 import type {ButtonPropsType} from "./button";
 import {genColorString, genDarkColor, genRadius, genSize, RadiusStyle, SizeStyle} from "../../common/style";
 import {ButtonType} from "./button";
+import { SeedKey } from "../../type";
 
 /**
  * @description 根据按钮的类型 <type> 生成指定的 class 集合
@@ -66,7 +67,7 @@ export type ColorStyle = {
     "border-color"?: string,
     "border"?: string
 }
-type ColorString = undefined | string;
+type ColorString = SeedKey | string;
 type ColorStyleMap = {
     bgColor: ColorString;
     textColor: ColorString;

@@ -4,7 +4,7 @@ import { ColorKey } from "..";
 export const LIGHT_MODE_ID = "light";
 /** @desc Theme mode : light | dark  **/
 export const DEFAULT_THEME_MODE = LIGHT_MODE_ID;
-/** @desc 内置的主题生成集合 SeedMap[] **/
+/** @desc 内置的主题生成集合 SeedOption[] **/
 export const THEME_LIST: SeedOption[] = [
     {"colorPrimary": "#16AD90", id: "gg"},
     {"colorPrimary": "#1677ff", id: "blue"},

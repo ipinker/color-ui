@@ -1,4 +1,4 @@
-import { SeedMap } from 'ipink-theme/dist/theme/interface';
+import { ColorToken } from 'ipink-theme/dist/theme/interface';
 import { Cache } from 'ipink-util';
 
 const cache = new Cache('uiConfig');
@@ -7,7 +7,12 @@ export interface UIConfigBasicOption {
     unit?: "px" | "rpx"
     themeMode?: "light" | "dark"
     lang?: "en" | "es" | "fr" | "ja" | "zh-Hans" | "zh-Hant"
-    primary?: SeedMap | any
+    primary?: ColorToken | any,
+
+    navigationBarProps?: {
+        gradientType?: "linear" | "radial",
+        gradientValue?: string
+    }
 }
 
 export interface UIConfigOption extends UIConfigBasicOption {

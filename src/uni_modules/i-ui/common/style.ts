@@ -6,8 +6,11 @@
 import { isNumber, isString } from "ipink-util";
 import { DEFAULT_STYLE } from "./constants";
 import { HSLA, HSVA, Numberify, RGBA, TinyColor } from "@ctrl/tinycolor"
-import type { ColorInfo, SeedKey } from "../type";
+import type { ColorInfo } from "../type";
 import { UIConfigInstance } from "./config"
+import { ColorToken } from "ipink-theme";
+
+export type SeedKey = keyof ColorToken;
 
 /** @desc 将一个单位数值转换为px；10px => 10px, 20rpx => 10px, 20 => 10px **/
 export const genPx = (num: string | number) => {
