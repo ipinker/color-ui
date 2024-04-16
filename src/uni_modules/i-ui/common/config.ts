@@ -20,7 +20,7 @@ export interface UIConfigOption extends UIConfigBasicOption {
 }
 
 /** @desc 首次调用必须在 pinia 实例化之前 **/
-class UIConfig {
+export class UIConfig {
     static instance: UIConfig;
 
     /** @desc 首次调用必须在 pinia 实例化之前 **/

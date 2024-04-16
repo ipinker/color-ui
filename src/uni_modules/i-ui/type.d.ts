@@ -6,8 +6,12 @@ export type Num = string | number;
 
 export type StrNum = string | number;
 
-export type StringMap = { [propName : string] : string };
-export type AnyMap = { [propName : string] : any };
+export interface StringMap { 
+    [propName : string] : string 
+};
+export interface AnyObject { 
+    [propName : string] : any 
+};
 
 
 
@@ -37,6 +41,12 @@ export type OptionsKeyType = {
     label: string
     value: string
     children: string
+}
+
+export interface ModalRef {
+    _ref?: any
+    open?: (AnyObject) => void
+    close?: (AnyObject) => void
 }
 
 /** @desc 设置主题样式用到的key； ThemeButton **/

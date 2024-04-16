@@ -14,6 +14,7 @@ export const config = {
 export type PopupType = typeof config;
 export type PopupTypeType = keyof (typeof config)
 export type PopupRefType = {
+    _ref?: any
     open: (type?: PopupTypeType) => void
     close: (type?: PopupTypeType) => void
 }

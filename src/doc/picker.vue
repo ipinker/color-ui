@@ -12,7 +12,7 @@
             <ITitle>level 层级深度 { string | number } </ITitle>
             <ITitle>show 是否展示 { boolean } </ITitle>
             <ITitle>title 标题 { string } </ITitle>
-            <ITitle>list 数据列表 { AnyMap[] } </ITitle>
+            <ITitle>list 数据列表 { AnyObject[] } </ITitle>
             <ITitle>modelValue 默认 { PickerValueType } </ITitle>
             <ITitle>value 默认值 { PickerValueType } </ITitle>
             <ITitle>isMaskClick 点击遮罩是否关闭 </ITitle>

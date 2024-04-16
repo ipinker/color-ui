@@ -3,12 +3,12 @@ import { PickerPropsType, PickerValueType } from "./picker";
 import { PopupRefType } from "../Popup/popup";
 import { isArray, isNumber, isObject, isString } from "ipink-util";
 import { CHILDREN_KEY } from "../../common/constants";
-import { StrNum, OptionsKeyType, AnyMap } from "../../type"
+import { StrNum, OptionsKeyType, AnyObject } from "../../type"
 
 export function usePicker (props: PickerPropsType) {
 
     let pickerRef: Ref<PopupRefType | null> = ref(null),
-        dataList: Ref<AnyMap[]> = ref([]), //picker数据
+        dataList: Ref<AnyObject[]> = ref([]), //picker数据
         checkLabelArr: Ref<string[]> = ref([]), //数据name数据
         checkValueArr: Ref<StrNum[]> = ref([]), //数组code数据
         resultStr: Ref<string> = ref(""), //字符串数据

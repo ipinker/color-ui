@@ -1,5 +1,5 @@
 <template>
-    <UIPopup ref="IPopupRef" type="center" @change="change" :isMaskClick="dialogOption.isMaskClick" @onMaskClick="cancel">
+    <UIPopup ref="dialogRef" type="center" @change="change" :isMaskClick="dialogOption.isMaskClick" @onMaskClick="cancel">
         <div class="IDialogContainer" :style="[container, shadow]">
             <div class="IDialogTitle">
                 {{dialogOption.title || $t('common.alertTitle')}}
@@ -29,17 +29,13 @@
 <script lang="ts" setup>
 import { PropType, ref, Ref, computed, ComputedRef, watch } from 'vue';
 import { useStyle } from '../../hooks/useStyle';
-import { DialogOption } from "./dialog";
+import { DialogOption, DialogRef, dialogProps, DialogPropsType } from "./dialog";
 import UIPopup from "../Popup/index.vue";
 import UIRich from "../Rich/index.vue"
-const emits = defineEmits(["cancel", "confirm", "change"]);
-const props = defineProps({
-    option: {
-        type: Object as PropType<DialogOption>,
-        default: () => ({})
-    },
-    show: Boolean
-})
+import { CANCEL_EVENT } from '../../common/constants';
+import { PopupRefType } from '../Popup';
+const emits = defineEmits([CANCEL_EVENT, "confirm", "change"]);
+const props: DialogPropsType = defineProps(dialogProps)
 const defaultOption: Ref<DialogOption> = ref({
     isMaskClick: true,
     cancelText: "",
@@ -50,7 +46,7 @@ const defaultOption: Ref<DialogOption> = ref({
     contentStyle: {},
     callback: () => {}
 });
-const IPopupRef = ref(null);
+const dialogRef: Ref<PopupRefType | null> = ref(null);
 const { shadow, container, borderBottom, borderRight, font, primaryText } = useStyle();
 const dialogOption: ComputedRef<DialogOption> = computed((): DialogOption => {
     const _option: DialogOption = {
@@ -60,26 +56,23 @@ const dialogOption: ComputedRef<DialogOption> = computed((): DialogOption => {
     return _option;
 })
 const cancel = () => {
-    const el: any = IPopupRef.value as any;
-    el?.close && el.close();
+    dialogRef.value?.close && dialogRef.value.close();
     if(dialogOption.value.callback) dialogOption.value.callback(false);
-	emits('cancel', false);
+	emits(CANCEL_EVENT, false);
 }
 const open = (options ?: DialogOption) => {
     if(options && Object.keys(options).length){
         defaultOption.value = {
-            ... defaultOption,
+            ... defaultOption.value,
             ... (options || {})
         };
     }
-    const el: any = IPopupRef.value as any;
-    el?.open && el.open();
+    dialogRef.value?.open && dialogRef.value.open();
 }
 const confirm = () => {
     if(dialogOption.value.callback) dialogOption.value.callback(true);
     emits('confirm', true);
-    const el: any = IPopupRef.value as any;
-    el?.close && el.close();
+    dialogRef.value?.close && dialogRef.value.close();
 }
 const change = (e: { show: boolean }) => {
 	emits('change', e);
@@ -93,10 +86,10 @@ watch(() => props.show, (val, oldVal) => {
 })
 
 defineExpose({
-    _ref: IPopupRef,
+    _ref: dialogRef,
     close: cancel,
     open
-})
+} as DialogRef)
 </script>
 
 <style lang="scss" scoped>

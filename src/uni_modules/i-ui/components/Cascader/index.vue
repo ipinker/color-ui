@@ -105,7 +105,7 @@ import { CANCEL_EVENT, CONFIRM_EVENT, CUSTOM_EVENT, UPDATE_MODEL_EVENT, UPDATE_S
 import { cascadeProps, CascadePropsType } from "./cascader"
 import { useStyle } from "../../hooks/useStyle"
 import { useCascader } from "./useCascader"
-import { AnyMap } from "../../type.d"
+import { AnyObject } from "../../type.d"
 import i18n from "../../locale"
 import UIButton from "../Button/index.vue"
 import UIIcon from "../Icon/index.vue"
@@ -219,7 +219,7 @@ watch(() => props.show, (v) => {
     else nextTick(() => close())
 })
 
-function handleChangeItem(type: -1 | 0 | 1 | 2 | 3, item: AnyMap, index: number) {
+function handleChangeItem(type: -1 | 0 | 1 | 2 | 3, item: AnyObject, index: number) {
     let hasChildren = (Array.isArray(item[props.keys.children]) && item[props.keys.children].length) || props.option;
     console.log(type, hasChildren, item[props.keys.children])
     if(type === 0){

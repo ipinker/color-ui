@@ -1,5 +1,5 @@
 import { ExtractPropTypes, PropType } from "vue"
-import { AnyMap, OptionsKeyType } from "../../type"
+import { AnyObject, OptionsKeyType } from "../../type"
 
 export type ItemOptionType = {
     /** @desc 下一步按钮名称 **/
@@ -33,7 +33,7 @@ export const cascadeProps = {
 	title: String,
     /** @desc 组件数据源 object[] **/
 	list: {
-        type: Array as PropType<AnyMap[]>,
+        type: Array as PropType<AnyObject[]>,
         default: () => []
     },
     /** @desc 是否主题化 **/
