@@ -393,4 +393,3 @@ defineExpose({
         margin-left: $i-margin-m;
     }
 </style>
-../../type

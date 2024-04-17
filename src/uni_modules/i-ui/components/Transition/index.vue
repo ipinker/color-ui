@@ -287,4 +287,3 @@
   </script>
   
   <style></style>
-  ./help

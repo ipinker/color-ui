@@ -452,4 +452,3 @@ function isTransparent(color: any) {
 		line-height: $i-line-xl;
 	}
 </style>
-../../type

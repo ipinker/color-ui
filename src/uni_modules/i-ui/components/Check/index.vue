@@ -136,4 +136,4 @@ defineExpose({
             line-height: $i-font-xl;
 		}
 	}
-</style>../../type
+</style>

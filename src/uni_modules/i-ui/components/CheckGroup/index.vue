@@ -45,4 +45,3 @@ provide(
     /* #endif */
 }
 </style>
-../../type

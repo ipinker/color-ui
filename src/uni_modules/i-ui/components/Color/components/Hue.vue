@@ -332,4 +332,3 @@ const handleMouseUp = (e: any) => {
 		transform: translateX(-2px);
 	}
 </style>
-../../../type

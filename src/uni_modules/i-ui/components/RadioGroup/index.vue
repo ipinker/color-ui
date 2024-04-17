@@ -39,4 +39,3 @@ provide(
 
 }
 </style>
-../../type
