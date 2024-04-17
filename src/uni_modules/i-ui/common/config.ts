@@ -33,6 +33,7 @@ export interface UIConfigBasicOption {
         size?: string,
         color?: string,
         primary?: number,
+        radius?: string
     },
     inputProps?: {
         placeholder?: string,
