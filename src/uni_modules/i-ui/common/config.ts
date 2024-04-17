@@ -7,11 +7,36 @@ export interface UIConfigBasicOption {
     unit?: "px" | "rpx"
     themeMode?: "light" | "dark"
     lang?: "en" | "es" | "fr" | "ja" | "zh-Hans" | "zh-Hant"
-    primary?: ColorToken | any,
+    primary?: ColorToken | any
 
     navigationBarProps?: {
+        height?: string | number,
+        titleAlign?: string,
+        color?: string,
+        bgColor?: string,
+        statusColor?: string,
+        backTxt?: string,
+        backIcon?: string,
+        primary?: boolean,
         gradientType?: "linear" | "radial",
-        gradientValue?: string
+        gradientValue?: string,
+        statusBarInBody?: boolean
+    }
+    pageProps?: {
+        nav?: boolean,
+        tabHeight?: number,
+        center?: boolean,
+        loadingType?: "0" | "1" | "2" | "3",
+        usePrimary?: boolean
+    }
+    iconProps?: {
+        size?: string,
+        color?: string,
+        primary?: number,
+    },
+    inputProps?: {
+        placeholder?: string,
+        border?: boolean
     }
 }
 
@@ -21,16 +46,18 @@ export interface UIConfigOption extends UIConfigBasicOption {
 
 /** @desc 首次调用必须在 pinia 实例化之前 **/
 export class UIConfig {
+    id: string = "UI_CONFIG_OPTION_" + ( uni?.getSystemInfoSync && uni.getSystemInfoSync()?.appId );
+
     static instance: UIConfig;
 
     /** @desc 首次调用必须在 pinia 实例化之前 **/
     static createInstance(configOptions: UIConfigBasicOption) {
-        if(UIConfig.instance) UIConfig.instance.updateConfig(configOptions);
+        if(UIConfig.instance) UIConfig.instance.updateOption(configOptions);
         if(!UIConfig.instance) UIConfig.instance = new UIConfig(configOptions);
         return UIConfig.instance;
     }
 
-    config: UIConfigOption = {
+    #option: UIConfigOption = {
         /** @desc 外部通过 js props传入的单位依旧以 2倍图750标准传入，内部会自动转换为px， 如果设置unit 为 rpx则不会进行转px换算 **/
         unit: "px",
         /** @desc 默认主题模式，仅在APP首次安装时设置有效 **/
@@ -39,35 +66,45 @@ export class UIConfig {
         lang: undefined,
         /** @desc 默认主题， 设置后将放置在内置主题列表的首个， 也可以通过themeStore.init重置内置主题列表设置默认主题，也可以通过。add & change(themeId) 方式 **/
         primary: undefined, 
+        navigationBarProps: {
+            
+        },
+        pageProps: {
+
+        }
     }
     constructor(configOptions: UIConfigBasicOption) {
-        this.reloadConfigByCache();
-        this.updateConfig(configOptions);
-        cache.set("UI_CONFIG_OPTION", this.config);
+        this.reloadOptionByCache();
+        this.updateOption(configOptions);
     }
     
+    getOption() {
+        this.reloadOptionByCache();
+        return this.#option;
+    }
     /**
      * @desc 用来更新组件库的全局配置
-     * @param configOptions { UIConfigOption }
+     * @param configOptions { UIConfigOption }`
      * @return: 
      */
-    updateConfig(configOptions: UIConfigBasicOption) {
+    updateOption(configOptions: UIConfigBasicOption) {
         configOptions = configOptions || {}
-        this.config = {
-            ... this.config,
+        this.#option = {
+            ... this.#option,
             ... configOptions
         }
+        cache.set(this.id, this.#option);
     }
 
     // 每次初始化实例都要从本地缓存拿到缓存配置
-    reloadConfigByCache() {
-        const storage: UIConfigBasicOption = cache.get("UI_CONFIG_OPTION") || {};
-        this.config = {
-            ... this.config,
+    reloadOptionByCache() {
+        const storage: UIConfigBasicOption = cache.get(this.id) || {};
+        this.#option = {
+            ... this.#option,
             ... storage
         }
     }
 
 }
-
-export const UIConfigInstance = UIConfig.createInstance({});
+const _config = UIConfig.createInstance({});
+export const UIConfigInstance = _config;

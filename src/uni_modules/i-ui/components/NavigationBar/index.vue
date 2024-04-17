@@ -2,12 +2,12 @@
     <div class="INavigationBarContainer" :style="[{height: navigateHeight + 'px'}]">
         <div class="INavigationBarRelative"></div>
         <div class="INavigationBar" :style="[{ height: navigateHeight +'px', opacity: opacity || 1 }]">
-            <div class="INavigationStatus" :style="[{height: statusBarHeight+'px'}, statusBarBackground]" v-if="!statusBarInBody"></div>
+            <div class="INavigationStatus" :style="[{height: statusBarHeight+'px'}, statusBarBackground]" v-if="!isInBodyWithStatusBar"></div>
             <div class="INavigationBody" :style="[{ height: contentHeightValue + 'px'}, navigationBarBackground]" v-if="custom">
                 <slot />
             </div>
             <div class="INavigationBody" :style="[{ height: contentHeightValue + 'px' }, navigationBarBackground]" v-else>
-                <div class="INavigationContent" :class="{'StatusBarPaddingTop' : statusBarInBody}">
+                <div class="INavigationContent" :class="{'StatusBarPaddingTop' : isInBodyWithStatusBar}">
                     <div class="INavigationContentBox flex-align-center" :style="[navigationTextColor]">
                         <div class="INavigationBack flex-align-center ActiveLight" v-if="useBack" @click="handleBack">
                             <UIIcon size="40" :icon="backIcon" />{{backTxt}}
@@ -33,7 +33,7 @@
     import { useThemeStore } from "../../theme";
     import { navigationProps, NavigationBarPropsType } from "./navigationBar"
     import { isLightColor } from "../../common/style";
-    import { UIConfigInstance }from "../../common/config"
+    import { Config }from "../../index"
     import UIIcon from "../Icon/index.vue"
     const themeStore = mapStores(useThemeStore).themeStoreStore();
     const props: NavigationBarPropsType = defineProps(navigationProps);
@@ -47,8 +47,8 @@
         }),
         navigationBarBackground = computed(() => {
             let bgValue = ""
-            const gradientType = props.gradientType || UIConfigInstance.config?.navigationBarProps?.gradientType;
-            const gradientValue = props.gradientValue ||  UIConfigInstance.config?.navigationBarProps?.gradientValue;
+            const gradientType = props.gradientType || Config.getOption()?.navigationBarProps?.gradientType;
+            const gradientValue = props.gradientValue || Config.getOption()?.navigationBarProps?.gradientValue;
             if (gradientType && gradientType != "none") bgValue = gradientType+'-gradient('+gradientValue+')';
             else bgValue = props.bgColor || (props.primary ? themeStore.theme?.colorPrimary : themeStore.theme?.colorBgContainer) || "";
             return {
@@ -57,7 +57,7 @@
         }),
         navigationTextColor = computed(() => {
             let colorValue = "";
-            const gradientType = props.gradientType || UIConfigInstance.config?.navigationBarProps?.gradientType;
+            const gradientType = props.gradientType || Config.getOption()?.navigationBarProps?.gradientType;
             if (gradientType && gradientType != "none") colorValue = themeStore.theme?.colorWhiteTextBase || "";
             else {
                 const bgColor = props.bgColor || (props.primary ? themeStore.theme?.colorPrimary : themeStore.theme?.colorBgContainer) || "";
@@ -73,11 +73,15 @@
             textAlign : props.titleAlign || 'center'
         } as StyleValue
     })
+    const isInBodyWithStatusBar = computed(() => {
+        if(props.statusBarInBody === undefined) return Config.getOption()?.navigationBarProps?.statusBarInBody
+        return props.statusBarInBody
+    })
     const contentHeightValue = computed(() => {
-        if(props.statusBarInBody) return uni.upx2px(+props.height) + statusBarHeight.value;
+        if(isInBodyWithStatusBar.value) return uni.upx2px(+props.height) + statusBarHeight.value;
         return uni.upx2px(+props.height)
     })
-    const navigateHeight = computed(() => contentHeightValue.value + (props.statusBarInBody ? 0 : statusBarHeight.value));
+    const navigateHeight = computed(() => contentHeightValue.value + (isInBodyWithStatusBar.value ? 0 : statusBarHeight.value));
     const maskColor = computed(() => themeStore.theme?.colorBgMask)
     onMounted(() => {
         try {

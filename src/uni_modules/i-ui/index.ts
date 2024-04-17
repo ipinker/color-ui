@@ -14,7 +14,7 @@ _uni.$i = {
 
 const install = (Vue: any) => {
     // #ifndef APP-NVUE
-    Vue.config.globalProperties.$i = _uni.$i;   
+    Vue.config.globalProperties.$i = _uni.$i;  
     // #endif
 }
 

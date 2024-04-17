@@ -10,7 +10,7 @@ import { createSSRApp } from "vue";
 import App from "./App.vue";
 import store, { Pinia } from "./store";
 import i18n from './locale/index';
-import IUI from "@/uni_modules/i-ui/index"
+import IUI, { Config } from "@/uni_modules/i-ui/index"
 import 'virtual:uno.css';
 
 // 禁止鼠标右键
@@ -27,6 +27,13 @@ document.oncontextmenu=(event) => {
 
 export function createApp() {
 	const app = createSSRApp(App);
+    Config.updateOption({
+        navigationBarProps: {
+            gradientType: "linear",
+            gradientValue: "110deg, #3d3d3d 0%, #1B1917 100%",
+            statusBarInBody: true
+        }
+    })
     app.use(IUI);
 	app.use(store);
     app.use(i18n)

@@ -55,7 +55,10 @@ export const navigationProps = {
         default: true
     },
     /**  @desc 将status设置在内容中  **/
-    statusBarInBody: Boolean,
+    statusBarInBody: {
+        type: Boolean,
+        default: undefined
+    },
     /** @desc 透明度 **/
     opacity: {
         type: [ Number, String ],
