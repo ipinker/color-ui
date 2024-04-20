@@ -5,7 +5,7 @@
             <div class="ICardHeader" :style="[styleOptionForHeader]" v-if="!title"><slot name="header"></slot></div>
         </template>
 
-        <div class="ICardBody" :style="[bodyStyleOption]"@click="handleEvent">
+        <div class="ICardBody" :style="[bodyStyleOption]" @click="handleEvent">
             <slot></slot>
         </div>
     </div>

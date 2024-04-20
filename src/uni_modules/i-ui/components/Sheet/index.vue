@@ -2,9 +2,10 @@
     <UIPopup ref="sheetRef" type="bottom" @change="change" :isMaskClick="myIsMaskClick" @onMaskClick="close">
         <view class='ISheetContainer col-center'>
             <view class='ISheetBody radius-xl'>
-                <view class='ISheetItem flex-center' 
+                <view class='ISheetItem active flex-center' 
                     :style="[container, index === 0 ? {} : borderTop]" 
                     v-for="(item,index) in myList" :key="index"
+                    @click="handleChoice(item)"
                 >
                     <text :style="[text, myItemStyle]">{{ myIsObject ? item[myLabelKey] : item }}</text>
                 </view>
@@ -68,7 +69,12 @@ const open = (options ?: SheetOption) => {
 }
 
 const change = (e: { show: boolean }) => {
-	emits(CHANGE_EVENT, e);
+    if(!e?.show) emits(CANCEL_EVENT, e);
+}
+
+function handleChoice(v: any) {
+    emits(CHANGE_EVENT, v);
+    sheetRef.value?.close && sheetRef.value.close();
 }
 
 defineExpose({

@@ -1,10 +1,10 @@
 import { ExtractPropTypes, PropType } from "vue";
-import { OptionsKeyType, AnyObject } from "../../type"
+import { SelectOption, AnyObject } from "../../type"
 export type PickerValueType = string | number | string[] | number[];
 export const pickerProps = {
     /** @desc 通过keys值，支持数据各种名称，必传项； **/
     keys: {
-        type: Object as PropType<OptionsKeyType>,
+        type: Object as PropType<SelectOption>,
         default: () => ({value: 'value', label: 'label', children: "children"})
     },
     /** @desc 需要联动级数 1、2、3（可选 **/

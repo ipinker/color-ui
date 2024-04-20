@@ -1,5 +1,5 @@
 import { ExtractPropTypes, PropType } from "vue"
-import { AnyObject, OptionsKeyType } from "../../type"
+import { AnyObject, SelectOption } from "../../type"
 
 export type ItemOptionType = {
     /** @desc 下一步按钮名称 **/
@@ -10,7 +10,7 @@ export type ItemOptionType = {
 export const cascadeProps = {
     /** @desc 通过keys值，支持数据各种名称，必传项； **/
     keys: {
-        type: Object as PropType<OptionsKeyType>,
+        type: Object as PropType<SelectOption>,
         default: () => ({value: 'value', label: 'label', children: "children"})
     },
     /** @desc 扩展的底部按钮 { ItemOptionType } **/

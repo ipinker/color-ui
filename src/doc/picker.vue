@@ -8,7 +8,7 @@
             <IPicker ref="pickerRef" :list="pickerList2"></IPicker>
         </ICard>
         <ICard title="Props">
-            <ITitle>keys 数据key { OptionsKeyType } </ITitle>
+            <ITitle>keys 数据key { SelectOption } </ITitle>
             <ITitle>level 层级深度 { string | number } </ITitle>
             <ITitle>show 是否展示 { boolean } </ITitle>
             <ITitle>title 标题 { string } </ITitle>

@@ -3,7 +3,7 @@ import { PickerPropsType, PickerValueType } from "./picker";
 import { PopupRefType } from "../Popup/popup";
 import { isArray, isNumber, isObject, isString } from "ipink-util";
 import { CHILDREN_KEY } from "../../common/constants";
-import { StrNum, OptionsKeyType, AnyObject } from "../../type"
+import { StrNum, SelectOption, AnyObject } from "../../type"
 
 export function usePicker (props: PickerPropsType) {
 
@@ -69,7 +69,7 @@ export function usePicker (props: PickerPropsType) {
         let checkValueArr: StrNum[] = [];
         let resultStr = "";
         let dataList: any[] = [];
-        let keys: OptionsKeyType = props.keys;
+        let keys: SelectOption = props.keys;
         keyValue.value = keys.value;
         keyLabel.value = keys.label;
         keyChildren.value = keys.children;

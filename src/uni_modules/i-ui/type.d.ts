@@ -37,10 +37,10 @@ export interface ColorInfo {
 }
 export type ColorInfoKey = keyof ColorInfo;
 
-export type OptionsKeyType = {
+export type SelectOption = {
     label: string
-    value: string
-    children: string
+    value: string | number
+    children?: SelectOption[]
 }
 
 export interface ModalRef {
