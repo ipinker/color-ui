@@ -1,5 +1,5 @@
 <template>
-    <div class="ICardContainer" :style="[styleOption]" :class="{ full, noPadding }">
+    <div class="ICardContainer" :style="[styleOption, styleExt]" :class="{ full, noPadding }">
         <template v-if="useHeader || title">
             <div class="ICardHeader" :style="[styleOptionForHeader]" v-if="title">{{title}}</div>
             <div class="ICardHeader" :style="[styleOptionForHeader]" v-if="!title"><slot name="header"></slot></div>
@@ -14,11 +14,12 @@
 <script lang="ts" setup>
 import { mapStores } from "pinia";
 import { useThemeStore } from "../../theme";
-import {ComputedRef, StyleValue, computed} from "vue";
+import {ComputedRef, PropType, StyleValue, computed} from "vue";
 import {genRadius, genPx} from "../../common/style";
 import { CLICK_EVENT } from "../../common/constants";
 
 const props = defineProps({
+
     /** @desc 开启卡片的Header，或者title有值 **/
     useHeader: Boolean,
     /** @desc 卡片标题 **/
@@ -40,7 +41,11 @@ const props = defineProps({
     loading: Boolean,
     /** @desc 开启后可以使用v-on:click **/
     event: Boolean,
-    noPadding: Boolean
+    noPadding: Boolean,
+    styleExt: {
+        type: Object as PropType<StyleValue>,
+        default: () => ({})
+    }
 });
 const emits = defineEmits([CLICK_EVENT]);
 const store = mapStores(useThemeStore).themeStoreStore();
