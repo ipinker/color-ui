@@ -63,7 +63,8 @@ export const navigationProps = {
     opacity: {
         type: [ Number, String ],
         default: 1
-    }
+    },
+    styleExt: Object
 }
 
 export type NavigationBarPropsType = ExtractPropTypes< typeof navigationProps >

@@ -26,6 +26,14 @@ textarea {
 	outline: none;
 }
 
+p,
+div,
+span,
+view,
+text {
+    word-break: break-all;
+}
+
 $flex: flex !default;
 $column: column !default;
 $alignItems: stretch !default;

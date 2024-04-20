@@ -1,7 +1,7 @@
 <template>
     <div class="INavigationBarContainer" :style="[{height: navigateHeight + 'px'}]">
         <div class="INavigationBarRelative"></div>
-        <div class="INavigationBar" :style="[{ height: navigateHeight +'px', opacity: opacity || 1 }]">
+        <div class="INavigationBar" :style="[{ height: navigateHeight +'px', opacity: opacity || 1 }, styleExt]">
             <div class="INavigationStatus" :style="[{height: statusBarHeight+'px'}, statusBarBackground]" v-if="!isInBodyWithStatusBar"></div>
             <div class="INavigationBody" :style="[{ height: contentHeightValue + 'px'}, navigationBarBackground]" v-if="custom">
                 <slot />
@@ -117,6 +117,7 @@
     top: 0; left: 0;
     z-index: $i-index-l;
     width: $i-width-full;
+    overflow: hidden;
 }
 
 .INavigationStatus {
