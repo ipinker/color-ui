@@ -25,10 +25,12 @@ import { PagePropsType, pageProps } from "./page"
 import UINavigationBar from "../NavigationBar/index.vue"
 import UILoading from "../Loading/index.vue"
 import { getSystemInfo } from "../../common/util";
+import { useStyle } from "../../hooks/useStyle";
 
-const props: PagePropsType = defineProps(pageProps)
+const props: PagePropsType = defineProps(pageProps);
+const { colorValue } = useStyle();
 const themeStore = mapStores(useThemeStore).themeStoreStore();
-const pageColor = computed(() => themeStore.theme?.colorBgLayout);
+const pageColor = computed(() => props.pageColor ? colorValue.value(props.pageColor) : themeStore.theme?.colorBgLayout);
 const textColor = computed(() => themeStore.theme?.colorText);
 const colorForMask = computed(() => themeStore.theme?.colorWhite);
 

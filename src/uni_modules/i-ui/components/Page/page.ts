@@ -45,7 +45,8 @@ export const pageProps = {
     status: {
         type: String as PropType<PageStatus>,
         default: "default"
-    }
+    },
+    pageColor: String
 }
 
 export type PagePropsType = ExtractPropTypes< typeof pageProps >;
