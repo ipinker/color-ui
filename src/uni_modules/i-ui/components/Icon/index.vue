@@ -79,9 +79,6 @@ const handleClick = () => emits(CLICK_EVENT);
 }
 .IFontIconContainer {
     display: inline-block;
-    width: $i-font-m;
-    height: $i-font-m;
-    line-height: $i-font-m;
     text-align: center;
     color: inherit;
     font-size: inherit;
