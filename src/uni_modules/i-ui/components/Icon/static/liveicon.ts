@@ -10,11 +10,31 @@ export type IconsData = {
 
 
 export const iconList = [
-	{
-	  "name": "电话-挂断",
-	  "fontClass": "hangup",
-	  "unicode": "e852"
-	},
+    {
+        "fontClass": "user-list",
+        "unicode": "e64c",
+        "name": "用户列表"
+    },
+    {
+        "fontClass": "camera-roate",
+        "unicode": "e64a",
+        "name": "翻转摄像头"
+    },
+    {
+        "fontClass": "beauty",
+        "unicode": "e63d",
+        "name": "美颜"
+    },
+    {
+        "fontClass": "camera-roate-filled",
+        "unicode": "e607",
+        "name": "翻转镜头"
+    },
+    {
+        "fontClass": "hangup",
+        "unicode": "e852",
+        "name": "电话-挂断"
+    },
     {
         "fontClass": "micro-open",
         "unicode": "e615",
