@@ -109,7 +109,7 @@ export const genColorMap = (props: ExtractPropTypes<ButtonPropsType>): ColorStyl
     if(link || type == "link"){
         _type = "link";
         bgColor = "transparent";
-        textColor = "colorLink";
+        textColor = color || "colorLink";
         activeTextColor = "colorLinkHover";
         shadowColor = "";
         activeBgColor = "";
@@ -121,7 +121,7 @@ export const genColorMap = (props: ExtractPropTypes<ButtonPropsType>): ColorStyl
     else if(text || type == "text"){
         _type = "text";
         bgColor = "transparent";
-        textColor = "colorText";
+        textColor = color || "colorText";
         activeTextColor = "colorTextTertiary";
         shadowColor = "";
         activeBgColor = "";

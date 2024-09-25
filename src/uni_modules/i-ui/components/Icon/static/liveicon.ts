@@ -11,6 +11,151 @@ export type IconsData = {
 
 export const iconList = [
     {
+        "fontClass": "examination",
+        "unicode": "e629",
+        "name": "检验"
+    },
+    {
+        "fontClass": "completed",
+        "unicode": "e853",
+        "name": "记录完成"
+    },
+    {
+        "fontClass": "health-care",
+        "unicode": "e625",
+        "name": "医疗"
+    },
+    {
+        "fontClass": "security",
+        "unicode": "e75a",
+        "name": "安全"
+    },
+    {
+        "fontClass": "inspection",
+        "unicode": "e758",
+        "name": "检查检验"
+    },
+    {
+        "fontClass": "drug",
+        "unicode": "e624",
+        "name": "药品"
+    },
+    {
+        "fontClass": "drugs",
+        "unicode": "e64d",
+        "name": "药品"
+    },
+    {
+        "fontClass": "waiting",
+        "unicode": "e61c",
+        "name": "等待中"
+    },
+    {
+        "fontClass": "hourglass",
+        "unicode": "e623",
+        "name": "沙漏"
+    },
+    {
+        "fontClass": "navigation-plain",
+        "unicode": "e834",
+        "name": "导航"
+    },
+    {
+        "fontClass": "navigation-filled",
+        "unicode": "e61b",
+        "name": "导航"
+    },
+    {
+        "fontClass": "orient",
+        "unicode": "e610",
+        "name": "guide"
+    },
+    {
+        "fontClass": "distance",
+        "unicode": "e637",
+        "name": "距离"
+    },
+    {
+        "fontClass": "location-dis",
+        "unicode": "e622",
+        "name": "距离"
+    },
+    {
+        "fontClass": "distance-nav",
+        "unicode": "e751",
+        "name": "导航距离"
+    },
+    {
+        "fontClass": "house",
+        "unicode": "e74e",
+        "name": "生活服务"
+    },
+    {
+        "fontClass": "time-plain",
+        "unicode": "e74f",
+        "name": "Time"
+    },
+    {
+        "fontClass": "time-filled",
+        "unicode": "e750",
+        "name": "Time"
+    },
+    {
+        "fontClass": "money-fulled",
+        "unicode": "e60d",
+        "name": "金额"
+    },
+    {
+        "fontClass": "fingerprint",
+        "unicode": "e752",
+        "name": "指纹解锁"
+    },
+    {
+        "fontClass": "money-plain",
+        "unicode": "e60e",
+        "name": "金额"
+    },
+    {
+        "fontClass": "fangshe",
+        "unicode": "e753",
+        "name": "放射"
+    },
+    {
+        "fontClass": "bed",
+        "unicode": "e754",
+        "name": "床"
+    },
+    {
+        "fontClass": "dinner",
+        "unicode": "e755",
+        "name": "晚餐"
+    },
+    {
+        "fontClass": "welfare",
+        "unicode": "e756",
+        "name": "公益"
+    },
+    {
+        "fontClass": "right-new",
+        "unicode": "e757",
+        "name": "选中"
+    },
+    {
+        "fontClass": "fanyi",
+        "unicode": "e60a",
+        "name": "翻译"
+    },
+    {
+        "fontClass": "add-new",
+        "unicode": "e617",
+        "name": "加号"
+    },
+    {
+        "fontClass": "cut-new",
+        "unicode": "e61a",
+        "name": "减号"
+    },
+    {
         "fontClass": "user-list",
         "unicode": "e64c",
         "name": "用户列表"

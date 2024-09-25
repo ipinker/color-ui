@@ -1,18 +1,20 @@
 @import "./veriable.scss";
 @import "./Icon/static/liveicon.css";
+@import "./veriable.scss";
+// @import "./Icon/static/liveicon.css";
 
 html.dark-theme,
 .dark-theme {
     background-color: #000000;
 }
 
-*,
+button,
 page,
 input,
-div,
-p,
+div, p,
 body,
 uni-view,
+uni-button,
 input,
 view {
 	box-sizing: border-box;
@@ -20,38 +22,31 @@ view {
 	padding: 0;
 }
 
+
+swiper,
+uni-view,
+scroll-view,
+picker,
+picker-view,
+view,
+div {
+	display: block;
+}
+
+uni-button,
+uni-input,
+uni-textarea,
 input,
 textarea {
 	border: none;
 	outline: none;
 }
 
-p,
-div,
-span,
-view,
-text {
+u, b, i, p,
+div, view,
+span, text {
     word-break: break-all;
 }
-
-$flex: flex !default;
-$column: column !default;
-$alignItems: stretch !default;
-$alignContent: stretch !default;
-$auto: stretch !default;
-$zero: 0 !default;
-/* #ifndef APP-NVUE */
-view, scroll-view, swiper-item {
-	display: $flex;
-	flex-direction: $column;
-	flex-shrink: $zero;
-	flex-grow: $zero;
-	flex-basis: $auto;
-	align-items: $alignItems;
-	align-content: $alignContent;
-}
-/* #endif */
-
 
 .statusbar-height {
     height: var(--status-bar-height);
@@ -244,19 +239,31 @@ view, scroll-view, swiper-item {
 }
 //  Border
 .border-left {
-	border-left: $i-border-m solid $i-color-border;
+	border-left: $i-border-s solid $i-color-border;
 }
 .border-right {
-	border-right: $i-border-m solid $i-color-border;
+	border-right: $i-border-s solid $i-color-border;
+}
+.border-dashed {
+	border: $i-border-s dashed $i-color-border;
+}
+.border-dashed-top {
+	border-top: $i-border-s dashed $i-color-border;
+}
+.border-dashed-bottom {
+	border-bottom: $i-border-s dashed $i-color-border;
 }
 .border-top {
-	border-top: $i-border-m solid $i-color-border;
+	border-top: $i-border-s solid $i-color-border;
 }
 .border-bottom {
-	border-bottom: $i-border-m solid $i-color-border;
+	border-bottom: $i-border-s solid $i-color-border;
 }
 .border {
-	border: $i-border-m solid $i-color-border;
+	border: $i-border-s solid $i-color-border;
+}
+.border-primary {
+	border: $i-border-s solid $i-color-primary;
 }
 
 // Radius
@@ -361,130 +368,174 @@ view, scroll-view, swiper-item {
 	font-size: $i-font-xxl !important;
 }
 
+.text-wrap {
+	word-break: break-all;
+	white-space: normal;
+}
+
+.text-nowrap {
+	white-space: nowrap;
+}
+// 字体颜色
+.font-black { color: $i-text; }
+.font-white { color: $i-text-white; }
+.font-primary { color: $i-color-primary }
+.font-success { color: $i-color-success }
+.font-wait { color: $i-color-wait }
+.font-warning { color: $i-color-warning }
+.font-error { color: $i-color-error }
+.font-info { color: $i-color-info }
+.font-disabled { color: $i-color-disabled }
+.font-placeholder { color: $i-color-placeholder }
+.font-deepgray { color: $i-color-deepgray }
+.font-gray { color: $i-color-gray }
+.font-lightgray { color: $i-color-lightgray }
+
+// 背景颜色
+.bg-primary { background-color: $i-color-primary }
+.bg-success { background-color: $i-color-success }
+.bg-wait { background-color: $i-color-wait }
+.bg-warning { background-color: $i-color-warning }
+.bg-error { background-color: $i-color-error }
+.bg-info { background-color: $i-color-info }
+.bg-disabled { background-color: $i-color-disabled }
+.bg-placeholder { background-color: $i-color-placeholder }
+.bg-deepgray { background-color: $i-color-deepgray }
+.bg-gray { background-color: $i-color-gray }
+.bg-lightgray { background-color: $i-color-lightgray }
+.bg-white { background-color: $i-color-white }
+.bg-black { background-color: $i-color-black }
+.bg-layout { background-color: $i-bg-layout }
+.bg-container { background-color: $i-bg-container }
+.bg-mask { background-color: $i-color-mask }
+.bg-shadow { background-color: $i-color-shadow }
+
+.border-color { border-color: $i-color-border !important }
+
 // margin
 .margin-s {
-	margin: $i-margin-s;
+	margin: $i-margin-s !important;
 }
 .margin-m {
-	margin: $i-margin-m;
+	margin: $i-margin-m !important;
 }
 .margin-l {
-	margin: $i-margin-l;
+	margin: $i-margin-l !important;
 }
 .margin-cs {
-	margin: $i-margin-s auto;
+	margin: $i-margin-s auto !important;
 }
 .margin-cm {
-	margin: $i-margin-m auto;
+	margin: $i-margin-m auto !important;
 }
 .margin-cl {
-	margin: $i-margin-l auto;
+	margin: $i-margin-l auto !important;
 }
 .margin-ls {
-	margin-left: $i-margin-s;
+	margin-left: $i-margin-s !important;
 }
 .margin-lm {
-	margin-left: $i-margin-m;
+	margin-left: $i-margin-m !important;
 }
 .margin-ll {
-	margin-left: $i-margin-l;
+	margin-left: $i-margin-l !important;
 }
 .margin-l0 {
-	margin-left: 0;
+	margin-left: 0 !important;
 }
 .margin-bs {
-	margin-bottom: $i-margin-s;
+	margin-bottom: $i-margin-s !important;
 }
 .margin-bm {
-	margin-bottom: $i-margin-m;
+	margin-bottom: $i-margin-m !important;
 }
 .margin-bl {
-	margin-bottom: $i-margin-l;
+	margin-bottom: $i-margin-l !important;
 }
 .margin-b0 {
-	margin-bottom: 0;
+	margin-bottom: 0 !important;
 }
 .margin-rs {
-	margin-right: $i-margin-s;
+	margin-right: $i-margin-s !important;
 }
 .margin-rm {
-	margin-right: $i-margin-m;
+	margin-right: $i-margin-m !important;
 }
 .margin-rl {
-	margin-right: $i-margin-l;
+	margin-right: $i-margin-l !important;
 }
 .margin-r0 {
-	margin-right: 0;
+	margin-right: 0 !important;
 }
 .margin-ts {
-	margin-top: $i-margin-s;
+	margin-top: $i-margin-s !important;
 }
 .margin-tm {
-	margin-top: $i-margin-m;
+	margin-top: $i-margin-m !important;
 }
 .margin-tl {
-	margin-top: $i-margin-l;
+	margin-top: $i-margin-l !important;
 }
 .margin-t0 {
-	margin-top: 0;
+	margin-top: 0 !important;
 }
 // Padding
 .padding-s {
-	padding: $i-padding-s;
+	padding: $i-padding-s !important;
 }
 .padding-m {
-	padding: $i-padding-m;
+	padding: $i-padding-m !important;
 }
 .padding-l {
-	padding: $i-padding-l;
+	padding: $i-padding-l !important;
 }
 .padding-ls {
-	padding-left: $i-padding-s;
+	padding-left: $i-padding-s !important;
 }
 .padding-lm {
-	padding-left: $i-padding-m;
+	padding-left: $i-padding-m !important;
 }
 .padding-ll {
-	padding-left: $i-padding-l;
+	padding-left: $i-padding-l !important;
 }
 .padding-l0 {
-	padding-left: 0;
+	padding-left: 0 !important;
 }
 .padding-bs {
-	padding-bottom: $i-padding-s;
+	padding-bottom: $i-padding-s !important;
 }
 .padding-bm {
-	padding-bottom: $i-padding-m;
+	padding-bottom: $i-padding-m !important;
 }
 .padding-bl {
-	padding-bottom: $i-padding-l;
+	padding-bottom: $i-padding-l !important;
 }
 .padding-b0 {
-	padding-bottom: 0;
+	padding-bottom: 0 !important;
 }
 .padding-rs {
-	padding-right: $i-padding-s;
+	padding-right: $i-padding-s !important;
 }
 .padding-rm {
-	padding-right: $i-padding-m;
+	padding-right: $i-padding-m !important;
 }
 .padding-rl {
-	padding-right: $i-padding-l;
+	padding-right: $i-padding-l !important;
 }
 .padding-r0 {
-	padding-right: 0;
+	padding-right: 0 !important;
 }
 .padding-ts {
-	padding-top: $i-padding-s;
+	padding-top: $i-padding-s !important;
 }
 .padding-tm {
-	padding-top: $i-padding-m;
+	padding-top: $i-padding-m !important;
 }
 .padding-tl {
-	padding-top: $i-padding-l;
+	padding-top: $i-padding-l !important;
 }
 .padding-t0 {
-	padding-top: 0;
+	padding-top: 0 !important;
 }
 // input
 .uni-input-placeholder,
@@ -501,17 +552,27 @@ input::placeholder {
 	overflow: hidden;
 }
 
+
+// switch设置默认主题色配置, 勿删
+::v-deep switch {
+	 &.i-switch .uni-switch-input.uni-switch-input-checked {
+		background-color: $i-color-primary;
+		border-color: $i-color-primary;
+	}
+}
+
 // 按钮/卡片 长按效果类型
 .active,
+.ActiveDefault,
 .active-default {
 	opacity: 1;
     transition-property: width, height, opacity, transform, background-color;
     transition-duration: 0.3s;
 	&:active {
-		opacity: 0.6;
+		opacity: 0.65;
 	}
 }
-
+.ActiveGray,
 .active-gray {
 	opacity: 1;
 	transition: all .3s;
@@ -519,7 +580,7 @@ input::placeholder {
     transition-property: width, height, opacity, transform, background-color;
 	&:active {
 		background-color: $i-color-gray !important;
-		opacity: 0.7;
+		opacity: 0.75;
 	}
 }
 
@@ -528,8 +589,8 @@ input::placeholder {
     transition-duration: 0.3s;
     transition-property: width, height, opacity, transform, background-color;
 	&:active {
-		background-color: $i-bg-layout !important;
-		opacity: 0.8;
+		background-color: $i-color-lightgray !important;
+		opacity: 0.9;
 	}
 }
 
@@ -538,11 +599,20 @@ input::placeholder {
 }
 
 
-.ellipsi2 {
+.ellipsi2,
+.ellipsis2 {
     @include ellipsis(2);
 }
 
 
 .ellipsis3 {
     @include ellipsis(3);
+}
+
+.uni-toast,
+uni-toast {
+	z-index: $i-index-xxl !important;
+	.uni-sample-toast {
+		z-index: $i-index-xxl;
+	}
 }

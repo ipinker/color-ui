@@ -18,7 +18,7 @@
                             <block v-if="title"> {{title}} </block>
                             <block v-else> <slot /> </block>
                         </div>
-                        <div class="INavigationRight flex-align-center flex-justify-end" :style="[{paddingRight: paddingRight + 'px'}]"><slot name="operate"></slot></div>
+                        <div class="INavigationRight flex-align-center flex-justify-end" :style="[{paddingRight: paddingRight + 'px'}]"><slot name="ext"></slot></div>
                     </div>
                 </div>
             </div>

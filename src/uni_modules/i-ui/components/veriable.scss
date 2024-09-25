@@ -1,3 +1,4 @@
+
 /** 使用尺寸概览
  * @desc 0/min  min
  * @desc xxxs  -4
@@ -88,17 +89,37 @@ $i-radius-xl: 8px;
 $i-radius-xxl: 10px;
 
 /** Color **/
-$i-color-border: #eeeeee !default;
-$i-color-txt: #333333 !default;
-$i-color-placeholder: #BCC1C2 !default;
-$i-color-primary: #1666ff !default;
-$i-color-primary-shadow: rgba(5, 135, 255, 0.1) !default;
+
+
+$i-text: #333333 !default;
+$i-text-white: #ffffff !default;
+$i-color-primary: rgb(26,165,150) !default; // #1AA596
+$i-color-success: #4EDD81 !default;
+$i-color-wait: #5584FF !default;
+$i-color-warning: #F29904 !default;
+$i-color-error: #FF775C !default;
+$i-color-info: #909399 !default;
+$i-color-disabled: #ccd2d9 !default;
+$i-color-placeholder: #BBC1C1 !default;
+$i-color-deepgray: #5c5c5c !default;
+$i-color-gray: #818181 !default;
+$i-color-lightgray: #efefef !default;
 $i-color-white: #ffffff !default;
-$i-color-whitegray: #efefef !default;
-$i-color-gray: #909399 !default;
-$i-bg-layout: #f5f5f9 !default;
-$i-bg-container: #fff !default;
-$i-shadow: 0px -2px 4px 0px $i-color-border !default;
+$i-color-black: #000000 !default;
+$i-bg-layout: #f5f5f5 !default;
+$i-bg-container: #ffffff !default;
+
+
+$i-color-border: #EAEAEA !default;
+
+$i-color-mask: rgba(0,0,0, 0.25) !default;
+
+$i-color-shadow: #E7E9E6 !default;
+$i-color-primary-shadow: rgba(26,165,150, 0.3) !default;
+$i-color-primary-shadow-deep: rgba(26,165,150, 0.8) !default;
+$i-color-primary-shadow-light: rgba(26,165,150, 0.15) !default;
+$i-shadow: 1px 1px 7px 0px $i-color-shadow !default;
+$i-shadow-primary: 1px 1px 7px 0px $i-color-primary-shadow !default;
 
 $i-opacity-xs: 0.1 !default;
 $i-opacity-s: 0.3 !default;
@@ -141,6 +162,8 @@ $i-height-l: 50px;
 $i-height-xl: 60px;
 /** @desc 70 **/
 $i-height-xxl: 70px;
+/** @desc 45 for form-item **/
+$i-height-item: 50px;
 /** @desc 100vh **/
 $i-height-full: 100vh;
 
@@ -167,41 +190,29 @@ $i-width-xxxxxl: calc(100vw - 20px);
 /** @desc 750 **/
 $i-width-full: 100vw;
 
+
+/** @desc 一般所用 absolute min **/
 $i-index-xxs: 2;
+/** @desc 一般所用 absolute normal **/
 $i-index-xs: 5;
+/** @desc 一般所用 absolute max **/
 $i-index-s: 10;
+ /** @desc page nav **/
 $i-index-m: 100;
+ /** @desc footer tabar **/
 $i-index-l: 1000;
-$i-index-xl: 3000;
+/** @desc popup **/
+$i-index-xl: 3000; 
+ /** @desc max show **/
 $i-index-xxl: 10000;
 
 /* Font style */
-@mixin font($size: $i-font-m,  $color: $i-color-txt, $weight: $i-weight-m, $space: 0) {
+@mixin font($size: $i-font-m,  $color: $i-text, $weight: $i-weight-m, $space: 0) {
 	font-size: $size;
 	font-weight: $weight;
 	color: $color;
 	font-family: $i-family-default;
 	letter-spacing: $space;
-}
-
-/** @desc Position style **/
-@mixin position($position: fixed, $top, $right, $bottom, $left, $index) {
-	position: $position;
-	@if $right {
-		right: $right;
-	}
-	@if $left {
-		left: $left;
-	}
-	@if $bottom {
-		bottom: $bottom;
-	}
-	@if $top {
-		top: $top;
-	}
-	@if $index {
-		z-index: $index;
-	}
 }
 
 
@@ -272,3 +283,10 @@ $i-index-xxl: 10000;
 }
 
 
+@mixin calc($operation, $value: null) {
+  @if $value == null {
+	@warn "No value provided for calc()";
+  } @else {
+	#{$operation}: calc(#{$base-size} #{$operation} #{$value});
+  }
+}

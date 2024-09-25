@@ -6,8 +6,8 @@
             :color="color" :bgColor="bgColor" :statusColor="statusColor"
             v-if="title"
         >
-            <template v-slot="operate">
-                <slot name="operate"/>
+            <template #ext>
+                <slot name="ext"/>
             </template>
         </UINavigationBar>
         <view class="StatusBarRelative" v-if="!title && nav"></view>
