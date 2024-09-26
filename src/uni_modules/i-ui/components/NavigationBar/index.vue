@@ -1,29 +1,34 @@
 <template>
-    <div class="INavigationBarContainer" :style="[{height: navigateHeight + 'px'}]">
-        <div class="INavigationBarRelative"></div>
-        <div class="INavigationBar" :style="[{ height: navigateHeight +'px', opacity: opacity || 1 }, styleExt]">
-            <div class="INavigationStatus" :style="[{height: statusBarHeight+'px'}, statusBarBackground]" v-if="!isInBodyWithStatusBar"></div>
-            <div class="INavigationBody" :style="[{ height: contentHeightValue + 'px'}, navigationBarBackground]" v-if="custom">
-                <slot />
-            </div>
-            <div class="INavigationBody" :style="[{ height: contentHeightValue + 'px' }, navigationBarBackground]" v-else>
-                <div class="INavigationContent" :class="{'StatusBarPaddingTop' : isInBodyWithStatusBar}">
-                    <div class="INavigationContentBox flex-align-center" :style="[navigationTextColor]">
-                        <div class="INavigationBack flex-align-center ActiveLight" v-if="useBack" @click="handleBack">
-                            <UIIcon size="40" :icon="backIcon" />{{backTxt}}
-                        </div>
-                        <div class="INavigationContext flex-align-center flex-full padding-s"
-                            :style="[titleAlignObj]"
-                        >
-                            <block v-if="title"> {{title}} </block>
-                            <block v-else> <slot /> </block>
-                        </div>
-                        <div class="INavigationRight flex-align-center flex-justify-end" :style="[{paddingRight: paddingRight + 'px'}]"><slot name="ext"></slot></div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
+	<div>
+		<div class="INavigationBarContainer" :style="[{height: navigateHeight + 'px'}]">
+			<div class="INavigationBarRelative"></div>
+			<div class="INavigationBar" :style="[{ height: navigateHeight +'px', opacity: opacity || 1 }, styleExt]">
+				<div class="INavigationStatus" :style="[{height: statusBarHeight+'px'}, statusBarBackground]" v-if="!isInBodyWithStatusBar"></div>
+				<div class="INavigationBody" :style="[{ height: contentHeightValue + 'px'}, navigationBarBackground]" v-if="custom">
+					<slot />
+				</div>
+				<div class="INavigationBody" :style="[{ height: contentHeightValue + 'px' }, navigationBarBackground]" v-else>
+					<div class="INavigationContent" :class="{'StatusBarPaddingTop' : isInBodyWithStatusBar}">
+						<div class="INavigationContentBox flex-align-center" :style="[navigationTextColor]">
+							<div class="INavigationBack flex-align-center ActiveLight" v-if="useBack" @click="handleBack">
+								<UIIcon size="40" :icon="backIcon" />{{backTxt}}
+							</div>
+							<div class="INavigationContext flex-align-center flex-full padding-s"
+								:style="[titleAlignObj]"
+							>
+								<block v-if="title"> {{title}} </block>
+								<block v-else> <slot /> </block>
+							</div>
+							<div class="INavigationRight flex-align-center flex-justify-end" :style="[{paddingRight: paddingRight + 'px'}]"><slot name="ext"></slot></div>
+						</div>
+					</div>
+				</div>
+				<div :style="[{width: '100%', height: genPx(tabHeight)}]" v-if="useTab">
+					<slot name="tab"/>
+				</div>
+			</div>
+		</div>
+	</div>
 </template>
 
 <script setup lang="ts">
@@ -32,12 +37,11 @@
     import { mapStores } from "pinia";
     import { useThemeStore } from "../../theme";
     import { navigationProps, NavigationBarPropsType } from "./navigationBar"
-    import { isLightColor } from "../../common/style";
+    import { genPx, isLightColor } from "../../common/style";
     import { Config }from "../../index"
     import UIIcon from "../Icon/index.vue"
     const themeStore = mapStores(useThemeStore).themeStoreStore();
     const props: NavigationBarPropsType = defineProps(navigationProps);
-
     let statusBarHeight = ref(0),
         paddingRight = ref(0),
         canBack = ref(true),
@@ -81,7 +85,9 @@
         if(isInBodyWithStatusBar.value) return uni.upx2px(+props.height) + statusBarHeight.value;
         return uni.upx2px(+props.height)
     })
-    const navigateHeight = computed(() => contentHeightValue.value + (isInBodyWithStatusBar.value ? 0 : statusBarHeight.value));
+    const navigateHeight = computed(() => contentHeightValue.value + (isInBodyWithStatusBar.value ? 0 : statusBarHeight.value) +
+        (!props.useTab ? 0 : +genPx(props.tabHeight || '100').split("px")[0] || 0)
+    );
     const maskColor = computed(() => themeStore.theme?.colorBgMask)
     onMounted(() => {
         try {

@@ -10,7 +10,7 @@
         </template>
         <template v-else>
             <span class="IButtonIconMR8" v-if="icon">
-                <UIIcon :icon="icon"/>
+                <UIIcon :icon="icon" size="38"/>
             </span>
             <slot name="icon" v-else/>
         </template>

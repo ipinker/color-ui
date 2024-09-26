@@ -1,10 +1,11 @@
 <template>
     <div class="ICardContainer" :style="[styleOption, styleExt]" :class="{ full, noPadding }">
         <template v-if="useHeader || title">
-            <div class="ICardHeader" :style="[styleOptionForHeader]" v-if="title">{{title}}</div>
-            <div class="ICardHeader" :style="[styleOptionForHeader]" v-if="!title"><slot name="header"></slot></div>
+            <div class="ICardHeader" :style="[styleOptionForHeader]">
+				<slot name="header">{{title}}</slot>
+			</div>
         </template>
-
+useHeader
         <div class="ICardBody" :style="[bodyStyleOption]" @click="handleEvent">
             <slot></slot>
         </div>

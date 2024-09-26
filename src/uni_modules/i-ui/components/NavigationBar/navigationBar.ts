@@ -64,7 +64,12 @@ export const navigationProps = {
         type: [ Number, String ],
         default: 1
     },
-    styleExt: Object
+    styleExt: Object,
+	useTab: Boolean,
+	tabHeight: {
+		type: [String, Number],
+		default: 100
+	}
 }
 
 export type NavigationBarPropsType = ExtractPropTypes< typeof navigationProps >
