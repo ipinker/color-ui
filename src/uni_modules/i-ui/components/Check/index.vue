@@ -82,8 +82,8 @@ defineExpose({
 			display: inline-block;
 			font-size: $i-font-m;
 			transition: all .3s;
-            width: $i-font-xl;
-            height: $i-font-xl;
+            width: $i-font-l;
+            height: $i-font-l;
             position: relative;
             border: 1px solid $i-color-border;
             border-radius: $i-radius-xs;

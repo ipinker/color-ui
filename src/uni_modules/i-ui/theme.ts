@@ -3,8 +3,15 @@ import { defineStore, DefineStoreOptions, StoreDefinition } from 'pinia';
 import { THEME_LIST } from "./common/constants";
 import { createThemeList } from "ipink-theme";
 import type { SeedOption, ColorToken } from 'ipink-theme';
+import { Config }from "./index"
 
-const themeList: SeedOption[] = THEME_LIST;
+
+let updateThemeList = Config.getOption()?.themeList || []
+let updateThemeOption = Config.getOption().themeOption;
+if(updateThemeOption && Object.keys(updateThemeOption).length && !updateThemeList.length){
+	updateThemeList = [updateThemeOption];
+}
+const themeList: SeedOption[] = updateThemeList.length ? updateThemeList : THEME_LIST;
 const list: ColorToken[] = createThemeList({ themeList, useDark: true }) || [];
 export type ThemeModeType = "light" | "dark";
 export type ThemeStoreId = "themeStore";

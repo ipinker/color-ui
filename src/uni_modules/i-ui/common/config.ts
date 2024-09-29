@@ -1,4 +1,5 @@
-import { ColorToken } from 'ipink-theme/dist/theme/interface';
+import { ThemeOptions } from 'ipink-theme';
+import { ColorToken, SeedOption } from 'ipink-theme';
 import { Cache } from 'ipink-util';
 
 const cache = new Cache('uiConfig');
@@ -38,7 +39,10 @@ export interface UIConfigBasicOption {
     inputProps?: {
         placeholder?: string,
         border?: boolean
-    }
+    },
+	// 覆盖住配置
+	themeOption?: SeedOption
+	themeList?: SeedOption[]
 }
 
 export interface UIConfigOption extends UIConfigBasicOption {
@@ -72,7 +76,10 @@ export class UIConfig {
         },
         pageProps: {
 
-        }
+        },
+		
+		themeOption: undefined,
+		themeList: []
     }
     constructor(configOptions: UIConfigBasicOption) {
         this.reloadOptionByCache();

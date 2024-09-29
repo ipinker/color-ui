@@ -5,7 +5,6 @@
 				<slot name="header">{{title}}</slot>
 			</div>
         </template>
-useHeader
         <div class="ICardBody" :style="[bodyStyleOption]" @click="handleEvent">
             <slot></slot>
         </div>

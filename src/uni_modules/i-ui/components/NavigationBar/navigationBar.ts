@@ -68,7 +68,7 @@ export const navigationProps = {
 	useTab: Boolean,
 	tabHeight: {
 		type: [String, Number],
-		default: 100
+		default: "100"
 	}
 }
 

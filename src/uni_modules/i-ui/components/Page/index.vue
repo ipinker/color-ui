@@ -39,6 +39,7 @@ const pageSafeAreaStyle = {
     "height":  +(props.tabHeight || 0) + (SYS_INFO.safeAreaInsets?.bottom || 0) + "px"
 };
 
+
 </script>
 
 <style lang="scss">
