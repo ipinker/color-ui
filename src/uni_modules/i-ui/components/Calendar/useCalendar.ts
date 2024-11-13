@@ -121,7 +121,11 @@ export function useCalendar () {
             });
         }
         for ( let i = 0; i <= lastDay; i++){
-            let _obj = dateGetDay( parseInt(''+i), formatDate(year.value, month.value, 1) );
+            let _obj = dateGetDay( parseInt(''+i), formatDate(
+				month.value == 12 ? year.value+1 : year.value, 
+				month.value < 12 ? month.value + 1 : 1, 
+				1
+			);
             let data: DayInfo = { 
                 gregorian: _obj.day,
                 lunar: getYearMonthDay(_obj.year, _obj.month, _obj.day),
